@@ -15,7 +15,9 @@ Posiblemente se usara [MEAN](http://mean.io/#!/) Full-stack
  
 ####Back-end
 * Node JS
+
 ### To Do!
+* Base de datos (Mongo DB)
 
 
 
