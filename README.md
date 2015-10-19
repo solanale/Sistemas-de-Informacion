@@ -4,7 +4,7 @@
 ### Objetivos
 Se ha de desarrollar un Sistema Web completo, Front-End y Back-End cumpliendo los réquisitos de prácticas 
 ### Tecnologías (De momento)
-Posiblemente se usara [MEAN]http://mean.io/#!/ Full-stack 
+Posiblemente se usara [MEAN](http://mean.io/#!/) Full-stack 
 ####Front-End:
  * HTML5
  * CSS3
