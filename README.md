@@ -14,10 +14,11 @@ Posiblemente se usara [MEAN](http://mean.io/#!/) Full-stack
  * AngularJS
  
 ####Back-end
-* Node JS
+* Node JS (HTTP server por ahora)
 
 ### To Do!
 * Base de datos (Mongo DB)
+* Express
 
 
 
