@@ -8,5 +8,5 @@ fs.readFileSync('myFirstIO.js');
 var str = fs.toString();
 
 var str2 = str.split('\n')
-d
+
 console.log(Number(str2.length)-1);
