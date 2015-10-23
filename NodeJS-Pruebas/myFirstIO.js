@@ -3,10 +3,8 @@
 
 var fs = require('fs');
 
-fs.readFileSync('myFirstIO.js');
-
-var str = fs.toString();
+var str = fs.readFileSync(process.argv[2]).toString();
 
 var str2 = str.split('\n')
 
-console.log(Number(str2.length)-1);
+console.log(Number(str2.length-1));
