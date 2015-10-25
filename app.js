@@ -1,29 +1,66 @@
+//app.js
+//server
+
+//BASE SETUP
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
-var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-
 var app = express();
+
+//MONGODB
+
+var db_link = 'mongodb://localhost:27017'
+var db = mongoose.createConnection(db_link,function(error,res){
+  if(error)
+    throw err;
+  console.log('Connected to Database');
+})
+
+
+// Models (tablas)
+
+var products_schema = new mongoose.Schema({
+  ID:             { type Number, unique: true },//Clave unica
+  nombre:         { type String },
+});
+
+var users_schema = new mongoose.Schema({
+//  username
+//  name
+//  apellido
+//  email
+  carrito:        { type Number,repeat: true }, //Array de IDs
+});
+
+//Cargar Modelos
+
+var Products = db.model('Products', products_schema);
+var Users = db.model('Users', users_schema);
+
+// Express configuration (configuracion de la instacion)
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+//app.set('view engine', 'jade'); //No usaremos jade
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+//app.use(logger('dev')); //Crea un registro para dev, no necesario
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public'))); //No es necesario
+app.use(express.static(__dirname + '/public')); //Si no encuentra algo lo buscas en public
 
-app.use('/', routes);
-app.use('/users', users);
+
+//
+// PETICIONES DE ERROR
+//
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -56,5 +93,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
+var server = require('./routes/server')(app); //para pasar la instancia al server
 
-module.exports = app;
+app.listen(config.port)
+console.log("Mogic happens on port: "+ config.port);
