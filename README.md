@@ -11,14 +11,15 @@ Posiblemente se usara [MEAN](http://mean.io/#!/) Full-stack
  * Bootstrap
  * Skel
  * Java Script
- * AngularJS
  
 ####Back-end
-* Node JS (HTTP server por ahora)
+* Node JS + Express
+
+####DataBase
+* Mongo DB
 
 ### To Do!
-* Base de datos (Mongo DB)
-* Express
+* Angular
 
 
 
