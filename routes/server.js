@@ -7,9 +7,11 @@ module.exports = function(app){
 
 
   /* GET */
-  router.get('/', function(req, res, next) {
-    res.send('gatitos', { title: 'Gatitos funciona' });
+  router.get('/', function(req, res, next) {  //Next no es necesario, se usa para interceptar
+    res.sendfile('public/index.html');
   });
+
+
 
   /* POST */
   router.post('/', function(req, res, next) {
