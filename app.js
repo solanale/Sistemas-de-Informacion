@@ -47,6 +47,7 @@ var Users = db.model('Users', users_schema);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//Añadimos la raiz donde buscara los los ficheros
 app.use(express.static(__dirname + '/public')); //Si no encuentra algo lo buscas en public
 
 var server = require('./routes/server')(app); //para pasar la instancia al server
