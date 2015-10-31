@@ -43,7 +43,6 @@ var Users = db.model('Users', users_schema);
 // Express configuration (configuracion de la instacion)
 
 
-//app.set('view engine', 'jade'); //No usaremos jade
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
