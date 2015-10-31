@@ -10,6 +10,6 @@
     "angular-ui-router": "^0.2.15",
     "body-parser": "~1.13.2",
     "express": "~4.13.1",
-    "mongoose": "^4.2.2"
+    "mongoose": "4.0.1"
   }
 }
