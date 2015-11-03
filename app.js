@@ -25,14 +25,16 @@ var db = mongoose.createConnection(db_link,function(error,res){
 var products_schema = new mongoose.Schema({
   ID:             { type: Number, unique: true }, //Clave unica
   nombre:         { type: String },
+  categoría:      { type: String },
 });
 
 var users_schema = new mongoose.Schema({
-//  username
-//  name
-//  apellido
-//  email
-  carrito:        { type: Number,repeat: true }, //Array de IDs
+  username        { type: String, unique: true },
+  password        { type: String },
+  nombre:         { type: String },
+  apellidos:      { type: String },
+  email:          { type: String },
+  carrito:        { type: Number,repeat: true }, //Array de Ids
 });
 
 //Cargar Modelos
