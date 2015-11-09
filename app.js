@@ -23,17 +23,17 @@ var db = mongoose.createConnection(db_link,function(error,res){
 // Models (tablas)
 
 var products_schema = new mongoose.Schema({
-  ID:             { type: Number, unique: true }, //Clave unica
-  nombre:         { type: String },
-  categoría:      { type: String },
+  ID:             { type: Number, require:true, unique: true }, //Clave unica
+  nombre:         { type: String, require:true },
+  categoría:      { type: String, require:true },
 });
 
 var users_schema = new mongoose.Schema({
-  username        { type: String, unique: true },
-  password        { type: String },
-  nombre:         { type: String },
+  username        { type: String, require:true, unique: true },
+  password        { type: String, require:true },
+  nombre:         { type: String, require:true },
   apellidos:      { type: String },
-  email:          { type: String },
+  email:          { type: String, require:true },
   carrito:        { type: Number,repeat: true }, //Array de Ids
 });
 
