@@ -450,6 +450,7 @@
 
 		.icon.rounded {
 			background-color: #383b43;
+			border: 1px solid white;
 			border-radius: 100%;
 			color: #ffffff;
 			display: inline-block;
