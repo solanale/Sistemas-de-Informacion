@@ -34,15 +34,16 @@
 <body ng-app="sampleApp" ng-controller="NerdController">
 	
 	<!-- HEADER -->
-	<nav class="navbar navbar-inverse">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="/">Stencil: Node and Angular</a>
-		</div>
-		<ul class="nav navbar-nav">
-			<li><a href="/nerds">Nerds</a></li>
-			<li><a href="/geeks">Geeks</a></li>
-		</ul>
-	</nav>
+	<header id="header">
+		<h1><a href="/">Transit</a></h1>
+		<nav id="nav">
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/nerds">Nerds</a></li>
+				<li><a href="/geeks">Geeks</a></li>
+			</ul>
+		</nav>
+	</header>
 
 	<!-- ANGULAR DYNAMIC CONTENT -->
 	<div ng-view></div>
