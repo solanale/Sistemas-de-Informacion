@@ -18,6 +18,11 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'GeekController'	
 		});
 
+        .when('/elements', {
+            templateUrl: 'views/elements.html',
+            controller: 'ElemensController'
+        });
+
 	$locationProvider.html5Mode(true);
 
 }]);
