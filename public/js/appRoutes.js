@@ -16,23 +16,27 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 		.when('/geeks', {
 			templateUrl: 'views/geek.html',
 			controller: 'GeekController'	
-		});
+		})
 
         .when('/elements', {
             templateUrl: 'views/elements.html',
             controller: 'ElementsController'
-        });
+        })
 
 		.when('/log', {
 			templateUrl: 'views/logIn.html',
 			controller: 'LogInController'
-		});
+		})
+
+        .when('/generic', {
+            templateUrl: 'views/generic.html',
+            controller: 'GenericController'
+        })
 
 		.when('/sign', {
 			templateUrl: 'views/signUp.html',
 			controller: 'SignUpController'
 		});
-		 .otherwise({ redirectTo: "/index" });
 
 	$locationProvider.html5Mode(true);
 
