@@ -32,6 +32,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			templateUrl: 'views/signUp.html',
 			controller: 'SignUpController'
 		});
+		 .otherwise({ redirectTo: "/index" });
 
 	$locationProvider.html5Mode(true);
 
