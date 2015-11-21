@@ -4,7 +4,6 @@
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 */
 
-// Cambiar direcciones para trabajar con el server
 (function($) {
 
 	skel.init({
