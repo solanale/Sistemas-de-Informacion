@@ -1,102 +1,45 @@
-<!DOCTYPE html>
-<!--
-	Transit by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Main</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <!--[if lte IE 8]><script src="javascripts/html5shiv.js"></script><![endif]-->
-    <script src="javascripts/jquery.min.js"></script>
-    <script src="javascripts/skel.min.js"></script>
-    <script src="javascripts/skel-layers.min.js"></script>
-    <script src="javascripts/init.js"></script>
-    <noscript>
-        <link rel="stylesheet" href="stylesheets/skel.css" />
-        <link rel="stylesheet" href="stylesheets/style.css" />
-        <link rel="stylesheet" href="stylesheets/style-xlarge.css" />
-    </noscript>
+	<meta charset="UTF-8">
+	<base href="/">
+
+	<title>Starter Node and Angular</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
+
+	<!-- JS -->
+	<script src="libs/angular/angular.min.js"></script>
+	<script src="libs/angular-route/angular-route.min.js"></script>
+
+	<!-- ANGULAR CUSTOM -->
+	<script src="js/controllers/MainCtrl.js"></script>
+	<script src="js/controllers/NerdCtrl.js"></script>
+	<script src="js/services/NerdService.js"></script>
+	<script src="js/controllers/GeekCtrl.js"></script>
+	<script src="js/services/GeekService.js"></script>
+	<script src="js/appRoutes.js"></script>
+	<script src="js/app.js"></script>
 </head>
-<body>
+<body ng-app="sampleApp" ng-controller="NerdController">
+<div class="container">
+	
+	<!-- HEADER -->
+	<nav class="navbar navbar-inverse">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">Stencil: Node and Angular</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li><a href="/nerds">Nerds</a></li>
+			<li><a href="/geeks">Geeks</a></li>
+		</ul>
+	</nav>
 
-<!-- Header -->
-<header id="header">
-    <h1><a href="Main.html">Transit</a></h1>
-    <nav id="nav">
-        <ul>
-            <li><a href="Main.html">Home</a></li>
-            <li>Categorias</li>
-            <li>Elements</li>
-            <li><a href="SignUp.html" class="button special">Sign Up</a></li>
-        </ul>
-    </nav>
-</header>
+	<!-- ANGULAR DYNAMIC CONTENT -->
+	<div ng-view></div>
 
-
-<!-- One -->
-<section id="one" class="wrapper style1 special">
-    <div class="container">
-        <header class="major">
-            <h2>Amazop</h2>
-            <p>Your Amazing Shopping WebSite</p>
-        </header>
-        <h3 style="text-align:left"> Mas Popular</h3>
-        <div class="row 150%">
-            <div class="4u 12u$(medium)">
-                <section class="box">
-                    <i class="icon big rounded color1 fa-cloud"></i>
-                    <h3>Producto 1</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quam consectetur quibusdam magni minus aut modi aliquid.</p>
-                </section>
-            </div>
-            <div class="4u 12u$(medium)">
-                <section class="box">
-                    <i class="icon big rounded color9 fa-desktop"></i>
-                    <h3>Producto 2</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium ullam consequatur repellat debitis maxime.</p>
-                </section>
-            </div>
-            <div class="4u$ 12u$(medium)">
-                <section class="box">
-                    <i class="icon big rounded color6 fa-rocket"></i>
-                    <h3>Producto 3</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque eaque eveniet, nesciunt molestias. Ipsam, voluptate vero.</p>
-                </section>
-            </div>
-        </div>
-        <p style="text-align:right">ver mas</p>
-        <h3 style="text-align:left"> Tendencias</h3>
-        <div class="row 150%">
-            <div class="4u 12u$(medium)">
-                <section class="box">
-                    <i class="icon big rounded color1 fa-cloud"></i>
-                    <h3>Producto 1</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quam consectetur quibusdam magni minus aut modi aliquid.</p>
-                </section>
-            </div>
-            <div class="4u 12u$(medium)">
-                <section class="box">
-                    <i class="icon big rounded color9 fa-desktop"></i>
-                    <h3>Producto 2</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium ullam consequatur repellat debitis maxime.</p>
-                </section>
-            </div>
-            <div class="4u$ 12u$(medium)">
-                <section class="box">
-                    <i class="icon big rounded color6 fa-rocket"></i>
-                    <h3>Producto 3</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque eaque eveniet, nesciunt molestias. Ipsam, voluptate vero.</p>
-                </section>
-            </div>
-        </div>
-        <p style="text-align:right">ver mas</p>
-    </div>
-</section>
-
+</div>
 </body>
 </html>

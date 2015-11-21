@@ -1,26 +1,20 @@
-# Sistemas de Información (En Progreso)
-### Curso 2015-2016
+# MEAN Stack Single Page Application Starter
 
-### Objetivos
-Se ha de desarrollar un Sistema Web completo, Front-End y Back-End cumpliendo los réquisitos de prácticas 
-### Tecnologías (De momento)
-Posiblemente se usara [MEAN](http://mean.io/#!/) Full-stack 
-####Front-End:
- * HTML5
- * CSS3
- * Bootstrap
- * Skel
- * Java Script
- 
-####Back-end
-* Node JS + Express
+This is a repo for a starter appliation for a Single Page MEAN Stack application. Just download and install and you have a good foundation for building application. 
 
-####DataBase
-* Mongo DB
+## Installation
+1. Download the repository
+2. Install npm modules: `npm install`
+3. Install bower dependencies `bower install`
+4. Start up the server: `node server.js`
+5. View in browser at http://localhost:8080
 
-### To Do!
-* Angular
+Use this starter kit to build any MEAN stack application you like.
 
+If you have any questions or requests, email us at [chris@scotch.io](mailto:chris@scotch.io) and we'll keep updating this to make it perfect.
 
-
-
+## Future Additions
+- CRUD examples
+- Development and Production Environments
+- Link examples
+- Single Page AngularJS Animations
