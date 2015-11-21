@@ -1,3 +1,3 @@
-angular.module('ElementsCtrl', []).controller('ElementsController', function($scope) {
+angular.module('ElementsService', []).factory('Elements', ['$http', function($http) {
 
 });
