@@ -20,7 +20,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 
         .when('/elements', {
             templateUrl: 'views/elements.html',
-            controller: 'ElemensController'
+            controller: 'ElementsController'
         });
 
 		.when('/log', {
