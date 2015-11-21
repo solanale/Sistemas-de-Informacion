@@ -1,3 +1,3 @@
-angular.module('GenericCtrl', []).controller('GenericController', function($scope) {
+angular.module('GenericService', []).factory('Generic', ['$http', function($http) {
 
-});
+}]);
