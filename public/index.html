@@ -2,25 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<base href="/">
 
 	<title>Starter Node and Angular</title>
 
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-
 	<!-- CSS -->
-	<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/skel.min.js"></script>
-	<script src="js/skel-layers.min.js"></script>
-	<script src="js/init.js"></script>
-	<noscript>
-		<link rel="stylesheet" href="css/skel.css" />
-		<link rel="stylesheet" href="css/style.css" />
-		<link rel="stylesheet" href="css/style-xlarge.css" />
-	</noscript>
-
+	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
 
 	<!-- JS -->
 	<script src="libs/angular/angular.min.js"></script>
@@ -37,25 +25,21 @@
 </head>
 <body ng-app="sampleApp" ng-controller="NerdController">
 <div class="container">
-
-	<!-- Header -->
-	<header id="header">
-		<h1><a href="index.html">Transit</a></h1>
-		<nav id="nav">
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/generic">Generic</a></li>
-				<li><a href="/elements">Elements</a></li>
-				<li><a href="/log" class="button special">Log In</a></li>
-				<li><a href="/sign" class="button special">Sign Up</a></li>
-				<li><a href="/geeks">Geek</a></li>
-				<li><a href="/nerds" class="button special">Nerd</a></li>
-			</ul>
-		</nav>
-	</header>
+	
+	<!-- HEADER -->
+	<nav class="navbar navbar-inverse">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">Stencil: Node and Angular</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li><a href="/nerds">Nerds</a></li>
+			<li><a href="/geeks">Geeks</a></li>
+		</ul>
+	</nav>
 
 	<!-- ANGULAR DYNAMIC CONTENT -->
 	<div ng-view></div>
+
 </div>
 </body>
 </html>
