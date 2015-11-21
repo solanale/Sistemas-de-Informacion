@@ -1,4 +1,4 @@
-angular.module('SignInService', []).factory('SignIn', ['$http', function($http) {
+angular.module('SignUpService', []).factory('SignUp', ['$http', function($http) {
 
 	
 

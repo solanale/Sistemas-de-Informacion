@@ -28,11 +28,6 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'LogInController'
 		})
 
-        .when('/generic', {
-            templateUrl: 'views/generic.html',
-            controller: 'GenericController'
-        })
-
 		.when('/sign', {
 			templateUrl: 'views/signUp.html',
 			controller: 'SignUpController'
