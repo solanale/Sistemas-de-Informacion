@@ -33,11 +33,6 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'SignUpController'
 		});
 
-        .when('/elements', {
-            templateUrl: 'views/elements.html',
-            controller: 'ElementsController'
-        });
-
 	$locationProvider.html5Mode(true);
 
 }]);

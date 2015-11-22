@@ -68,8 +68,8 @@
 						<li class="dropdown-header"><a href="/log" class="button">Log out<span class="glyphicon glyphicon-off"></span></a></li>
 					</ul>
 				</li>
-				<li><a href="/log" class="button special">Log In <span class="glyphicon glyphicon-log-in"></span></a></li>
-				<li><a href="/sign" class="button special">Sign Up <span class="glyphicon glyphicon-user"></span></a></li>
+				<li ng-hide="isLogged()"><a href="/log" class="button special">Log In <span class="glyphicon glyphicon-log-in"></span></a></li>
+				<li ng-hide="isLogged()"><a href="/sign" class="button special">Sign Up <span class="glyphicon glyphicon-user"></span></a></li>
 				<li><a href="/elements">Elements</a></li>
 			</ul>
 		</nav>
