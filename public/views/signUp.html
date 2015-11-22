@@ -1,33 +1,69 @@
 <div>
+
 <!-- Three -->
 <section id="three" class="wrapper style3 special">
     <div class="container">
         <header class="major">
-            <h2>Una cuenta. Todo Amazop</h2>
-            <p>Inicia sesión para acceder</p>
+            <h2>Registro de nuevo usuario</h2>
+            <p>Rellene los campos para completar el registro</p>
         </header>
     </div>
-    <div class="container 50%">
+
+    <div class="container 50%" >
         <form action="#" method="post">
             <div class="row uniform">
-                <div class="2u"></div>
-                <div class="8u 12u$(small)">
-                    <input name="usuario" id="name" value="" placeholder="Usuario" type="text">
+
+                <div class="1u"></div>
+                <div class="10u 12u$(small)">
+                    <input name="email" id="email" value="" placeholder="Email" type="text">
                 </div>
-                <div class="2u$"></div>
-                <div class="2u"></div>
-                <div class="8u 12u$(small)">
-                    <input name="contraseña" id="password" value="" placeholder="Contraseña" type="text">
+                <div class="1u$"></div>
+
+                <div class="1u"></div>
+                <div class="5u 12u$(small)">
+                    <input name="name" id="name" value="" placeholder="Nombre" type="text">
                 </div>
-                <div class="2u$"></div>
-                <div class="12u$"></div>
+                <div class="5u 12u$(small)">
+                    <input name="surName" id="surName" value="" placeholder="Apellidos" type="text">
+                </div>
+                <div class="1u$"></div>
+
+                <div class="1u"></div>
+                <div class="5u 12u$(small)">
+                    <input name="pass" id="pass" value="" placeholder="Contraseña" type="password">
+                </div>
+                <div class="5u 12u$(small)">
+                    <input name="rePass" id="rePass" value="" placeholder="Repita la contraseña" type="password">
+                </div>
+                <div class="1u$"></div>
+
+                <div class="1u"></div>
+                <div class="5u 12u$(small)">
+                    <input  id="male" type="radio" style="before:background:#ffffff" name="sex" value="H"/>
+                    <label for="male" style="color:#ffffff"> Hombre</label>
+                </div>
+                <div class="5u 12u$(small)">
+                    <input id="female" type="radio" name="sex" value="M"/>
+                    <label for="female" style="color:#ffffff"> Mujer</label>
+                </div>
+                <div class="1u$"></div>
+
+                <div class="1u"></div>
+                <div class="10u 12u$(small)">
+                    <textarea name="info" id="info" placeholder="Introduzca aquí información personal"></textarea>
+                </div>
+                <div class="1u$"></div>
+
                 <div class="12u$">
                     <ul class="actions">
-                        <li><input value="Iniciar sesión" class="special big" type="submit"></li>
+                        <li><input value="Enviar" class="special big" type="submit" ></li>
+                        <li><input value="Reset" class="special_red big" type="reset"></li>
                     </ul>
                 </div>
             </div>
         </form>
     </div>
+    <p>¿Ya tienes una cuenta? <a href="SignIn.html"> <u>Inicia sesión</u></a></p>
+
 </section>
 </div>
