@@ -994,32 +994,37 @@
 		z-index: 10000;
 	}
 
-		#header h1 {
-			color: #ffffff;
-			height: inherit;
-			left: 3em;
-			line-height: inherit;
-			margin: 0;
-			padding: 0;
-			position: absolute;
-		}
-
-			#header h1 a {
-				font-size: 1.25em;
-			}
-
 		#header nav {
 			height: inherit;
 			line-height: inherit;
 			position: absolute;
 			right: 3em;
+			left: 3em;
 			vertical-align: middle;
+			border:1px solid blue;
 		}
+
+			#header nav > h1 {
+				color: #ffffff;
+				height: inherit;
+				left: 3em;
+				line-height: inherit;
+				margin: 0;
+				padding: 0;
+				display: inline-block;
+			}
+
+				#header nav > h1 a {
+					font-size: 1.25em;
+				}
 
 			#header nav > ul {
 				list-style: none;
 				margin: 0;
 				padding-left: 0;
+				display: inline-block;
+				position: relative;
+				float: right;
 			}
 
 				#header nav > ul > li {
