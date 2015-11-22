@@ -1064,6 +1064,29 @@
 						vertical-align: middle;
 					}
 
+					#header nav > ul > li .input-group {
+						background-color: inherit;
+						height: 2.25em;
+						line-height: 2.25em;
+						margin-bottom: 0;
+						padding: 0 1em;
+						position: relative;
+						top: 0.75em;
+						vertical-align: middle;
+					}
+
+						#header nav > ul > li > form .form-control {
+							height: inherit;
+							line-height: inherit;
+							background-color: #fff;
+							color: black;
+							vertical-align: middle;
+						}
+
+							#header nav > ul > li > form > span .btn {
+								line-height: 1.45em;
+							}
+
 		#header .container {
 			position: relative;
 		}

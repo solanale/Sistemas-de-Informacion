@@ -19,7 +19,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 		})
 
         .when('/elements', {
-            templateUrl: 'views/elements.html',
+            templateUrl: 'views/cesta.html',
             controller: 'ElementsController'
         })
 
