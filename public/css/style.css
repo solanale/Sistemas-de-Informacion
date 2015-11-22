@@ -41,7 +41,7 @@
 	}
 
 		a:active, a:hover {
-			text-decoration: underline;
+			text-decoration: none;
 		}
 
 	strong, b {
@@ -69,15 +69,24 @@
 			text-decoration: none;
 		}
 
+		h1 a:link{
+			color:inherit;
+			text-decoration: inherit;
+		}
+
 		h1 a:hover{
 		    color:inherit;
+		    text-decoration: inherit;
 		}
 
 		h1 a:visited{
 		    color:inherit;
+		    text-decoration: inherit;
 		}
+
 		h1 a:active{
 		    color:inherit;
+		    text-decoration: inherit;
 		}
 
 	h2 {
