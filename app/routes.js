@@ -1,6 +1,6 @@
 module.exports = function(app) {
 
-      var User = require('./app/models/user');
+      var User = require('./models/User');
 
 	// server routes ===========================================================
 	// handle things like api calls
@@ -27,10 +27,6 @@ module.exports = function(app) {
             }else{
                 res.sendStatus(400);
             }
-        }
+        });
 	});
-
-
-
-
 };

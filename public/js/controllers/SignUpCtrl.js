@@ -1,3 +1,3 @@
-angular.module('SignUpCtrl', []).controller('SignUpController', function($scope) {
+angular.module('SignUpCtrl', []).controller('SignUpController', ['$scope','$http', function($scope, $http,) {
 
-});
+}]);

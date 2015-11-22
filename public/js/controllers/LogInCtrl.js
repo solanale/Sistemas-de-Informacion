@@ -1,4 +1,5 @@
-angular.module('LogInCtrl', []).controller('LogInController', ['$scope','$http', '$location','$cookies', function($scope, $http, $location,$cookies) {
+angular.module('LogInCtrl', []).controller('LogInController', '$scope','$http', '$location','$cookies', function($scope, $http, $location,$cookies) {
+    ['$scope','$http', function($scope, $http,) {
     $scope.logIn = function{
         var checkuser = {
             name: $scope.name,
@@ -7,8 +8,8 @@ angular.module('LogInCtrl', []).controller('LogInController', ['$scope','$http',
         $http.post("/logIn",checkuser).success(function (user){
             $location.path("/elements");
         }).error(function (){
-            alert("Nombre o email ya registrado.");
+            alert("Usuario o contraseña incorrectos.");
         })
     };
 
-}]);
+});
