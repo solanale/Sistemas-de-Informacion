@@ -73,6 +73,13 @@
 		    color:inherit;
 		}
 
+		h1 a:visited{
+		    color:inherit;
+		}
+		h1 a:active{
+		    color:inherit;
+		}
+
 	h2 {
 		font-size: 1.75em;
 		line-height: 1.5em;
