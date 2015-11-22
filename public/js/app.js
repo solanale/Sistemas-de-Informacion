@@ -61,7 +61,7 @@ app.controller("MainController", ['$scope','$http','$cookies',function($scope,$h
 app.controller("LogInController", ['$scope','$http', '$location','$cookies', function($scope, $http, $location,$cookies) {
     $scope.logIn = function{
         var checkuser = {
-            name: $scope.name,
+            email: $scope.email,
             pass: $scope.pass,
         };
         $http.post("/logIn",checkuser).success(function (user){

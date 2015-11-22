@@ -16,9 +16,9 @@ module.exports = function(app) {
 
 	app.post('/logIn', function(req,res){
 	    var model = json(req.body);
-	    var name = model["name"]; // identificador del cuadro de busqueda
+	    var email = model["email"]; // identificador del cuadro de busqueda
         var pass = model["pass"];
-        User.find({ username: name }, function(err, user) {
+        User.find({ email: email }, function(err, user) {
            if (err) throw err;
            // object of the user
            console.log(user);
