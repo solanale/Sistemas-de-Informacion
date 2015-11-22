@@ -7,15 +7,25 @@
 	<title>Starter Node and Angular</title>
 
 	<!-- CSS -->
+
 	<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/skel.min.js"></script>
 	<script src="js/skel-layers.min.js"></script>
 	<script src="js/init.js"></script>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+
 	<noscript>
 		<link rel="stylesheet" href="css/skel.css" />
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/style-xlarge.css" />
+		<link rel="stylesheet" href="css/bootstrap.icon-large.css" />
+		<link rel="stylesheet" href="css/bootstrap.icon-large.min.css" />
 	</noscript>
 
 	<!-- JS -->
@@ -43,17 +53,43 @@
 	
 	<!-- HEADER -->
 	<header id="header">
+		<h1 align="left"}><a href="/">Amazop</a></h1>
+		<nav id="nav">
+			<ul>
+				<li><input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term"></li>
+				<li><a href="/nerds">Nerds</a></li>
+				<li><a href="/buscar">Buscar</a></li>
+				<li class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Hi, {{$user}}
+						<span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li class="dropdown-header"><a href="/log" class="button">Perfil<span class="glyphicon glyphicon-user"></span></a></li>
+						<li class="divider"></li>
+						<li class="dropdown-header"><a href="/log" class="button">Log out<span class="glyphicon glyphicon-off"></span></a></li>
+					</ul>
+				</li>
+				<li><a href="/log" class="button special">Log In <span class="glyphicon glyphicon-log-in"></span></a></li>
+				<li><a href="/sign" class="button special">Sign Up <span class="glyphicon glyphicon-user"></span></a></li>
+				<li><a href="/elements">Elements</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<!--	Header con modo usuario
+	<header id="header">
 		<h1><a href="/">Amazop</a></h1>
 		<nav id="nav">
 			<ul>
 				<li><a href="/nerds">Nerds</a></li>
 				<li><a href="/buscar">Buscar</a></li>
-				<li><a href="/log" class="button special">Log In</a></li>
-				<li><a href="/sign" class="button special">Sign Up</a></li>
+				<li ng-hide="isLogged()" ><a href="/log" class="button special">Log In</a></li>
+				<li ng-hide="isLogged()"><a href="/sign" class="button special">Sign Up</a></li>
+				<li ng-show="isLogged()"><a href="/user" class="dropdown-menu">Sign Up</a></li>
 				<li><a href="/elements">Elements</a></li>
 			</ul>
 		</nav>
 	</header>
+	-->
 
 	<!-- ANGULAR DYNAMIC CONTENT -->
 	<div ng-view></div>

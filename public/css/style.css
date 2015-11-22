@@ -69,6 +69,10 @@
 			text-decoration: none;
 		}
 
+		h1 a:hover{
+		    color:inherit;
+		}
+
 	h2 {
 		font-size: 1.75em;
 		line-height: 1.5em;
@@ -593,6 +597,8 @@
 		ul li {
 			padding-left: 0.5em;
 		}
+
+		
 
 		ul.alt {
 			list-style: none;
