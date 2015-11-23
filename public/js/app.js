@@ -78,7 +78,8 @@ app.controller('LogInController', ['$scope','$http', '$location','$cookies', fun
 app.controller('SignUpController', ['$scope','$http', '$location', function($scope, $http, $location) {
     $scope.formInfo = {};
 
-    $scope.saveData = function(){
+    $scope.signUp = function(){
+        var guarda = true;
         $scope.nameRequired = '';
         $scope.emailRequired = '';
         $scope.apellidosRequired = '';
@@ -86,45 +87,46 @@ app.controller('SignUpController', ['$scope','$http', '$location', function($sco
         $scope.repassRequired = '';
         if(!$scope.formInfo.name){
             $scope.nameRequired = 'Campo obligatorio';
+            guarda = false;
         }
         if(!$scope.formInfo.email){
             $scope.emailRequired = 'Campo obligatorio';
+            guarda = false;
         }
         if(!$scope.formInfo.apellidos){
             $scope.apellidosRequired = 'Campo obligatorio';
+            guarda = false;
         }
         if($scope.formInfo.repass != $scope.formInfo.pass){
-            $scope.passRequired = 'Las contraseñas deben coincidir'
+            $scope.passRequired = 'Las contraseñas deben coincidir';
+            guarda = false;
         }
         if(!$scope.formInfo.pass){
             $scope.passRequired = 'Campo obligatorio';
+            guarda = false;
         }
         if(!$scope.formInfo.repass){
             $scope.repassRequired = 'Campo obligatorio';
+            guarda = false;
         }
-
+        if(guarda){
+            var newuser = {
+                email: $scope.formInfo.email,
+                name: $scope.formInfo.name,
+                apellidos: $scope.formInfo.apellidos,
+                password: $scope.formInfo.pass,
+                repassword= $scope.formInfo.repass,
+                gender: $scope.formInfo.gender.male,
+                info: $scope.formInfo.info,
+            };
+            $http.post("/signUp",newuser)
+                .success(function (user){
+                    $location.path("/");
+                })
+                .error(function (){
+                    alert("Usuario o email ya registrado");
+                })
+        }
     };
-
-    $scope.signup = function{
-        var newuser = {
-            email: $scope.email,
-            name: $scope.name,
-            apellidos: $scope.apellidos,
-            password: $scope.pass,
-            repassword= $scope.repass,
-            gender: $scope.gender.male,
-            info: $scope.info,
-        };
-        $http.post("/signUp",newuser).success(function (user){
-            $location.path("/");
-        }).error(function (){
-            alert("Usuario o email ya registrado");
-        })
-    };
-
-
-
-
-    }
 
 }]);
