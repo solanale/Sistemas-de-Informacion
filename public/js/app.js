@@ -1,6 +1,6 @@
 var app = angular.module('app-web', ['ngRoute']);
 
-app.config(['$routeProvider',function($routeProvider){
+app.config(['$routeProvider','$location',function($routeProvider, $location){
 	$routeProvider
 
 		// home page
