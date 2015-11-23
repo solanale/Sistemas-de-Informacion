@@ -81,16 +81,28 @@ app.controller('SignUpController', ['$scope','$http', '$location', function($sco
     $scope.saveData = function(){
         $scope.nameRequired = '';
         $scope.emailRequired = '';
-        $scope.passwordRequired = '';
-        if(!$scope.formInfo.Name){
-            $scope.nameRequired = 'Name Required';
+        $scope.apellidosRequired = '';
+        $scope.passRequired = '';
+        $scope.repassRequired = '';
+        if(!$scope.formInfo.name){
+            $scope.nameRequired = 'Campo obligatorio';
         }
-        if(!$scope.formInfo.Email){
-            $scope.emailRequired = 'Email Required';
+        if(!$scope.formInfo.email){
+            $scope.emailRequired = 'Campo obligatorio';
         }
-        if(!$scope.formInfo.Password){
-            $scope.passwordRequired = 'Password Required';
+        if(!$scope.formInfo.apellidos){
+            $scope.apellidosRequired = 'Campo obligatorio';
         }
+        if($scope.formInfo.repass != $scope.formInfo.pass){
+            $scope.passRequired = 'Las contraseñas deben coincidir'
+        }
+        if(!$scope.formInfo.pass){
+            $scope.passRequired = 'Campo obligatorio';
+        }
+        if(!$scope.formInfo.repass){
+            $scope.repassRequired = 'Campo obligatorio';
+        }
+
     };
 
     $scope.signup = function{
