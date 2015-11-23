@@ -8,7 +8,7 @@ var userSchema = new Schema({
     name: String,
     apellidos: String,
     password: { type: String, required: true },
-    gender: Boolean,
+    gender: Boolean, // true = male, false = female
     info: String,
 });
 
