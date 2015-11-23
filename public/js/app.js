@@ -74,7 +74,7 @@ app.controller("LogInController", ['$scope','$http', '$location','$cookies', fun
 }]);
 
 app.controller('SignUpController', ['$scope','$http', '$location', function($scope, $http, $location) {
-    $scope.logIn = function{
+    $scope.signup = function{
         var newuser = {
             name: $scope.name,
             pass: $scope.pass,
@@ -87,5 +87,10 @@ app.controller('SignUpController', ['$scope','$http', '$location', function($sco
             alert("Usuario o contraseña incorrectos.");
         })
     };
+    $scope.checkuser = function {
+
+
+
+    }
 
 }]);

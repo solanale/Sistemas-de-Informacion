@@ -22,11 +22,11 @@ module.exports = function(app) {
            if (err) throw err;
            // object of the user
            console.log(user);
-            if (User.pass==pass) {
-                res.sendStatus(200);
-            }else{
-                res.sendStatus(400);
-            }
+           if (User.pass==pass) {
+               res.sendStatus(200);
+           }else{
+               res.sendStatus(400);
+           }
         });
 	});
 };
