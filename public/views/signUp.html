@@ -10,47 +10,46 @@
     </div>
 
     <div class="container 50%" >
-        <form action="#" method="post">
+        <form action="#" method="post" ng-submit="SignUpController">
             <div class="row uniform">
-
                 <div class="1u"></div>
                 <div class="10u 12u$(small)">
-                    <input name="email" id="email" value="" placeholder="Email" type="text">
+                    <input name="email" id="email" value="" placeholder="Email" type="text" ng-model="email">
+                </div>
+                <span ng-show="emailRequired">{{emailRequired}}</span>
+
+                <div class="1u"></div>
+                <div class="5u 12u$(small)">
+                    <input name="name" id="name" value="" placeholder="Nombre" type="text" ng-model="name">
+                </div>
+                <div class="5u 12u$(small)">
+                    <input name="surName" id="surName" value="" placeholder="Apellidos" type="text" ng-model="apellidos">
                 </div>
                 <div class="1u$"></div>
 
                 <div class="1u"></div>
                 <div class="5u 12u$(small)">
-                    <input name="name" id="name" value="" placeholder="Nombre" type="text">
+                    <input name="pass" id="pass" value="" placeholder="Contraseña" type="password"ng-model="pass">
                 </div>
                 <div class="5u 12u$(small)">
-                    <input name="surName" id="surName" value="" placeholder="Apellidos" type="text">
-                </div>
-                <div class="1u$"></div>
-
-                <div class="1u"></div>
-                <div class="5u 12u$(small)">
-                    <input name="pass" id="pass" value="" placeholder="Contraseña" type="password">
-                </div>
-                <div class="5u 12u$(small)">
-                    <input name="rePass" id="rePass" value="" placeholder="Repita la contraseña" type="password">
+                    <input name="rePass" id="rePass" value="" placeholder="Repita la contraseña" type="password"ng-model="repass">
                 </div>
                 <div class="1u$"></div>
 
                 <div class="1u"></div>
                 <div class="5u 12u$(small)">
-                    <input  id="male" type="radio" style="before:background:#ffffff" name="sex" value="H"/>
+                    <input  id="male" type="radio" style="before:background:#ffffff" name="sex" value="H" checked ng-model="gender.male"/>
                     <label for="male" style="color:#ffffff"> Hombre</label>
                 </div>
                 <div class="5u 12u$(small)">
-                    <input id="female" type="radio" name="sex" value="M"/>
+                    <input id="female" type="radio" name="sex" value="M" ng-model="gender.female"/>
                     <label for="female" style="color:#ffffff"> Mujer</label>
                 </div>
                 <div class="1u$"></div>
 
                 <div class="1u"></div>
                 <div class="10u 12u$(small)">
-                    <textarea name="info" id="info" placeholder="Introduzca aquí información personal"></textarea>
+                    <textarea name="info" id="info" placeholder="Introduzca aquí información personal" ng-model="info"></textarea>
                 </div>
                 <div class="1u$"></div>
 

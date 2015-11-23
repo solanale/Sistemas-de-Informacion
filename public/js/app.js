@@ -58,7 +58,9 @@ app.controller("MainController", ['$scope','$http','$cookies',function($scope,$h
 
 
 
-app.controller("LogInController", ['$scope','$http', '$location','$cookies', function($scope, $http, $location,$cookies) {
+app.controller('LogInController', ['$scope','$http', '$location','$cookies', function($scope, $http, $location,$cookies) {
+    $scope.formInfo = {};
+
     $scope.logIn = function{
         var checkuser = {
             email: $scope.email,
@@ -74,20 +76,40 @@ app.controller("LogInController", ['$scope','$http', '$location','$cookies', fun
 }]);
 
 app.controller('SignUpController', ['$scope','$http', '$location', function($scope, $http, $location) {
+    $scope.formInfo = {};
+
+    $scope.saveData = function(){
+        $scope.nameRequired = '';
+        $scope.emailRequired = '';
+        $scope.passwordRequired = '';
+        if(!$scope.formInfo.Name){
+            $scope.nameRequired = 'Name Required';
+        }
+        if(!$scope.formInfo.Email){
+            $scope.emailRequired = 'Email Required';
+        }
+        if(!$scope.formInfo.Password){
+            $scope.passwordRequired = 'Password Required';
+        }
+    };
+
     $scope.signup = function{
         var newuser = {
+            email: $scope.email,
             name: $scope.name,
-            pass: $scope.pass,
-            email:
-            apellidos
+            apellidos: $scope.apellidos,
+            password: $scope.pass,
+            repassword= $scope.repass,
+            gender: $scope.gender.male,
+            info: $scope.info,
         };
-        $http.post("/signUp",checkuser).success(function (user){
+        $http.post("/signUp",newuser).success(function (user){
             $location.path("/");
         }).error(function (){
-            alert("Usuario o contraseña incorrectos.");
+            alert("Usuario o email ya registrado");
         })
     };
-    $scope.checkuser = function {
+
 
 
 

@@ -3,17 +3,13 @@ var Schema = mongoose.Schema;
 
 // create a schema
 var userSchema = new Schema({
-  name: String,
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  admin: Boolean,
-  location: String,
-  meta: {
-    age: Number,
-    website: String
-  },
-  created_at: Date,
-  updated_at: Date
+
+    email: { type: String, required: true, unique: true },
+    name: String,
+    apellidos: String,
+    password: { type: String, required: true },
+    gender: Boolean,
+    info: String,
 });
 
 // on every save, add the date
