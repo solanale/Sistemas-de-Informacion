@@ -1066,6 +1066,7 @@
 
 					#header nav > ul > li .input-group {
 						background-color: inherit;
+						width: 14em;
 						height: 2.25em;
 						line-height: 2.25em;
 						margin-bottom: 0;
@@ -1076,16 +1077,27 @@
 					}
 
 						#header nav > ul > li > form .form-control {
-							height: inherit;
+							width: inherit;
+							height: 100%;
 							line-height: inherit;
 							background-color: #fff;
 							color: black;
 							vertical-align: middle;
 						}
 
-							#header nav > ul > li > form > span .btn {
-								line-height: 1.45em;
+						#header nav > ul > li > form .input-group-btn {
+							height: 100%;
+							line-height: 100%;
+						}
+
+							#header nav > ul > li > form > span .btn .btn-default {
+								height: inherit;
+								line-height: inherit;
 							}
+
+								#header nav > ul > li > form > span > button .glyphicon {
+									line-height: inherit;
+								}
 
 		#header .container {
 			position: relative;

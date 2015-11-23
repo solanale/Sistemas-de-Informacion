@@ -8,6 +8,7 @@
 
 	html, body {
 		min-width: 320px;
+		border:5px solid blue;
 	}
 
 	body, input, select, textarea {
@@ -67,3 +68,20 @@
 	#banner {
 		padding: 8em 2em 8em;
 	}
+
+	#header nav > ul > li > form .form-control {
+		height: 100%;
+		line-height: inherit;
+		border: 1px solid red;
+	}
+
+	#header nav > ul > li > form .input-group-btn {
+		height: 100%;
+		line-height: 100%;
+		border: 1px solid red;
+	}
+
+			#header nav > ul > li > form > span > button .glyphicon {
+				line-height: inherit;
+				border: 1px solid red;
+			}

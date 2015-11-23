@@ -25,6 +25,22 @@ function visibilidadBlockId(id)
 	}
 }
 
+function visibilidadBlockClass(c)
+{
+	var cl = document.getElementsByClassName(c);
+
+	for (i in cl) {
+		if(cl[i].style.display == 'block')
+		{
+			cl[i].style.display = 'none';
+		}
+		else
+		{
+			cl[i].style.display = 'block';
+		}
+	}
+}
+
 function visibilidadInlineId(id)
 {
 	if(document.getElementById(id).style.display == 'inline')
