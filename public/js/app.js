@@ -23,7 +23,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 
 		.when('/buscar', {
 			templateUrl: 'views/buscar.html',
-			controller: 'GenericController'
+			controller:  'BuscarController'
 		})
 
 		.when('/log', {
