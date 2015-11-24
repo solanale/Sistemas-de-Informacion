@@ -1,6 +1,6 @@
 var app = angular.module('app-web', ['ngRoute']);
 
-var addr = "192.168.1.2:8080";
+//var addr = "192.168.1.2:8080";
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
 	$routeProvider

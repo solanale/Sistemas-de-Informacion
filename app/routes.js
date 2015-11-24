@@ -1,6 +1,6 @@
-module.exports = function(app) {
+var User = require('./models/User');
 
-    var User = require('./models/User');
+module.exports = function(app) {
 
 	// server routes ===========================================================
 	// handle things like api calls
