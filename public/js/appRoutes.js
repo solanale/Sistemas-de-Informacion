@@ -23,6 +23,11 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
             controller: 'ElementsController'
         })
 
+        .when('/prod', {
+			templateUrl: 'views/product.html',
+			controller: 'ElementsController'
+		})
+
 		.when('/log', {
 			templateUrl: 'views/logIn.html',
 			controller: 'LogInController'
