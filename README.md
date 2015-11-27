@@ -23,4 +23,7 @@ Posiblemente se usara [MEAN](http://mean.io/#!/) Full-stack
 
 
 
+http://stackoverflow.com/questions/21023763/angularjs-difference-between-angular-route-and-angular-ui-router
+
+
 
