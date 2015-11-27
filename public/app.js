@@ -9,13 +9,16 @@ app.config(function($routeProvider){
 		.when("/", {
 			templateUrl: views + "home.html"
 		})
+		.when("/elements", {
+			templateUrl: views + "elements.html"
+		})
         .when("/log", {
-            templateUrl: views + "partialseries.html",
-            controller: "ControladorSeries"
+            templateUrl: views + "logIn.html",
+            controller: "LogInController"
         })
         .when("/sign", {
-            templateUrl: views + "partialseries.html",
-            controller: "ControladorSeries"
+            templateUrl: views + "signUp.html",
+            controller: "SignUpController"
         })
 
 		.when("/series/:id", {
@@ -49,7 +52,7 @@ app.config(function($routeProvider){
 		.otherwise({ redirectTo: "/" });
 });
 
-app.controller("ControladorIndex", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
+app.controller("IndexController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
 	var dummyUser = $cookies.username;
 	$scope.user = {'username': dummyUser};
 
@@ -64,13 +67,13 @@ app.controller("ControladorIndex", ['$scope', "$cookies", '$cookieStore', functi
 	};
 }]);
 
-app.controller("ControladorLogin", ['$scope','$http', "$cookies", "$cookieStore", "$location", function($scope, $http, $cookies, $cookieStore,
+app.controller("LogInController", ['$scope','$http', "$cookies", "$cookieStore", "$location", function($scope, $http, $cookies, $cookieStore,
 $location){
 	$scope.login = function(login){
-		$http.post(addr + '/login', login)
+		$http.post(addr + '/log', login)
 			.success(function (data) {
 				$cookies.username = login.username;
-				$location.path("/index");
+				$location.path("/");
 			})
 			.error(function (data){
 				alert("Username o contraseña incorrecta");
@@ -78,7 +81,7 @@ $location){
 	};
 }]);
 
-app.controller("ControladorSignUp", ['$scope','$http', '$location', function($scope, $http, $location){
+app.controller("SignUpController", ['$scope','$http', '$location', function($scope, $http, $location){
 
 	var range = [];
 	for(var i = new Date().getUTCFullYear(); i >= 1900; i--) {
@@ -93,9 +96,9 @@ app.controller("ControladorSignUp", ['$scope','$http', '$location', function($sc
 			console.log('a');
 			if (user.pass == user.repass){
 				console.log(user.pass);
-				$http.post(addr + "/signup",user)
+				$http.post(addr + "/sign",user)
 					.success(function (user){
-						$location.path("/index");
+						$location.path("/");
 					})
 					.error(function (){
 						alert("Nombre o email ya registrado.");

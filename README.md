@@ -30,7 +30,7 @@ con lo que al instalar Node, también añadimos npm.
 $ curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 $ sudo apt-get install -y nodejs
 
-Para compilar e instar addons nativos de npm, podria necesitarse las "build tools"
+Para compilar e instalar addons nativos de npm, podria necesitarse las "build tools"
 
 $ sudo apt-get install -y build-essential
 
@@ -52,6 +52,11 @@ Descargar modulos y dependencias(En la ruta del repositorio)
 $ npm install  
 
 $ cd public && bower install
+
+Con esto el sistema queda listo para iniciarse ejecutando en la ruta del repositorio:
+
+$ node server.js
+
 
 
 
