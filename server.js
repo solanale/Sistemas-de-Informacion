@@ -12,7 +12,7 @@ var mongoose 	= require('mongoose');
 
 // MONGODB
 // ==============================================
-var db_lnk = 'mongodb://localhost:27017/SI';
+var db_lnk = 'mongodb://localhost:27017/Amazop';
 var db = mongoose.createConnection(db_lnk, function(err, res) {
     if(err)
 		throw err;
