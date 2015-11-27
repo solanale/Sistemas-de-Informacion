@@ -1,15 +1,20 @@
 {
   "name": "Sistemas-de-Informacion",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
-  },
+  "main": "server.js",
   "dependencies": {
-    "angular": "^1.4.7",
-    "angular-ui-router": "^0.2.15",
-    "body-parser": "~1.13.2",
-    "express": "~4.13.1",
-    "mongoose": "4.0.1"
-  }
+    "express": "latest",
+    "body-parser": "latest",
+    "angular-ui-router": "latest",
+	"angular-cookies": "latest",
+    "mongoose": "4.0.1",
+    "angular": "latest",
+    "jquery": "latest",
+    "bootstrap": "latest"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "description": "Amazop",
+  "author": "Naxsel",
+  "license": "ISC"
 }

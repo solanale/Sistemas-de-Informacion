@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<base href="/">
+
+	<title>Starter Node and Angular</title>
+
+	<!-- CSS -->
+
+	<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/skel.min.js"></script>
+	<script src="js/skel-layers.min.js"></script>
+	<script src="js/init.js"></script>
+
+	<!-- Bootstrap -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+
+	<noscript>
+		<link rel="stylesheet" href="css/skel.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/style-xlarge.css" />
+		<link rel="stylesheet" href="css/bootstrap.icon-large.css" />
+		<link rel="stylesheet" href="css/bootstrap.icon-large.min.css" />
+	</noscript>
+
+	<!-- JS -->
+	<script src="libs/angular/angular.min.js"></script>
+	<script src="libs/angular-route/angular-route.min.js"></script>
+	<script src="js/visibilidad.js"></script>
+
+	<!-- ANGULAR CUSTOM -->
+	<script src="js/controllers/MainCtrl.js"></script>
+	<script src="js/controllers/NerdCtrl.js"></script>
+	<script src="js/services/NerdService.js"></script>
+	<script src="js/controllers/BuscarCtrl.js"></script>
+	<script src="js/services/BuscarService.js"></script>
+	<script src="js/controllers/ElementsCtrl.js"></script>
+	<script src="js/services/ElementsService.js"></script>
+	<script src="js/controllers/LogInCtrl.js"></script>
+	<script src="js/services/LogInService.js"></script>
+	<script src="js/controllers/SignUpCtrl.js"></script>
+	<script src="js/services/SignUpService.js"></script>
+	<script src="js/controllers/GenericCtrl.js"></script>
+	<script src="js/services/GenericService.js"></script>
+	<script src="js/appRoutes.js"></script>
+	<script src="js/app.js"></script>
+</head>
+<body ng-app="sampleApp" ng-controller="NerdController">
+	
+	<!-- HEADER -->
+	<header id="header">
+		<nav id="nav">
+			<h1><a href="/">Amazop</a></h1>
+			<ul>
+				<li>
+					<form class="input-group">
+						<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+						<span class="input-group-btn caja-lupa">
+							<button type="submit" class="btn btn-default boton-lupa">
+								<span class="glyphicon glyphicon-search lupa"></span>
+							</button>
+						</span>
+					</form>
+				</li>
+				<li><a href="/elements" class="cesta">Cesta <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+				<li><a href="/log" class="button special">Log In <span class="glyphicon glyphicon-log-in"></span></a></li>
+				<li><a href="/sign" class="button special">Sign Up <span class="glyphicon glyphicon-user"></span></a></li>
+			</ul>
+		</nav>
+		<!--
+		<nav id="nav">
+			<h1><a href="/">Amazop</a></h1>
+			<ul>
+				<li><input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term"></li>
+				<li><a href="/cesta">Cesta</a></li>
+				<li class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Hi, {{$user}}
+						<span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li class="dropdown-header"><a href="/log" class="button">Perfil<span class="glyphicon glyphicon-user"></span></a></li>
+						<li class="divider"></li>
+						<li class="dropdown-header"><a href="/log" class="button">Log out<span class="glyphicon glyphicon-off"></span></a></li>
+					</ul>
+				</li>
+				<li><a href="/log" class="button special">Log In <span class="glyphicon glyphicon-log-in"></span></a></li>
+				<li><a href="/sign" class="button special">Sign Up <span class="glyphicon glyphicon-user"></span></a></li>
+				<li><a href="/elements">Elements</a></li>
+			</ul>
+		</nav>
+		-->
+	</header>
+
+	<!--	Header con modo usuario
+	<header id="header">
+		<h1><a href="/">Amazop</a></h1>
+		<nav id="nav">
+			<ul>
+				<li><a href="/nerds">Nerds</a></li>
+				<li><a href="/buscar">Buscar</a></li>
+				<li ng-hide="isLogged()" ><a href="/log" class="button special">Log In</a></li>
+				<li ng-hide="isLogged()"><a href="/sign" class="button special">Sign Up</a></li>
+				<li ng-show="isLogged()"><a href="/user" class="dropdown-menu">Sign Up</a></li>
+				<li><a href="/elements">Elements</a></li>
+			</ul>
+		</nav>
+	</header>
+	-->
+
+	<!-- ANGULAR DYNAMIC CONTENT -->
+	<div ng-view></div>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="8u 12u$(medium)">
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li>
+						<li>Design: <a href="http://templated.co">TEMPLATED</a></li>
+						<li>Images: <a href="http://unsplash.com">Unsplash</a></li>
+					</ul>
+				</div>
+				<div class="4u$ 12u$(medium)">
+					<ul class="icons">
+						<li>
+							<a class="icon rounded fa-facebook"><span class="label">Facebook</span></a>
+						</li>
+						<li>
+							<a class="icon rounded fa-twitter"><span class="label">Twitter</span></a>
+						</li>
+						<li>
+							<a class="icon rounded fa-google-plus"><span class="label">Google+</span></a>
+						</li>
+						<li>
+							<a class="icon rounded fa-linkedin"><span class="label">LinkedIn</span></a>
+						</li>
+						<li>
+							<a href="https://github.com/Naxsel/Sistemas-de-Informacion" class="icon rounded fa-github"><span class="label">Github</span></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>
