@@ -69,16 +69,21 @@ app.controller("IndexController", ['$scope', "$cookies", '$cookieStore', functio
 
 app.controller("LogInController", ['$scope','$http', "$cookies", "$cookieStore", "$location", function($scope, $http, $cookies, $cookieStore,
 $location){
-	$scope.login = function(login){
-		$http.post(addr + '/log', login)
-			.success(function (data) {
-				$cookies.username = login.username;
-				$location.path("/");
-			})
-			.error(function (data){
-				alert("Username o contraseña incorrecta");
-			});
-	};
+    $scope.user = {};
+
+    $scope.login = function(login){
+        if($scope.user.username && $scope.user.pass){
+            $http.post(addr + '/log', login)
+                .success(function (data) {
+                    $cookies.username = login.username;
+                    $location.path("/");
+                })
+                .error(function (data){
+                    alert("Username o contraseña incorrecta");
+                });
+        }
+    };
+
 }]);
 
 app.controller("SignUpController", ['$scope','$http', '$location', function($scope, $http, $location){
