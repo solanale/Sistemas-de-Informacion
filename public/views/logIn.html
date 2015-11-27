@@ -11,19 +11,21 @@
         <form action="#" method="post">
             <div class="row uniform">
                 <div class="2u"></div>
-                <div class="8u 12u$(small)">
-                    <input name="usuario" id="name" value="" placeholder="Usuario" type="text">
+                <div class="8u 12u$(small) input-group">
+                    <!--<span class="input-group-addon glyphicon glyphicon-user"></span>-->
+                    <input name="usuario" class="form-control" id="user" value="" placeholder="Usuario" type="text" ng-model="user.username" required>
                 </div>
                 <div class="2u$"></div>
                 <div class="2u"></div>
-                <div class="8u 12u$(small)">
-                    <input name="contraseña" id="password" value="" placeholder="Contraseña" type="text">
+                <div class="8u 12u$(small) input-group">
+                    <!--<span class="input-group-addon glyphicon glyphicon-lock"></span>-->
+                    <input name="contraseña" class="form-control" id="password" value="" placeholder="Contraseña" type="password" ng-model="user.pass" required>
                 </div>
                 <div class="2u$"></div>
                 <div class="12u$"></div>
                 <div class="12u$">
                     <ul class="actions">
-                        <li><input value="Iniciar sesión" class="special big" type="submit"></li>
+                        <li><button ng-disabled="form.$invalid" class="special big" type="submit" ng-click="login(user)">Iniciar sesión</button></li>
                     </ul>
                 </div>
             </div>
