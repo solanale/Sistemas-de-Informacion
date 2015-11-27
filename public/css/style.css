@@ -89,14 +89,6 @@
 		    text-decoration: inherit;
 		}
 
-	h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
-		text-decoration: none;
-	}
-
-	h2 a:active, h3 a:active, h4 a:active, h5 a:active, h6 a:active {
-		text-decoration: none;
-	}
-
 	h2 {
 		font-size: 1.75em;
 		line-height: 1.5em;
@@ -185,6 +177,26 @@
 
 	.align-right {
 		text-align: right;
+	}
+
+	.oculto {
+		display: none;
+	}
+
+	.migas {
+		text-align:left;
+	}
+
+	.migas > a:link {
+    		text-decoration: none;
+    	}
+
+    .migas > a:hover {
+		text-decoration: none;
+	}
+
+	.migas > a:active {
+		text-decoration: none;
 	}
 
 /* Section/Article */
