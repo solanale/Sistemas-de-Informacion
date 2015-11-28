@@ -10,7 +10,7 @@ db.users.insert(
    }
 )
 
-db.User.insert(
+db.users.insert(
    {
       	"username":	    "Adrian",
       	"name_":        "Adrian",

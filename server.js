@@ -70,7 +70,7 @@ app.post('/modificarComentario', function(req, res){
 });
 app.post('/login', function(req, res){
 	//User.findOne().where('username', req.body.username).exec(function(err, doc){
-	User.findOne({'username' : 'admin' }).exec(function(err, doc){
+	User.findOne({'username' : req.body.username }).exec(function(err, doc){
 
 		console.log("LogIn");
 		console.log(doc);
