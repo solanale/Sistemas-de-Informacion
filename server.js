@@ -72,6 +72,7 @@ app.post('/login', function(req, res){
 		console.log("LogIn");
 		if(doc == null){
 		    console.log("documento vacio");
+		    console.log(req.body);
 			res.sendStatus(401);
 		}else{
 			if(doc.password == undefined){

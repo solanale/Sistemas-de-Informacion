@@ -62,10 +62,10 @@ app.controller("IndexController", ['$scope', "$cookies", '$cookieStore', functio
 
 app.controller("LogInController", ['$scope','$http', "$cookies", "$cookieStore", "$location", function($scope, $http, $cookies, $cookieStore,
 $location){
-    $scope.user = {};
+    $scope.form = {};
 
     $scope.login = function(login){
-        if($scope.user.username && $scope.user.pass){
+        if($scope.form.username && $scope.form.pass){
             $http.post(addr + '/login', login)
                 .success(function (data) {
                     $cookies.username = login.username;
