@@ -1,4 +1,4 @@
-db.Amazop.insert(
+db.user.insert(
    {
       	"username":	    "admin",
       	"name_":        "prueba1",
