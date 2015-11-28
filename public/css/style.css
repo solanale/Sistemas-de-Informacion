@@ -187,6 +187,26 @@
 		text-align: right;
 	}
 
+	.oculto {
+		display: none;
+	}
+
+	.migas {
+		text-align:left;
+	}
+
+	.migas > a:link {
+    		text-decoration: none;
+    	}
+
+    .migas > a:hover {
+		text-decoration: none;
+	}
+
+	.migas > a:active {
+		text-decoration: none;
+	}
+
 /* Section/Article */
 
 	section.special, article.special {
