@@ -10,6 +10,18 @@ db.users.insert(
    }
 )
 
+db.User.insert(
+   {
+      	"username":	    "Adrian",
+      	"name_":        "Adrian",
+      	"apellido":     "Alcolea",
+      	"gender":       "True",
+      	"email":        "adrian@amazop.es",
+      	"password":     "adrian",
+      	"info":         "sin permisos de super de vaca",
+   }
+)
+
 
 
 db.user.find()
