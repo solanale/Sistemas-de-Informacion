@@ -89,13 +89,6 @@ $location){
 
 app.controller("SignUpController", ['$scope','$http', '$location', function($scope, $http, $location){
 
-	var range = [];
-	for(var i = new Date().getUTCFullYear(); i >= 1900; i--) {
-		range.push(i);
-	}
-
-	$scope.years = range;
-
 	$scope.update = function(user){
 		var reg = "[0-9]+";
 		if(user.tlf.match(reg)){

@@ -51,17 +51,17 @@ app.use(bodyParser.json());
 app.post('/modificarComentario', function(req, res){
 	Comment.findOne().where('_id', req.body._id).exec(function(err, doc){
 		if(doc == null){
-			res.send(401);
+			res.sendStatus(401);
 		}else{
 			if(doc.usuario == undefined){
-				res.send(401);
+				res.sendStatus(401);
 			}else if(doc.usuario == req.body.username){
 				doc.titulo = req.body.titulo;
 				doc.texto = req.body.texto;
 				doc.ultimaModificacion = new Date();
 				doc.save();
 			}else{
-				res.send(401);
+				res.sendStatus(401);
 			}
 		}
 	});
@@ -69,15 +69,16 @@ app.post('/modificarComentario', function(req, res){
 });
 app.post('/login', function(req, res){
 	User.findOne().where('username', req.body.username).exec(function(err, doc){
+		console.log("LogIn")
 		if(doc == null){
-			res.send(401);
+			res.sendStatus(401);
 		}else{
 			if(doc.password == undefined){
-				res.send(401);
+				res.sendStatus(401);
 			}else if(doc.password == req.body.pass){
-				res.send(200);
+				res.sendStatus(200);
 			}else{
-				res.send(401);
+				res.sendStatus(401);
 			}
 		}
 	});
@@ -86,27 +87,28 @@ app.post('/login', function(req, res){
 app.post('/deleteComment', function(req, res){
 	Comment.findOne().where('_id', req.body._id).exec(function(err, doc){
 		if(doc == null){
-			res.send(401);
+			res.sendStatus(401);
 		}else{
 			if(doc.usuario == undefined){
-				res.send(401);
+				res.sendStatus(401);
 			}else if(doc.usuario == req.body.username){
 				doc.remove();
 			}else{
-				res.send(401);
+				res.sendStatus(401);
 			}
 		}
 	});
 });
 
 app.post('/signup', function(req, res){
+    console.log("SignUp");
 	User.find().where('username', req.body.username).exec(function(err, doc){
 		if(doc.length > 0){
-			res.send(401);
+			res.sendStatus(401);
 		}else{
 			User.find().where('email', req.body.email).exec(function(err, doc){
 				if(doc.length > 0){
-					res.send(401);
+					res.sendStatus(401);
 				}else{
 					if((req.body.pass != undefined) && (req.body.pass == req.body.repass)){
 						var Usuario = new User({
@@ -119,9 +121,9 @@ app.post('/signup', function(req, res){
 								password:     req.body.pass
 						});
 						Usuario.save()
-						res.send(200);
+						res.sendStatus(200);
 					}else{
-						res.send(400);
+						res.sendStatus(400);
 					}
 				}
 			});
@@ -146,7 +148,7 @@ app.post('/comments', function(req, res, db){
 
 	//Search on DB
 	Comment.find().where('imdbID', id).exec(function(err, doc){
-		res.send(doc);
+		res.sendStatus(doc);
 	});
 });
 app.post('/commentsUser', function(req, res, db){
@@ -154,7 +156,7 @@ app.post('/commentsUser', function(req, res, db){
 
 	//Search on DB
 	Comment.find().where('usuario', id).exec(function(err, doc){
-		res.send(doc);
+		res.sendStatus(doc);
 	});
 });
 app.post('/commentsTime', function(req, res, db){
@@ -170,19 +172,19 @@ app.post('/commentsTime', function(req, res, db){
 	//Search on DB
 	Comment.find({fecha: { $gte: from, $lt: to }, imdbID: id}).exec(function(err, doc){
 		console.log(doc);
-		res.send(doc);
+		res.sendStatus(doc);
 	});
 });
 app.post('/borrarUser', function(req, res){
 	User.findOne().where('username', req.body.username).exec(function(err, doc){
 		if(doc == null){
-			res.send(401);
+			res.sendStatus(401);
 		}else{
 			if(doc.password == req.body.pass){
 				doc.remove();
-				res.send(200);
+				res.sendStatus(200);
 			}else{
-				res.send(401);
+				res.sendStatus(401);
 			}
 		}
 	});
@@ -190,14 +192,14 @@ app.post('/borrarUser', function(req, res){
 app.post('/cambiar/pass', function(req, res){
 	User.findOne().where('username', req.body.username).exec(function(err, doc){
 		if(doc == null){
-			res.send(401);
+			res.sendStatus(401);
 		}else{
 			if(doc.password == req.body.pass){
 				doc.password = req.body.nPass;
 				doc.save();
-				res.send(200);
+				res.sendStatus(200);
 			}else{
-				res.send(401);
+				res.sendStatus(401);
 			}
 		}
 	});
@@ -205,14 +207,14 @@ app.post('/cambiar/pass', function(req, res){
 app.post('/cambiar/email', function(req, res){
 	User.findOne().where('username', req.body.username).exec(function(err, doc){
 		if(doc == null){
-			res.send(401);
+			res.sendStatus(401);
 		}else{
 			if(doc.password == req.body.pass){
 				doc.email = req.body.email;
 				doc.save();
-				res.send(200);
+				res.sendStatus(200);
 			}else{
-				res.send(401);
+				res.sendStatus(401);
 			}
 		}
 	});
@@ -220,14 +222,14 @@ app.post('/cambiar/email', function(req, res){
 app.post('/cambiar/apellidos', function(req, res){
 	User.findOne().where('username', req.body.username).exec(function(err, doc){
 		if(doc == null){
-			res.send(401);
+			res.sendStatus(401);
 		}else{
 			if(doc.password == req.body.pass){
 				doc.apellido = req.body.apellido;
 				doc.save();
-				res.send(200);
+				res.sendStatus(200);
 			}else{
-				res.send(401);
+				res.sendStatus(401);
 			}
 		}
 	});
@@ -235,14 +237,14 @@ app.post('/cambiar/apellidos', function(req, res){
 app.post('/cambiar/nombre', function(req, res){
 	User.findOne().where('username', req.body.username).exec(function(err, doc){
 		if(doc == null){
-			res.send(401);
+			res.sendStatus(401);
 		}else{
 			if(doc.password == req.body.pass){
 				doc.name_ = req.body.name_;
 				doc.save();
-				res.send(200);
+				res.sendStatus(200);
 			}else{
-				res.send(401);
+				res.sendStatus(401);
 			}
 		}
 	});
@@ -250,9 +252,9 @@ app.post('/cambiar/nombre', function(req, res){
 app.post('/datos', function(req, res){
 	User.findOne().where('username', req.body.username).exec(function(err, doc){
 		if(doc == null){
-			res.send(401);
+			res.sendStatus(401);
 		}else{
-			res.send(doc);
+			res.sendStatus(doc);
 		}
 	});
 });
