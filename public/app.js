@@ -38,14 +38,6 @@ app.config(function($routeProvider){
 			templateUrl: views + "partialdatos.html",
 			controller: "ControladorDatos"
 		})
-		.when("/login", {
-			templateUrl: views + "partiallogin.html",
-			controller: "ControladorLogin"
-		})
-		.when("/signup", {
-			templateUrl: views + "partialsignup.html",
-			controller: "ControladorSignUp"
-		})
 		.when("/comentarios", {
 			templateUrl: views + "partialcomentarios.html",
 			controller: "ControladorComentarios"

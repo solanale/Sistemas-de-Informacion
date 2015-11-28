@@ -9,3 +9,9 @@ db.user.insert(
       	"info":         "permisos de super de vaca",
    }
 )
+
+
+
+db.user.find()
+db.user.remove({})
+

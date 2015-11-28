@@ -69,15 +69,19 @@ app.post('/modificarComentario', function(req, res){
 });
 app.post('/login', function(req, res){
 	User.findOne().where('username', req.body.username).exec(function(err, doc){
-		console.log("LogIn")
+		console.log("LogIn");
 		if(doc == null){
+		    console.log("documento vacio");
 			res.sendStatus(401);
 		}else{
 			if(doc.password == undefined){
+			    console.log("pass indefinido");
 				res.sendStatus(401);
 			}else if(doc.password == req.body.pass){
+			    console.log("correcto");
 				res.sendStatus(200);
 			}else{
+			    console.log("que cojones"),
 				res.sendStatus(401);
 			}
 		}
@@ -148,7 +152,7 @@ app.post('/comments', function(req, res, db){
 
 	//Search on DB
 	Comment.find().where('imdbID', id).exec(function(err, doc){
-		res.sendStatus(doc);
+		res.send(doc);
 	});
 });
 app.post('/commentsUser', function(req, res, db){
@@ -156,7 +160,7 @@ app.post('/commentsUser', function(req, res, db){
 
 	//Search on DB
 	Comment.find().where('usuario', id).exec(function(err, doc){
-		res.sendStatus(doc);
+		res.send(doc);
 	});
 });
 app.post('/commentsTime', function(req, res, db){
@@ -172,7 +176,7 @@ app.post('/commentsTime', function(req, res, db){
 	//Search on DB
 	Comment.find({fecha: { $gte: from, $lt: to }, imdbID: id}).exec(function(err, doc){
 		console.log(doc);
-		res.sendStatus(doc);
+		res.send(doc);
 	});
 });
 app.post('/borrarUser', function(req, res){
@@ -254,7 +258,7 @@ app.post('/datos', function(req, res){
 		if(doc == null){
 			res.sendStatus(401);
 		}else{
-			res.sendStatus(doc);
+			res.send(doc);
 		}
 	});
 });
