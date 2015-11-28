@@ -1,12 +1,21 @@
 {
-  "name": "starter-node-angular",
+  "name": "Sistemas-de-Informacion",
   "main": "server.js",
   "dependencies": {
-    "angular": "^1.4.8",
-    "body-parser": "~1.4.2",
-    "express": "~4.5.1",
-    "method-override": "~2.0.2",
-    "mongoose": "~3.8.0",
-    "ng-cookies": "^1.0.2"
-  }
+    "angular": "latest",
+    "angular-cookies": "latest",
+    "angular-ui-router": "latest",
+    "body-parser": "latest",
+    "bootstrap": "latest",
+    "express": "latest",
+    "jquery": "latest",
+    "mongoose": "4.0.1",
+    "nodemon": "^1.8.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "description": "Amazop",
+  "author": "Naxsel",
+  "license": "ISC"
 }

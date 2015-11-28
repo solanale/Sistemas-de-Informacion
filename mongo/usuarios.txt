@@ -1,0 +1,29 @@
+db.users.insert(
+   {
+      	"username":	    "admin",
+      	"name_":        "prueba1",
+      	"apellido":     "prueba2",
+      	"gender":       "True",
+      	"email":        "admin@amazop.es",
+      	"password":     "admin",
+      	"info":         "permisos de super de vaca",
+   }
+)
+
+db.users.insert(
+   {
+      	"username":	    "Adrian",
+      	"name_":        "Adrian",
+      	"apellido":     "Alcolea",
+      	"gender":       "True",
+      	"email":        "adrian@amazop.es",
+      	"password":     "adrian",
+      	"info":         "sin permisos de super de vaca",
+   }
+)
+
+
+
+db.user.find()
+db.user.remove({})
+

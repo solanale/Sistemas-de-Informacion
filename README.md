@@ -1,20 +1,69 @@
-# MEAN Stack Single Page Application Starter
+# Sistemas de Información (En Progreso)
+### Curso 2015-2016
 
-This is a repo for a starter appliation for a Single Page MEAN Stack application. Just download and install and you have a good foundation for building application. 
+### Objetivos
+Se ha de desarrollar un Sistema Web completo, Front-End y Back-End cumpliendo los réquisitos de prácticas 
 
-## Installation
-1. Download the repository
-2. Install npm modules: `npm install`
-3. Install bower dependencies `bower install`
-4. Start up the server: `node server.js`
-5. View in browser at http://localhost:8080
+### Tecnologías
+Posiblemente se usara [MEAN](http://mean.io/#!/) Full-stack 
+####Front-End:
+ * HTML5
+ * CSS3
+ * Bootstrap
+ * Skel
+ * Java Script
+ * Angular
+ 
+####Back-end
+* Node JS + Express
 
-Use this starter kit to build any MEAN stack application you like.
+####DataBase
+* Mongo DB
 
-If you have any questions or requests, email us at [chris@scotch.io](mailto:chris@scotch.io) and we'll keep updating this to make it perfect.
 
-## Future Additions
-- CRUD examples
-- Development and Production Environments
-- Link examples
-- Single Page AngularJS Animations
+### Manual de Instalacion(Linux)
+
+#### NodeJS + NPM
+Primero hay que instalar el "node package manager", [npm](https://www.npmjs.com) que se encuentra asociado con NodeJS,
+con lo que al instalar Node, también añadimos npm.
+
+$ curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+$ sudo apt-get install -y nodejs
+
+Para compilar e instalar addons nativos de npm, podria necesitarse las "build tools"
+
+$ sudo apt-get install -y build-essential
+
+#### MongoDB
+
+$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+
+$ echo "deb http://repo.mongodb.org/apt/ubuntu precise/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+
+$ sudo apt-get install -y mongodb-org
+
+#### Modulos + Bower
+
+Instalar bower en el sistema:
+$ npm install -g bower
+
+
+Descargar modulos y dependencias(En la ruta del repositorio)
+$ npm install  
+
+$ cd public && bower install
+
+Con esto el sistema queda listo para iniciarse ejecutando en la ruta del repositorio:
+
+$ node server.js
+
+
+
+
+
+
+
+
+
+
+

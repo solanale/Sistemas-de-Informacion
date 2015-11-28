@@ -1,37 +1,293 @@
-// modules =================================================
-var express        = require('express');
-var app            = express();
-var mongoose       = require('mongoose');
-var bodyParser     = require('body-parser');
-var methodOverride = require('method-override');
+// server.js
 
-// configuration ===========================================
-	
-// config files
-var db = require('./config/db');
+// BASE SETUP
+// ==============================================
 
-var port = process.env.PORT || 8080; // set our port
-//mongoose.connect(db.url); // connect to our mongoDB database (commented out after you enter in your own credentials)
-var db_link = 'mongodb://localhost:27017'
-var db = mongoose.createConnection(db_link,function(error,res){
-  if(error)
-    throw error;
-  console.log('Connected to Database');
-})
+var express 	= require('express');
+var app     	= express();
+var port    	= process.env.PORT || 8080;
+var bodyParser  = require('body-parser');
+var mongoose 	= require('mongoose');
 
 
-// get all data/stuff of the body (POST) parameters
-app.use(bodyParser.json()); // parse application/json 
-app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
-app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
+// MONGODB
+// ==============================================
+var db_lnk = 'mongodb://localhost:27017/Amazop';
+var db = mongoose.createConnection(db_lnk, function(err, res) {
+    if(err)
+		throw err;
+    console.log('Connected to Database');
+});
 
-app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
-app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
+// Load models
+var product_schema = mongoose.Schema({
+	nombre:     		{ type: String },
+	categoria:			{ type: String },
+	subtitulo:			{ type: String },
+	descripcion:		{ type: String },
+	precio:				{ type: Number },
+	valoracion:			{ type: Number },
+	imagen:  			{ type: String },
+});
+var users_schema = new mongoose.Schema({
+	username:	  { type: String, unique: true },
+	name_:     	  { type: String },
+	apellido:     { type: String },
+	gender:       { type: Boolean },
+	email:        { type: String, unique: true },
+	password:     { type: String },
+    info:         { type: String },
+    cesta:        { type: [Number] },
+});
 
-// routes ==================================================
-require('./app/routes')(app); // pass our application into our routes
+var User = db.model('user', users_schema);
+var Product = db.model('product', product_schema);
 
-// start app ===============================================
-app.listen(port);	
-console.log('Magic happens on port ' + port); 			// shoutout to the user
-exports = module.exports = app; 						// expose app
+//Configuracion de Express
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// POST
+// ==============================================
+app.post('/modificarComentario', function(req, res){
+	Product.findOne().where('_id', req.body._id).exec(function(err, doc){
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			if(doc.usuario == undefined){
+				res.sendStatus(401);
+			}else if(doc.usuario == req.body.username){
+				doc.titulo = req.body.titulo;
+				doc.texto = req.body.texto;
+				doc.ultimaModificacion = new Date();
+				doc.save();
+			}else{
+				res.sendStatus(401);
+			}
+		}
+	});
+
+});
+app.post('/login', function(req, res){
+	//User.findOne().where('username', req.body.username).exec(function(err, doc){
+	User.findOne({'username' : req.body.username }).exec(function(err, doc){
+
+		console.log("LogIn");
+		console.log(doc);
+
+		if(doc == null){
+		    console.log("documento vacio");
+		    //console.log(req.body);
+			res.sendStatus(401);
+		}else{
+			if(doc.password == undefined){
+			    console.log("pass indefinido");
+				res.sendStatus(401);
+			}else if(doc.password == req.body.pass){
+			    console.log("correcto");
+				res.sendStatus(200);
+			}else{
+			    console.log("que cojones"),
+				res.sendStatus(401);
+			}
+		}
+	});
+});
+
+app.post('/deleteProduct', function(req, res){
+	Product.findOne().where('_id', req.body._id).exec(function(err, doc){
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			if(doc.usuario == undefined){
+				res.sendStatus(401);
+			}else if(doc.usuario == req.body.username){
+				doc.remove();
+			}else{
+				res.sendStatus(401);
+			}
+		}
+	});
+});
+
+app.post('/signup', function(req, res){
+    console.log("SignUp");
+	User.find().where('username', req.body.username).exec(function(err, doc){
+		if(doc.length > 0){
+			res.sendStatus(401);
+		}else{
+			User.find().where('email', req.body.email).exec(function(err, doc){
+				if(doc.length > 0){
+					res.sendStatus(401);
+				}else{
+					if((req.body.pass != undefined) && (req.body.pass == req.body.repass)){
+						var Usuario = new User({
+								username:	  req.body.username,
+								name_:		  req.body.name_,
+								apellido:     req.body.surname,
+								info:         req.body.info,
+								email:        req.body.email,
+                                gender:       req.body.gender.male,
+								password:     req.body.pass
+						});
+						Usuario.save()
+						res.sendStatus(200);
+					}else{
+						res.sendStatus(400);
+					}
+				}
+			});
+		}
+	});
+});
+
+app.post('/addComent', function(req, res, db){
+	console.log(req.body.serie);
+	//Save the new Product into db
+	var Comentario = new Product({
+		titulo: 	 req.body.titulo,
+		imdbID:		 req.body.imdbID,
+		usuario:	 req.body.usuario,
+		texto:  	 req.body.texto,
+		serie:		 req.body.serie,
+	});
+	Comentario.save();
+});
+app.post('/Products', function(req, res, db){
+	id = req.body.imdbID;
+
+	//Search on DB
+	Product.find().where('imdbID', id).exec(function(err, doc){
+		res.sendStatus(doc);
+	});
+});
+app.post('/ProductsUser', function(req, res, db){
+	id = req.body.username;
+
+	//Search on DB
+	Product.find().where('usuario', id).exec(function(err, doc){
+		res.sendStatus(doc);
+	});
+});
+app.post('/ProductsTime', function(req, res, db){
+	var id = req.body.imdbID;
+	var from = new Date(req.body.inicio);
+	var to = new Date(req.body.fin);
+
+	//Correción de las fechas (bug de ui-angular)
+	to = to.getTime();
+	to = to + (1 * 24 * 60 * 60 * 1000);
+	to = new Date(to);
+	console.log(from);
+	//Search on DB
+	Product.find({fecha: { $gte: from, $lt: to }, imdbID: id}).exec(function(err, doc){
+		console.log(doc);
+		res.send(doc);
+	});
+});
+app.post('/borrarUser', function(req, res){
+	User.findOne().where('username', req.body.username).exec(function(err, doc){
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			if(doc.password == req.body.pass){
+				doc.remove();
+				res.sendStatus(200);
+			}else{
+				res.sendStatus(401);
+			}
+		}
+	});
+});
+app.post('/cambiar/pass', function(req, res){
+	User.findOne().where('username', req.body.username).exec(function(err, doc){
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			if(doc.password == req.body.pass){
+				doc.password = req.body.nPass;
+				doc.save();
+				res.sendStatus(200);
+			}else{
+				res.sendStatus(401);
+			}
+		}
+	});
+});
+app.post('/cambiar/email', function(req, res){
+	User.findOne().where('username', req.body.username).exec(function(err, doc){
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			if(doc.password == req.body.pass){
+				doc.email = req.body.email;
+				doc.save();
+				res.sendStatus(200);
+			}else{
+				res.sendStatus(401);
+			}
+		}
+	});
+});
+app.post('/cambiar/apellidos', function(req, res){
+	User.findOne().where('username', req.body.username).exec(function(err, doc){
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			if(doc.password == req.body.pass){
+				doc.apellido = req.body.apellido;
+				doc.save();
+				res.sendStatus(200);
+			}else{
+				res.sendStatus(401);
+			}
+		}
+	});
+});
+app.post('/cambiar/nombre', function(req, res){
+	User.findOne().where('username', req.body.username).exec(function(err, doc){
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			if(doc.password == req.body.pass){
+				doc.name_ = req.body.name_;
+				doc.save();
+				res.sendStatus(200);
+			}else{
+				res.sendStatus(401);
+			}
+		}
+	});
+});
+app.post('/add/cesta', function(usr, prod, res){
+	User.findOne().where('username', usr.body.username).exec(function(err, doc){
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			if(doc.password == usr.body.pass){
+				doc.cesta.addToSet(prod._id);
+				doc.save();
+				res.sendStatus(200);
+			}else{
+				res.sendStatus(401);
+			}
+		}
+	});
+});
+app.post('/datos', function(req, res){
+	User.findOne().where('username', req.body.username).exec(function(err, doc){
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			res.send(doc);
+		}
+	});
+});
+// ============================================= //
+
+app.use(express.static(__dirname + '/public')); //Si no encuentras algo, estara en Public
+
+// START THE SERVER
+// ==============================================
+app.listen(port); //app.listen(port,host); Lanzamos el server con un host, deberia funcionar en red local!!
+console.log('Magic happens on port ' + port);

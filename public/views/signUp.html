@@ -4,75 +4,76 @@
 <section id="three" class="wrapper style3 special">
     <div class="container">
         <header class="major">
-            <h2>Registro de nuevo usuario</h2>
-            <p>Rellene los campos para completar el registro</p>
+            <h1>Registro de nuevo usuario</h1>
         </header>
     </div>
 
     <div class="container 50%" >
-        <form action="#" method="post" novalidate>
+        <form role="form" name="form">
             <div class="row uniform">
 
                 <div class="1u"></div>
-                <div class="10u 12u$(small) form-group">
-                    <input name="email" id="email" value="" placeholder="Email" type="text" ng-model="formInfo.email">
-                    <span ng-show="emailRequired">{{emailRequired}}</span>
+                <div class="10u 12u$(small) ">
+                    <input name="username" id="username" value="" placeholder="User *" type="text" ng-model="user.username" required>
                 </div>
                 <div class="1u$"></div>
 
                 <div class="1u"></div>
-                <div class="5u 12u$(small) form-group">
-                    <input name="name" id="name" value="" placeholder="Nombre" type="text" ng-model="formInfo.name">
-                    <span ng-show="nameRequired">{{nameRequired}}</span>
-                </div>
-                <div class="5u 12u$(small) form-group">
-                    <input name="surName" id="surName" value="" placeholder="Apellidos" type="text" ng-model="formInfo.apellidos">
-                    <span ng-show="apellidosRequired">{{apellidosRequired}}</span>
+                <div class="10u 12u$(small) ">
+                    <input name="Email" id="email" value="" placeholder="Email *" type="text" ng-model="user.email" required>
                 </div>
                 <div class="1u$"></div>
-
-
-
-                <div class="1u"></div>
-                <div class="5u 12u$(small) form-group">
-                    <input name="pass" id="pass" value="" placeholder="Contraseña" type="password"ng-model="formInfo.pass">
-                    <span ng-show="passRequired">{{passRequired}}</span>
-                </div>
-                <div class="5u 12u$(small) form-group">
-                    <input name="rePass" id="rePass" value="" placeholder="Repita la contraseña" type="password"ng-model="formInfo.repass">
-                    <span ng-show="repassRequired">{{repassRequired}}</span>
-                </div>
-                <div class="1u$"></div>
-
 
                 <div class="1u"></div>
                 <div class="5u 12u$(small)">
-                    <input  id="male" type="radio" style="before:background:#ffffff" name="sex" value="H" checked ng-model="formInfo.gender.male"/>
+                    <input name="name" id="name" value="" placeholder="Nombre *" type="text" ng-model="user.name" required>
+                </div>
+                <div class="5u 12u$(small)">
+                    <input name="surName" id="surName" value="" placeholder="Apellidos *" type="text" ng-model="user.surname" required>
+                </div>
+                <div class="1u$"></div>
+
+                <div class="1u"></div>
+                <div class="5u 12u$(small)">
+                    <input name="pass" id="pass" value="" placeholder="Contraseña *" type="password" ng-model="user.pass" required>
+                </div>
+                <div class="5u 12u$(small)">
+                    <input name="rePass" id="rePass" value="" placeholder="Repita la contraseña *" type="password" ng-model="user.repass" required>
+                </div>
+                <div class="1u$"></div>
+
+                <div class="1u"></div>
+                <div class="5u 12u$(small)">
+                    <input  id="male" type="radio" name="sex" value="H" checked ng-model="user.gender.male" required/>
                     <label for="male" style="color:#ffffff"> Hombre</label>
                 </div>
                 <div class="5u 12u$(small)">
-                    <input id="female" type="radio" name="sex" value="M" ng-model="formInfo.gender.female"/>
+                    <input id="female" type="radio" name="sex" value="M" ng-model="user.gender.female" required/>
                     <label for="female" style="color:#ffffff"> Mujer</label>
                 </div>
                 <div class="1u$"></div>
 
-
                 <div class="1u"></div>
                 <div class="10u 12u$(small)">
-                    <textarea name="info" id="info" placeholder="Introduzca aquí información personal" ng-model="formInfo.info"></textarea>
+                    <textarea name="info" id="info" placeholder="Introduzca aquí información personal" ng-model="user.info"></textarea>
                 </div>
                 <div class="1u$"></div>
 
+                <span ng-show="form.Email.$error.email">	Este no es un email valido.</span>
+
+
                 <div class="12u$">
                     <ul class="actions">
-                        <li><input value="Enviar" class="special big" type="submit" ng-click="signUp()" ></li>
+                        <li><input value="Enviar" class="special big" type="submit" ng-disabled="form.$invalid || " ng-click="update(user)"></li>
                         <li><input value="Reset" class="special_red big" type="reset"></li>
                     </ul>
                 </div>
             </div>
         </form>
     </div>
-    <p>¿Ya tienes una cuenta? <a href="#/log"> <u>Inicia sesión</u></a></p>
+
+    <p>Los campos marcados con * son obligatorios</p>
+    <p>¿Ya tienes una cuenta? <a href="/log"> <u>Inicia sesión</u></a></p>
 
 </section>
 </div>

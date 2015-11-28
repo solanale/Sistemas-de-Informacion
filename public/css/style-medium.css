@@ -99,22 +99,51 @@
 
 				#navPanel nav ul li {
 					padding: 0;
+					margin-top: 1.5em;
 				}
 
 					#navPanel nav ul li:first-child a:not(.button), #navPanel nav ul li:first-child span:not(.button) {
 						border-top: 0;
 					}
 
-					#navPanel nav ul li a.button, #navPanel nav ul li span.button {
-						margin-top: 0.5em;
-					}
-
-					#navPanel nav ul li a:not(.button), #navPanel nav ul li span:not(.button) {
+					#navPanel nav ul li a:not(.button, .glyphicon), #navPanel nav ul li span:not(.button, .glyphicon) {
 						border-top: 1px solid rgba(0, 0, 0, 0.125);
 						display: block;
 						padding: 0.75em 0;
 						text-decoration: none;
 					}
+
+					#navPanel nav ul li a:not(.button) {
+						font-size: 1.8em;
+						text-decoration: none;
+					}
+
+					#navPanel nav > ul > li .input-group {
+						height: 1.45em;
+                        line-height: 0em;
+                        padding: 0;
+                        margin: 0;
+					}
+
+						#navPanel nav > ul > li > form .form-control {
+							height: 100%;
+							line-height: 0em;
+						}
+
+						#navPanel nav > ul > li > form .input-group-btn {
+							height: 100%;
+							line-height: 100%;
+						}
+
+							#navPanel nav > ul > li > form > span .btn .btn-default {
+								height: 100%;
+								line-height: 100%;
+							}
+
+								#navPanel nav > ul > li > form > span > button .glyphicon .glyphicon-shopping-cart{
+									height: 100%;
+									line-height: 100%;
+								}
 
 			#navPanel nav .button {
 				width: 100%;
