@@ -100,8 +100,16 @@
 				</form>
 			</li>
 			<li><a href="#/elements" class="cesta">Cesta <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-			<li><a href="#/log" class="button special">Log In <span class="glyphicon glyphicon-log-in"></span></a></li>
-			<li><a href="#/sign" class="button special">Sign Up <span class="glyphicon glyphicon-user"></span></a></li>
+			<li><a href="#/comparar" class="comparar">Comparar <span class="glyphicon glyphicon-duplicate"></span></a></li>
+			<li ng-hide="isLogged()"><a href="#/log" class="button special">Log In <span class="glyphicon glyphicon-log-in"></span></a></li>
+			<li ng-hide="isLogged()"><a href="#/sign" class="button special">Sign Up <span class="glyphicon glyphicon-user"></span></a></li>
+			<li class="dropdown" ng-show="isLogged()">
+				<a href="" data-toggle="dropdown" class="dropdown-toggle">{{user.username}}<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#/datos">Perfil</a></li>
+						<li><a href="#/" ng-click="logOut()">Log out</a></li>
+					</ul>
+			</li>
 			</ul>
 		</nav>
 	</header>
