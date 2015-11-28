@@ -8,14 +8,7 @@ app.config(function($routeProvider){
 	$routeProvider
 		.when("/", {
 			templateUrl: views + "home.html",
-			controller: "IndexController"
-		})
-		.when("/elements", {
-			templateUrl: views + "elements.html"
-		})
-
-		.when("/comparar", {
-			templateUrl: views + "comparar.html"
+			controller: "HomeController"
 		})
 
         .when("/log", {
@@ -26,10 +19,23 @@ app.config(function($routeProvider){
             templateUrl: views + "signUp.html",
             controller: "SignUpController"
         })
+        .when("/buscar", {
+            templateUrl: views + "buscar.html"
+            controller: "BuscarController"
+        })
+
+        .when("/comparar", {
+            templateUrl: views + "comparar.html"
+            controller: "CompararController"
+        })
 
         .when("/cesta", {
             templateUrl: views + "cesta.html",
             controller: "CestaController"
+        })
+
+        .when("/elements", {
+            templateUrl: views + "elements.html"
         })
 
 		.when("/series/:id", {
@@ -56,6 +62,31 @@ app.config(function($routeProvider){
 });
 
 app.controller("IndexController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
+	var user = $cookies.username;
+	$scope.user = {'username': user};
+
+	//Función que comprueba si un usuario esta logead
+	$scope.notLogged = function() {
+        return angular.isUndefined($cookies.username);
+    };
+
+    //Deslogeamos al usuario
+    $scope.logOut = function(){
+		delete $cookies["username"];
+	};
+
+	$scope.tieneAcceso = function(){
+	    if (angular.isUndefined($cookies.username)){
+	        alert("Debes estar loggeado para usar la cesta");
+	        $location.path("/");
+	    }
+	    else{
+	        $location.path("/cesta");
+	    }
+	};
+}]);
+
+app.controller("HomeController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
 	var user = $cookies.username;
 	$scope.user = {'username': user};
 
@@ -120,6 +151,36 @@ app.controller("SignUpController", ['$scope','$http', '$location', function($sco
 				alert("Las contraseñas no coinciden");
 			}
 		}
+}]);
+
+app.controller("BuscarController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
+	var user = $cookies.username;
+	$scope.user = {'username': user};
+
+	//Función que comprueba si un usuario esta logead
+	$scope.notLogged = function() {
+        return angular.isUndefined($cookies.username);
+    };
+
+    //Deslogeamos al usuario
+    $scope.logOut = function(){
+		delete $cookies["username"];
+	};
+}]);
+
+app.controller("CompararController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
+	var user = $cookies.username;
+	$scope.user = {'username': user};
+
+	//Función que comprueba si un usuario esta logead
+	$scope.notLogged = function() {
+        return angular.isUndefined($cookies.username);
+    };
+
+    //Deslogeamos al usuario
+    $scope.logOut = function(){
+		delete $cookies["username"];
+	};
 }]);
 
 app.controller("CestaController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
