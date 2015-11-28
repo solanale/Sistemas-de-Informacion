@@ -56,9 +56,9 @@
 			</li>
 			<li><a href="#/elements" class="cesta">Cesta <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
 			<li><a href="#/comparar" class="comparar">Comparar <span class="glyphicon glyphicon-duplicate"></span></a></li>
-			<li ng-show="isLogged()"><a href="#/log" class="button special">Log In <span class="glyphicon glyphicon-log-in"></span></a></li>
-			<li ng-show="isLogged()"><a href="#/sign" class="button special">Sign Up <span class="glyphicon glyphicon-user"></span></a></li>
-			<li class="dropdown" ng-hide="isLogged()">
+			<li ng-show="notLogged()"><a href="#/log" class="button special">Log In <span class="glyphicon glyphicon-log-in"></span></a></li>
+			<li ng-show="notLogged()"><a href="#/sign" class="button special">Sign Up <span class="glyphicon glyphicon-user"></span></a></li>
+			<li class="dropdown" ng-hide="notLogged()">
 				<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{user.username}}
 					<span class="caret"></span></button>
 				<ul class="dropdown-menu">

@@ -55,7 +55,7 @@ app.controller("IndexController", ['$scope', "$cookies", '$cookieStore', functio
 	$scope.user = {'username': user};
 
 	//Función que comprueba si un usuario esta logead
-	$scope.isLogged = function() {
+	$scope.notLogged = function() {
         return angular.isUndefined($cookies.username);
     };
 
