@@ -33,11 +33,10 @@ var users_schema = new mongoose.Schema({
 	username:	  { type: String, unique: true },
 	name_:     	  { type: String },
 	apellido:     { type: String },
-	dirreccion:   { type: String },
+	gender:       { type: Boolean },
 	email:        { type: String, unique: true },
-	agno:         { type: Number },
-	tlf:          { type: Number },
-	contrasegna:  { type: String }
+	password:     { type: String },
+    info:         { type: String },
 });
 
 var User = db.model('users', users_schema);
@@ -73,9 +72,9 @@ app.post('/login', function(req, res){
 		if(doc == null){
 			res.send(401);
 		}else{
-			if(doc.contrasegna == undefined){
+			if(doc.password == undefined){
 				res.send(401);
-			}else if(doc.contrasegna == req.body.pass){
+			}else if(doc.password == req.body.pass){
 				res.send(200);
 			}else{
 				res.send(401);
@@ -114,11 +113,10 @@ app.post('/signup', function(req, res){
 								username:	  req.body.username,
 								name_:		  req.body.name_,
 								apellido:     req.body.surname,
-								dirreccion:   req.body.adress,
+								info:         req.body.info,
 								email:        req.body.email,
-								agno:         req.body.year,
-								tlf:          req.body.tlf,
-								contrasegna:  req.body.pass
+                                gender:       req.body.gender.male,
+								password:     req.body.pass
 						});
 						Usuario.save()
 						res.send(200);
@@ -180,7 +178,7 @@ app.post('/borrarUser', function(req, res){
 		if(doc == null){
 			res.send(401);
 		}else{
-			if(doc.contrasegna == req.body.pass){
+			if(doc.password == req.body.pass){
 				doc.remove();
 				res.send(200);
 			}else{
@@ -194,8 +192,8 @@ app.post('/cambiar/pass', function(req, res){
 		if(doc == null){
 			res.send(401);
 		}else{
-			if(doc.contrasegna == req.body.pass){
-				doc.contrasegna = req.body.nPass;
+			if(doc.password == req.body.pass){
+				doc.password = req.body.nPass;
 				doc.save();
 				res.send(200);
 			}else{
@@ -209,7 +207,7 @@ app.post('/cambiar/email', function(req, res){
 		if(doc == null){
 			res.send(401);
 		}else{
-			if(doc.contrasegna == req.body.pass){
+			if(doc.password == req.body.pass){
 				doc.email = req.body.email;
 				doc.save();
 				res.send(200);
@@ -224,7 +222,7 @@ app.post('/cambiar/apellidos', function(req, res){
 		if(doc == null){
 			res.send(401);
 		}else{
-			if(doc.contrasegna == req.body.pass){
+			if(doc.password == req.body.pass){
 				doc.apellido = req.body.apellido;
 				doc.save();
 				res.send(200);
@@ -239,38 +237,8 @@ app.post('/cambiar/nombre', function(req, res){
 		if(doc == null){
 			res.send(401);
 		}else{
-			if(doc.contrasegna == req.body.pass){
+			if(doc.password == req.body.pass){
 				doc.name_ = req.body.name_;
-				doc.save();
-				res.send(200);
-			}else{
-				res.send(401);
-			}
-		}
-	});
-});
-app.post('/cambiar/tlf', function(req, res){
-	User.findOne().where('username', req.body.username).exec(function(err, doc){
-		if(doc == null){
-			res.send(401);
-		}else{
-			if(doc.contrasegna == req.body.pass){
-				doc.tlf = req.body.tlf;
-				doc.save();
-				res.send(200);
-			}else{
-				res.send(401);
-			}
-		}
-	});
-});
-app.post('/cambiar/direccion', function(req, res){
-	User.findOne().where('username', req.body.username).exec(function(err, doc){
-		if(doc == null){
-			res.send(401);
-		}else{
-			if(doc.contrasegna == req.body.pass){
-				doc.direccion = req.body.direccion;
 				doc.save();
 				res.send(200);
 			}else{

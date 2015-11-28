@@ -7,7 +7,8 @@ var views = "views/"
 app.config(function($routeProvider){
 	$routeProvider
 		.when("/", {
-			templateUrl: views + "home.html"
+			templateUrl: views + "home.html",
+			controller: "IndexController"
 		})
 		.when("/elements", {
 			templateUrl: views + "elements.html"
@@ -73,7 +74,7 @@ $location){
 
     $scope.login = function(login){
         if($scope.user.username && $scope.user.pass){
-            $http.post(addr + '/log', login)
+            $http.post(addr + '/login', login)
                 .success(function (data) {
                     $cookies.username = login.username;
                     $location.path("/");
@@ -101,7 +102,7 @@ app.controller("SignUpController", ['$scope','$http', '$location', function($sco
 			console.log('a');
 			if (user.pass == user.repass){
 				console.log(user.pass);
-				$http.post(addr + "/sign",user)
+				$http.post(addr + "/signup",user)
 					.success(function (user){
 						$location.path("/");
 					})
