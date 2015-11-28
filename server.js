@@ -22,12 +22,12 @@ var db = mongoose.createConnection(db_lnk, function(err, res) {
 // Load models
 var product_schema = mongoose.Schema({
 	nombre:     		{ type: String },
+	categoria:			{ type: String },
+	subtitulo:			{ type: String },
 	descripcion:		{ type: String },
-	serie:				{ type: String },
-	usuario:		    { type: String },
-	texto:  			{ type: String },
-	fecha:  			{ type: Date, default: Date() },
-	ultimaModificacion:	{ type: Date, default: Date() },
+	precio:				{ type: Number },
+	valoracion:			{ type: Number },
+	imagen:  			{ type: String },
 });
 var users_schema = new mongoose.Schema({
 	username:	  { type: String, unique: true },
@@ -40,8 +40,8 @@ var users_schema = new mongoose.Schema({
     cesta:        { type: [Number] },
 });
 
-var User = db.model('users', users_schema);
-var Comment = db.model('comments', comment_schema);
+var User = db.model('user', users_schema);
+var Product = db.model('product', product_schema);
 
 //Configuracion de Express
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -50,7 +50,7 @@ app.use(bodyParser.json());
 // POST
 // ==============================================
 app.post('/modificarComentario', function(req, res){
-	Comment.findOne().where('_id', req.body._id).exec(function(err, doc){
+	Product.findOne().where('_id', req.body._id).exec(function(err, doc){
 		if(doc == null){
 			res.sendStatus(401);
 		}else{
@@ -85,8 +85,8 @@ app.post('/login', function(req, res){
 	});
 });
 
-app.post('/deleteComment', function(req, res){
-	Comment.findOne().where('_id', req.body._id).exec(function(err, doc){
+app.post('/deleteProduct', function(req, res){
+	Product.findOne().where('_id', req.body._id).exec(function(err, doc){
 		if(doc == null){
 			res.sendStatus(401);
 		}else{
@@ -134,8 +134,8 @@ app.post('/signup', function(req, res){
 
 app.post('/addComent', function(req, res, db){
 	console.log(req.body.serie);
-	//Save the new comment into db
-	var Comentario = new Comment({
+	//Save the new Product into db
+	var Comentario = new Product({
 		titulo: 	 req.body.titulo,
 		imdbID:		 req.body.imdbID,
 		usuario:	 req.body.usuario,
@@ -144,23 +144,23 @@ app.post('/addComent', function(req, res, db){
 	});
 	Comentario.save();
 });
-app.post('/comments', function(req, res, db){
+app.post('/Products', function(req, res, db){
 	id = req.body.imdbID;
 
 	//Search on DB
-	Comment.find().where('imdbID', id).exec(function(err, doc){
+	Product.find().where('imdbID', id).exec(function(err, doc){
 		res.sendStatus(doc);
 	});
 });
-app.post('/commentsUser', function(req, res, db){
+app.post('/ProductsUser', function(req, res, db){
 	id = req.body.username;
 
 	//Search on DB
-	Comment.find().where('usuario', id).exec(function(err, doc){
+	Product.find().where('usuario', id).exec(function(err, doc){
 		res.sendStatus(doc);
 	});
 });
-app.post('/commentsTime', function(req, res, db){
+app.post('/ProductsTime', function(req, res, db){
 	var id = req.body.imdbID;
 	var from = new Date(req.body.inicio);
 	var to = new Date(req.body.fin);
@@ -171,7 +171,7 @@ app.post('/commentsTime', function(req, res, db){
 	to = new Date(to);
 	console.log(from);
 	//Search on DB
-	Comment.find({fecha: { $gte: from, $lt: to }, imdbID: id}).exec(function(err, doc){
+	Product.find({fecha: { $gte: from, $lt: to }, imdbID: id}).exec(function(err, doc){
 		console.log(doc);
 		res.sendStatus(doc);
 	});
@@ -256,7 +256,7 @@ app.post('/add/cesta', function(usr, prod, res){
 			res.sendStatus(401);
 		}else{
 			if(doc.password == usr.body.pass){
-				doc.cesta.addToSet(prod);
+				doc.cesta.addToSet(prod._id);
 				doc.save();
 				res.sendStatus(200);
 			}else{

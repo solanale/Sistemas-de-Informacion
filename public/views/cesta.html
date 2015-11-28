@@ -1,62 +1,82 @@
 <!-- One -->
 <section id="one" class="wrapper style1 special">
+
 	<div class="container">
+
 		<header class="major">
 			<h2>Tu Cesta Personal</h2>
 			<p>Aquí podrás comparar las características de tus productos.</p>
 		</header>
-		<div class="row 500%">
-			<div class="4u 12u$(medium)">
-				<section class="box">
-					<h3>Producto 1</h3>
-					<i class="icon big rounded color1 fa-cloud"></i>
 
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quam consectetur quibusdam magni minus aut modi aliquid.</p>
-				</section>
-			</div>
+		<div ng-app="" ng-init="visibles=[
+			{nombre:'Producto 1',
+			 categoria:'Mas popular',
+			 subtitulo:'Este es el producto 1',
+			 descripcion:'Este es el producto 1 y es muy bonito bla bla bla\nY esto es otra linea',
+			 imagen:'images/profile_placeholder.gif',
+			 clase:''},
+			{nombre:'Producto 2',
+			 categoria:'Mas popular',
+			 subtitulo:'Este es el producto 2',
+			 descripcion:'Este es el producto 2 y es muy bonito bla bla bla',
+			 imagen:'images/pic08.jpg',
+			 clase:''}]">
 		</div>
-		<p style="text-align:right">ver mas</p>      <p>Search icon: <span class="glyphicon glyphicon-search"></span></p>
-		<p>Search icon as a link:
-			<a href="#">
-				<span class="glyphicon glyphicon-search"></span>
-			</a>
-		</p>
-		<p>Search icon on a button:
-			<button type="button" class="btn btn-default btn-sm">
-				<span class="glyphicon glyphicon-search"></span> Search
-			</button>
-		</p>
-		<p>Search icon on a styled link button:
-			<a href="#" class="btn btn-info btn-lg">
-				<span class="glyphicon glyphicon-search"></span> Search
-			</a>
-		</p>
-		<h3 style="text-align:left"> Tendencias</h3>
-		<div class="row 150%">
-			<div class="4u 12u$(medium)">
-				<section class="box">
-					<i class="icon big rounded color1 fa-cloud"></i>
-					<h3>Producto 1</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quam consectetur quibusdam magni minus aut modi aliquid.</p>
-				</section>
-			</div>
-			<div class="4u 12u$(medium)">
-				<section class="box">
-					<i class="icon big rounded color9 fa-desktop"></i>
-					<h3>Producto 2</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium ullam consequatur repellat debitis maxime.</p>
-				</section>
-			</div>
-			<div class="4u$ 12u$(medium)">
-				<section class="box">
-					<i class="icon big rounded color6 fa-rocket"></i>
-					<h3>Producto 3</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque eaque eveniet, nesciunt molestias. Ipsam, voluptate vero.</p>
-				</section>
-			</div>
+		<div ng-app="" ng-init="ocultos=[
+			{nombre:'Producto 3',
+			 categoria:'Mas popular',
+			 subtitulo:'Este es el producto 3',
+			 descripcion:'Este es el producto 3 y es muy bonito bla bla bla\nY esto es otra linea',
+			 imagen:'images/profile_placeholder.gif',
+			 clase:''},
+			{nombre:'Producto 4',
+			 categoria:'Mas popular',
+			 subtitulo:'Este es el producto 4',
+			 descripcion:'Este es el producto 4 y es muy bonito bla bla bla',
+			 imagen:'images/pic08.jpg',
+			 clase:''}]">
 		</div>
-		<p style="text-align:right">ver mas</p>
+
+		<div ng-repeat="x in visibles">
+			<h3 class="migas">
+				<a href="/">Home</a>
+				<span> > </span>
+				<a href="/">{{x.categoria}}</a>
+				<span> > {{x.nombre}}</span> <!-- TIENE QUE ESTAR CARGADO SEGUN LA VARIABLE CORRESPONDIENTE!!! -->
+			</h3>
+			<section class="box">
+				<h2>{{x.nombre}}</h2>
+				<h3>{{x.subtitulo}}</h3>
+				<div class="6u 12u$(medium)">
+					<img class="image fit" src="{{x.imagen}}" />
+				</div>
+				<div class="6u 12u$(medium)">
+					<p>{{x.descripcion}}</p>
+				</div>
+			</section>
+		</div>
+
+		<button id="mas" class="button" type="button" onclick="ocultarId('mas'); mostrarInlineId('menos'); mostrarBlockClass('oculto');">Ver mas</button>
+
+		<div ng-repeat="x in ocultos">
+			<h3 class="migas oculto">
+				<a href="/">Home</a>
+				<span> > </span>
+				<a href="/">{{x.categoria}}</a>
+				<span> > {{x.nombre}}</span> <!-- TIENE QUE ESTAR CARGADO SEGUN LA VARIABLE CORRESPONDIENTE!!! -->
+			</h3>
+			<section class="box oculto">
+				<h2>{{x.nombre}}</h2>
+				<h3>{{x.subtitulo}}</h3>
+				<div class="6u 12u$(medium)">
+					<img class="image fit" src="{{x.imagen}}" />
+				</div>
+				<div class="6u 12u$(medium)">
+					<p>{{x.descripcion}}</p>
+				</div>
+			</section>
+		</div>
+
+		<button id="menos" class="button" type="button" onclick="ocultarId('menos'); mostrarInlineId('mas'); ocultarClass('oculto');" style="display:none">Ver menos</button>
 	</div>
 </section>
-
-
