@@ -24,6 +24,6 @@ db.users.insert(
 
 
 
-db.user.find()
-db.user.remove({})
+db.users.find()
+db.users.remove({})
 
