@@ -20,9 +20,9 @@ var db = mongoose.createConnection(db_lnk, function(err, res) {
 });
 
 // Load models
-var comment_schema = mongoose.Schema({
-	titulo:     		{ type: String },
-	imdbID:				{ type: String },
+var product_schema = mongoose.Schema({
+	nombre:     		{ type: String },
+	descripcion:		{ type: String },
 	serie:				{ type: String },
 	usuario:		    { type: String },
 	texto:  			{ type: String },
@@ -37,7 +37,7 @@ var users_schema = new mongoose.Schema({
 	email:        { type: String, unique: true },
 	password:     { type: String },
     info:         { type: String },
-    cesta:        { type: Number, repeat: true },
+    cesta:        { type: [Number] },
 });
 
 var User = db.model('users', users_schema);
@@ -242,6 +242,21 @@ app.post('/cambiar/nombre', function(req, res){
 		}else{
 			if(doc.password == req.body.pass){
 				doc.name_ = req.body.name_;
+				doc.save();
+				res.sendStatus(200);
+			}else{
+				res.sendStatus(401);
+			}
+		}
+	});
+});
+app.post('/add/cesta', function(usr, prod, res){
+	User.findOne().where('username', usr.body.username).exec(function(err, doc){
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			if(doc.password == usr.body.pass){
+				doc.cesta.addToSet(prod);
 				doc.save();
 				res.sendStatus(200);
 			}else{
