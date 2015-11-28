@@ -1,0 +1,11 @@
+db.Amazop.insert(
+   {
+      	"username":	    "admin",
+      	"name_":        "prueba1",
+      	"apellido":     "prueba2",
+      	"gender":       "True",
+      	"email":        "admin@amazop.es",
+      	"password":     "admin",
+      	"info":         "permisos de super de vaca",
+   }
+)

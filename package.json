@@ -2,14 +2,15 @@
   "name": "Sistemas-de-Informacion",
   "main": "server.js",
   "dependencies": {
-    "express": "latest",
-    "body-parser": "latest",
-    "angular-ui-router": "latest",
-	"angular-cookies": "latest",
-    "mongoose": "4.0.1",
     "angular": "latest",
+    "angular-cookies": "latest",
+    "angular-ui-router": "latest",
+    "body-parser": "latest",
+    "bootstrap": "latest",
+    "express": "latest",
     "jquery": "latest",
-    "bootstrap": "latest"
+    "mongoose": "4.0.1",
+    "nodemon": "^1.8.1"
   },
   "scripts": {
     "start": "node server.js"

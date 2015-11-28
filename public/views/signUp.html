@@ -48,7 +48,7 @@
                     <label for="male" style="color:#ffffff"> Hombre</label>
                 </div>
                 <div class="5u 12u$(small)">
-                    <input id="female" type="radio" name="sex" value="M" ng-model="user.gender.female"/>
+                    <input id="female" type="radio" name="sex" value="M" ng-model="user.gender.female" required/>
                     <label for="female" style="color:#ffffff"> Mujer</label>
                 </div>
                 <div class="1u$"></div>
@@ -64,7 +64,7 @@
 
                 <div class="12u$">
                     <ul class="actions">
-                        <li><input value="Enviar" class="special big" type="submit" ng-disabled="form.$invalid" ng-click="update(user)"></li>
+                        <li><input value="Enviar" class="special big" type="submit" ng-disabled="form.$invalid || " ng-click="update(user)"></li>
                         <li><input value="Reset" class="special_red big" type="reset"></li>
                     </ul>
                 </div>
