@@ -104,12 +104,12 @@ app.controller("SignUpController", ['$scope','$http', '$location', function($sco
     $scope.user = {};
 
 	$scope.update = function(user){
-		var reg = "[0-9]+";
-		if(user.tlf.match(reg)){
+		//console.log(user);
+
 			console.log('a');
 			if (user.pass == user.repass){
 				console.log(user.pass);
-				$http.post(addr + "/signup",user)
+				$http.post(addr + "/signup", user)
 					.success(function (user){
 						$location.path("/");
 					})
@@ -119,10 +119,7 @@ app.controller("SignUpController", ['$scope','$http', '$location', function($sco
 			}else{
 				alert("Las contraseñas no coinciden");
 			}
-		}else{
-			alert("Inserte un número de teléfono valido.");
 		}
-	};
 }]);
 
 app.controller("CestaController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){

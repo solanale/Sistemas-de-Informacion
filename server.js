@@ -40,7 +40,7 @@ var users_schema = new mongoose.Schema({
     cesta:        { type: [Number] },
 });
 
-var User = db.model('user', users_schema);
+var user = db.model('user', users_schema);
 var Product = db.model('product', product_schema);
 
 //Configuracion de Express
@@ -70,7 +70,7 @@ app.post('/modificarComentario', function(req, res){
 });
 app.post('/login', function(req, res){
 	//User.findOne().where('username', req.body.username).exec(function(err, doc){
-	User.findOne({'username' : req.body.username }).exec(function(err, doc){
+	user.findOne({'username' : req.body.username }).exec(function(err, doc){
         console.log(err);
 		console.log("LogIn");
 		console.log(doc);
@@ -78,17 +78,17 @@ app.post('/login', function(req, res){
 		if(doc == null){
 		    console.log("documento vacio");
 		    //console.log(req.body);
-			res.sendStatus(401);
+			res.send(401);
 		}else{
 			if(doc.password == undefined){
 			    console.log("pass indefinido");
-				res.sendStatus(401);
+				res.send(401);
 			}else if(doc.password == req.body.pass){
 			    console.log("correcto");
-				res.sendStatus(200);
+				res.send(200);
 			}else{
 			    console.log("que cojones"),
-				res.sendStatus(401);
+				res.send(401);
 			}
 		}
 	});
@@ -112,18 +112,20 @@ app.post('/deleteProduct', function(req, res){
 
 app.post('/signup', function(req, res){
     console.log("SignUp");
-	User.find().where('username', req.body.username).exec(function(err, doc){
-		if(doc.length > 0){
-			res.sendStatus(401);
+
+	user.findOne({'username' : req.body.username }).exec(function(err, doc){
+		 console.log(doc);
+		if(doc != null){
+			res.send(401);
 		}else{
-			User.find().where('email', req.body.email).exec(function(err, doc){
-				if(doc.length > 0){
-					res.sendStatus(401);
+			user.findOne({'email' : req.body.email}).exec(function(err, doc){
+				if(doc != null){
+					res.send(401);
 				}else{
 					if((req.body.pass != undefined) && (req.body.pass == req.body.repass)){
-						var Usuario = new User({
+						var Usuario = new user({
 								username:	  req.body.username,
-								name_:		  req.body.name_,
+								name_:		  req.body.name,
 								apellido:     req.body.surname,
 								info:         req.body.info,
 								email:        req.body.email,
@@ -131,9 +133,9 @@ app.post('/signup', function(req, res){
 								password:     req.body.pass
 						});
 						Usuario.save()
-						res.sendStatus(200);
+						res.send(200);
 					}else{
-						res.sendStatus(400);
+						res.send(400);
 					}
 				}
 			});
