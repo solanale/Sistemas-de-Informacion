@@ -1,4 +1,4 @@
-db.Amazop.insert(
+db.User.insert(
    {
       	"username":	    "admin",
       	"name_":        "prueba1",
@@ -7,5 +7,17 @@ db.Amazop.insert(
       	"email":        "admin@amazop.es",
       	"password":     "admin",
       	"info":         "permisos de super de vaca",
+   }
+)
+
+db.User.insert(
+   {
+      	"username":	    "Adrian",
+      	"name_":        "Adrian",
+      	"apellido":     "Alcolea",
+      	"gender":       "True",
+      	"email":        "adrian@amazop.es",
+      	"password":     "adrian",
+      	"info":         "sin permisos de super de vaca",
    }
 )
