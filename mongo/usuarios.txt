@@ -1,4 +1,4 @@
-db.User.insert(
+db.user.insert(
    {
       	"username":	    "admin",
       	"name_":        "prueba1",
@@ -21,3 +21,9 @@ db.User.insert(
       	"info":         "sin permisos de super de vaca",
    }
 )
+
+
+
+db.user.find()
+db.user.remove({})
+
