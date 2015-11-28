@@ -13,6 +13,11 @@ app.config(function($routeProvider){
 		.when("/elements", {
 			templateUrl: views + "elements.html"
 		})
+
+		.when("/comparar", {
+			templateUrl: views + "comparar.html"
+		})
+
         .when("/log", {
             templateUrl: views + "logIn.html",
             controller: "LogInController"

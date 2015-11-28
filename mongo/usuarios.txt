@@ -1,4 +1,4 @@
-db.user.insert(
+db.users.insert(
    {
       	"username":	    "admin",
       	"name_":        "prueba1",

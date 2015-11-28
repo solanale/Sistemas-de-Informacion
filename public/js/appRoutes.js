@@ -33,6 +33,11 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'LogInController'
 		})
 
+		.when('/comparar', {
+			templateUrl: 'views/comparar.html',
+			controller: 'LogInController'
+		})
+
 		.when('/sign', {
 			templateUrl: 'views/signUp.html',
 			controller: 'SignUpController'

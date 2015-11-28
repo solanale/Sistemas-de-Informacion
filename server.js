@@ -68,11 +68,15 @@ app.post('/modificarComentario', function(req, res){
 
 });
 app.post('/login', function(req, res){
-	User.findOne().where('username', req.body.username).exec(function(err, doc){
+	//User.findOne().where('username', req.body.username).exec(function(err, doc){
+	User.findOne({'username' : 'admin' }).exec(function(err, doc){
+
 		console.log("LogIn");
+		console.log(doc);
+
 		if(doc == null){
 		    console.log("documento vacio");
-		    console.log(req.body);
+		    //console.log(req.body);
 			res.sendStatus(401);
 		}else{
 			if(doc.password == undefined){
