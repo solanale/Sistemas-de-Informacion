@@ -89,6 +89,8 @@ $location){
 
 app.controller("SignUpController", ['$scope','$http', '$location', function($scope, $http, $location){
 
+    $scope.user = {};
+
 	$scope.update = function(user){
 		var reg = "[0-9]+";
 		if(user.tlf.match(reg)){
