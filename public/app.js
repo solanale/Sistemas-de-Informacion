@@ -27,6 +27,11 @@ app.config(function($routeProvider){
             controller: "SignUpController"
         })
 
+        .when("/cesta", {
+            templateUrl: views + "cesta.html",
+            controller: "CestaController"
+        })
+
 		.when("/series/:id", {
 			templateUrl: views + "partialseries.html",
 			controller: "ControladorSeries"
@@ -55,13 +60,23 @@ app.controller("IndexController", ['$scope', "$cookies", '$cookieStore', functio
 	$scope.user = {'username': user};
 
 	//Función que comprueba si un usuario esta logead
-	$scope.isLogged = function() {
+	$scope.notLogged = function() {
         return angular.isUndefined($cookies.username);
     };
 
     //Deslogeamos al usuario
     $scope.logOut = function(){
 		delete $cookies["username"];
+	};
+
+	$scope.tieneAcceso = function(){
+	    if (angular.isUndefined($cookies.username)){
+	        alert("Debes estar loggeado para usar la cesta");
+	        $location.path("/");
+	    }
+	    else{
+	        $location.path("/cesta");
+	    }
 	};
 }]);
 
@@ -107,6 +122,21 @@ app.controller("SignUpController", ['$scope','$http', '$location', function($sco
 		}else{
 			alert("Inserte un número de teléfono valido.");
 		}
+	};
+}]);
+
+app.controller("CestaController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
+	var user = $cookies.username;
+	$scope.user = {'username': user};
+
+	//Función que comprueba si un usuario esta logead
+	$scope.notLogged = function() {
+        return angular.isUndefined($cookies.username);
+    };
+
+    //Deslogeamos al usuario
+    $scope.logOut = function(){
+		delete $cookies["username"];
 	};
 }]);
 
