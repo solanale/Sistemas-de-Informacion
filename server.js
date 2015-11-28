@@ -37,6 +37,7 @@ var users_schema = new mongoose.Schema({
 	email:        { type: String, unique: true },
 	password:     { type: String },
     info:         { type: String },
+    cesta:        { type: Number, repeat: true },
 });
 
 var User = db.model('users', users_schema);
