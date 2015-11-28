@@ -51,8 +51,8 @@ app.config(function($routeProvider){
 });
 
 app.controller("IndexController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
-	var dummyUser = $cookies.username;
-	$scope.user = {'username': dummyUser};
+	var user = $cookies.username;
+	$scope.user = {'username': user};
 
 	//Función que comprueba si un usuario esta logead
 	$scope.isLogged = function() {
