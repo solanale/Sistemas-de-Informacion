@@ -20,8 +20,8 @@ var db = mongoose.createConnection(db_lnk, function(err, res) {
 });
 
 // Load models
-var product_schema = mongoose.Schema(
-    id:                 { type: Number, unique: true },
+var product_schema = mongoose.Schema({
+    id:                { type: Number, unique: true },
 	nombre:     		{ type: String },
 	categoria:			{ type: String },
 	subtitulo:			{ type: String },
@@ -134,11 +134,14 @@ app.post('/signup', function(req, res){
 });
 
 app.post('/datos', function(req, res){
-	User.findOne().where('username', req.body.username).exec(function(err, doc){
+	console.log(req.body);
+	user.findOne().where('username', req.body.username).exec(function(err, doc){
+		console.log(doc);
 		if(doc == null){
 			res.sendStatus(401);
 		}else{
-			res.send(doc);
+			res.json(doc);
+			console.log("estoy enviando");
 		}
 	});
 });
