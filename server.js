@@ -140,15 +140,12 @@ app.post('/buscar', function(req, res){
 });
 ///////////////////////////
 
-app.post('/Products', function(req, res){
+app.post('/products', function(req, res){
 	//Search on DB
-	Products.find().exec(function(err, doc){
+	Product.find().exec(function(err, doc){
 		if(doc == null){
-			console.log("NO ENCONTRADO");
 			res.sendStatus(401);
 		}else{
-			console.log("ENCONTRADO");
-			console.log(doc);
 			res.send(doc);
 		}
 	});
