@@ -8,7 +8,7 @@ app.config(function($routeProvider){
 	$routeProvider
 		.when("/", {
 			templateUrl: views + "home.html",
-			controller: "HomeController"
+//			controller: "HomeController"
 		})
 
         .when("/log", {
@@ -19,19 +19,24 @@ app.config(function($routeProvider){
             templateUrl: views + "signUp.html",
             controller: "SignUpController"
         })
+
+        .when("/datos", {
+            templateUrl: views + "partialdatos.html",
+            controller: "ControladorDatos"
+        })
         .when("/buscar", {
             templateUrl: views + "buscar.html"
-            controller: "BuscarController"
+//            controller: "BuscarController"
         })
 
         .when("/comparar", {
             templateUrl: views + "comparar.html"
-            controller: "CompararController"
+//            controller: "CompararController"
         })
 
         .when("/cesta", {
             templateUrl: views + "cesta.html",
-            controller: "CestaController"
+//            controller: "CestaController"
         })
 
         .when("/elements", {
@@ -49,10 +54,6 @@ app.config(function($routeProvider){
 		.when("/opciones", {
 			templateUrl: views + "partialopciones.html",
 			controller: "ControladorOpciones"
-		})
-		.when("/datos", {
-			templateUrl: views + "partialdatos.html",
-			controller: "ControladorDatos"
 		})
 		.when("/comentarios", {
 			templateUrl: views + "partialcomentarios.html",
