@@ -134,6 +134,7 @@ $location){
 app.controller("SignUpController", ['$scope','$http', '$location', function($scope, $http, $location){
 
     $scope.user = {};
+    $scope.status=true;
 
 	$scope.update = function(user){
 		//console.log(user);
