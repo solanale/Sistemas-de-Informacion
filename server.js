@@ -74,6 +74,32 @@ app.post('/login', function(req, res){
 		}
 	});
 });
+////////////////////////////////
+app.post('/buscar', function(req, res){
+	//User.findOne().where('username', req.body.username).exec(function(err, doc){
+	Products.find({'nombre' : req.body.busqueda }).exec(function(err, doc){
+	    console.log(req.body.busqueda);
+		console.log("Busqueda");
+
+		if(doc == null){
+		    console.log("documento vacio");
+		    //console.log(req.body);
+			res.send(401);
+		}else{
+			if(doc.password == undefined){
+			    console.log("pass indefinido");
+				res.send(401);
+			}else if(doc.password == req.body.pass){
+			    console.log("correcto");
+				res.send(200);
+			}else{
+			    console.log("que cojones"),
+				res.send(401);
+			}
+		}
+	});
+});
+///////////////////////////
 
 app.post('/signup', function(req, res){
     console.log("SignUp");

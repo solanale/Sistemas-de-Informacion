@@ -26,7 +26,7 @@ app.config(function($routeProvider){
             controller: "PerfilController"
         })
         .when("/buscar", {
-            templateUrl: views + "buscar.html"
+            templateUrl: views + "buscar.html",
             controller: "BuscarController"
         })
 
