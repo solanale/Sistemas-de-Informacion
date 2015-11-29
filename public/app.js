@@ -147,11 +147,13 @@ app.controller("SignUpController", ['$scope','$http','$cookies', '$location', fu
 
 app.controller("PerfilController",['$scope','$http', '$cookies',function($scope, $http, $cookies){
 	var send = {username: $cookies.username};
-	console.log(send.username);
+	$scope.info = {};
+
 	//Receive data comments
 	$http.post(addr + "/datos", send)
 		.success(function(data){
-			$scope.info = data;
+            $scope.info = data;
+
 		})
 }]);
 
