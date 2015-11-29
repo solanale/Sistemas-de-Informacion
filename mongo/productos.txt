@@ -1,16 +1,120 @@
 db.products.insert(
-    {
-    id:                 1,
-	nombre:     		"Nexus 5",
-	categoria:			"electronica",
-	subtitulo:			"Google Nexus 5",
-	descripcion:		"pepino",
-	precio:				100,
-	valoracion:			5,
-	imagen:  			"https://upload.wikimedia.org/wikipedia/commons/a/ac/Nexus_5_Front_View.png",
-    }
+   {
+      	"nombre":		"Producto1",
+		"categoria":	"Categoria1",
+		"subtitulo":	"Producto 1 de la categoría 1",
+		"descripcion":	"Qué bonito es el producto 1 de la categoría 1\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
+		"precio":		"10",
+		"valoracion":	"3",
+		"ventas":		"8",
+		"imagen":  		"images/profile_placeholder.gif",
+   }
 )
 
+db.products.insert(
+   {
+      	"nombre":		"Producto2",
+		"categoria":	"Categoria1",
+		"subtitulo":	"Producto 2 de la categoría 1",
+		"descripcion":	"Qué bonito es el producto 2 de la categoría 1\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
+		"precio":		"20",
+		"valoracion":	"4",
+		"ventas":		"6",
+		"imagen":  		"images/profile_placeholder.gif",
+   }
+)
+
+db.products.insert(
+   {
+      	"nombre":		"Producto3",
+		"categoria":	"Categoria1",
+		"subtitulo":	"Producto 3 de la categoría 1",
+		"descripcion":	"Qué bonito es el producto 3 de la categoría 1\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
+		"precio":		"5",
+		"valoracion":	"4",
+		"ventas":		"600",
+		"imagen":  		"images/profile_placeholder.gif",
+   }
+)
+
+db.products.insert(
+   {
+      	"nombre":		"Producto1",
+		"categoria":	"Categoria2",
+		"subtitulo":	"Producto 1 de la categoría 2",
+		"descripcion":	"Qué bonito es el producto 1 de la categoría 2\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
+		"precio":		"30",
+		"valoracion":	"5",
+		"ventas":		"5",
+		"imagen":  		"images/profile_placeholder.gif",
+   }
+)
+
+db.products.insert(
+   {
+      	"nombre":		"Producto2",
+		"categoria":	"Categoria2",
+		"subtitulo":	"Producto 2 de la categoría 2",
+		"descripcion":	"Qué bonito es el producto 2 de la categoría 2\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
+		"precio":		"40",
+		"valoracion":	"2",
+		"ventas":		"1",
+		"imagen":  		"images/profile_placeholder.gif",
+   }
+)
+
+db.products.insert(
+   {
+      	"nombre":		"Producto3",
+		"categoria":	"Categoria2",
+		"subtitulo":	"Producto 3 de la categoría 2",
+		"descripcion":	"Qué bonito es el producto 3 de la categoría 2\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
+		"precio":		"10",
+		"valoracion":	"5",
+		"ventas":		"100",
+		"imagen":  		"images/profile_placeholder.gif",
+   }
+)
+
+db.products.insert(
+   {
+      	"nombre":		"Producto1",
+		"categoria":	"Categoria3",
+		"subtitulo":	"Producto 1 de la categoría 3",
+		"descripcion":	"Qué bonito es el producto 1 de la categoría 3\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
+		"precio":		"50",
+		"valoracion":	"4",
+		"ventas":		"8",
+		"imagen":  		"images/profile_placeholder.gif",
+   }
+)
+
+db.products.insert(
+   {
+      	"nombre":		"Producto2",
+		"categoria":	"Categoria3",
+		"subtitulo":	"Producto 2 de la categoría 3",
+		"descripcion":	"Qué bonito es el producto 2 de la categoría 3\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
+		"precio":		"60",
+		"valoracion":	"1",
+		"ventas":		"2",
+		"imagen":  		"images/profile_placeholder.gif",
+   }
+)
+
+db.products.insert(
+   {
+      	"nombre":		"Producto3",
+		"categoria":	"Categoria3",
+		"subtitulo":	"Producto 3 de la categoría 3",
+		"descripcion":	"Qué bonito es el producto 3 de la categoría 3\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
+		"precio":		"10",
+		"valoracion":	"5",
+		"ventas":		"30",
+		"imagen":  		"images/profile_placeholder.gif",
+   }
+)
 
 db.products.find()
 db.products.remove({})
+

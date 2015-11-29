@@ -12,13 +12,13 @@
 		</header>
 
 		<div ng-app="" ng-init="visibles=[
-			{nombre:'Producto 1',
+			{nombre:'Producto1',
 			 categoria:'Mas popular',
 			 subtitulo:'Este es el producto 1',
 			 descripcion:'Este es el producto 1 y es muy bonito bla bla bla\nY esto es otra linea',
 			 imagen:'images/profile_placeholder.gif',
 			 clase:''},
-			{nombre:'Producto 2',
+			{nombre:'Producto2',
 			 categoria:'Mas popular',
 			 subtitulo:'Este es el producto 2',
 			 descripcion:'Este es el producto 2 y es muy bonito bla bla bla',
@@ -26,13 +26,13 @@
 			 clase:''}]">
 		</div>
 		<div ng-app="" ng-init="ocultos=[
-			{nombre:'Producto 3',
+			{nombre:'Producto3',
 			 categoria:'Mas popular',
 			 subtitulo:'Este es el producto 3',
 			 descripcion:'Este es el producto 3 y es muy bonito bla bla bla\nY esto es otra linea',
 			 imagen:'images/profile_placeholder.gif',
 			 clase:''},
-			{nombre:'Producto 4',
+			{nombre:'Producto4',
 			 categoria:'Mas popular',
 			 subtitulo:'Este es el producto 4',
 			 descripcion:'Este es el producto 4 y es muy bonito bla bla bla',
@@ -45,7 +45,8 @@
 				<a href="/">Home</a>
 				<span> > </span>
 				<a href="/">{{x.categoria}}</a>
-				<span> > {{x.nombre}}</span> <!-- TIENE QUE ESTAR CARGADO SEGUN LA VARIABLE CORRESPONDIENTE!!! -->
+				<span> > </span>
+				<a href="#/producto?prod={{x.nombre}}">{{x.nombre}}</a>
 			</h3>
 			<section class="box">
 				<h2>{{x.nombre}}</h2>
@@ -66,7 +67,8 @@
 				<a href="/">Home</a>
 				<span> > </span>
 				<a href="/">{{x.categoria}}</a>
-				<span> > {{x.nombre}}</span> <!-- TIENE QUE ESTAR CARGADO SEGUN LA VARIABLE CORRESPONDIENTE!!! -->
+				<span> > </span>
+				<a href="#/producto?prod={{x.nombre}}">{{x.nombre}}</a>
 			</h3>
 			<section class="box oculto">
 				<h2>{{x.nombre}}</h2>

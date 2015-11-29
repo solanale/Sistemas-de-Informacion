@@ -20,14 +20,14 @@ var db = mongoose.createConnection(db_lnk, function(err, res) {
 });
 
 // Load models
-var product_schema = mongoose.Schema(
-    id:                 { type: Number, unique: true },
+var product_schema = mongoose.Schema({
 	nombre:     		{ type: String },
 	categoria:			{ type: String },
 	subtitulo:			{ type: String },
 	descripcion:		{ type: String },
 	precio:				{ type: Number },
 	valoracion:			{ type: Number },
+	ventas:				{ type: Number },
 	imagen:  			{ type: String },
 });
 var users_schema = new mongoose.Schema({
@@ -41,7 +41,7 @@ var users_schema = new mongoose.Schema({
     cesta:        { type: [Number] },
 });
 
-var user = db.model('user', users_schema);
+var User = db.model('user', users_schema);
 var Product = db.model('product', product_schema);
 
 //Configuracion de Express
@@ -50,109 +50,6 @@ app.use(bodyParser.json());
 
 // POST
 // ==============================================
-app.post('/login', function(req, res){
-	//User.findOne().where('username', req.body.username).exec(function(err, doc){
-	user.findOne({'username' : req.body.username }).exec(function(err, doc){
-	    console.log(req.body.username);
-		console.log("LogIn");
-
-		if(doc == null){
-		    console.log("documento vacio");
-		    //console.log(req.body);
-			res.send(401);
-		}else{
-			if(doc.password == undefined){
-			    console.log("pass indefinido");
-				res.send(401);
-			}else if(doc.password == req.body.pass){
-			    console.log("correcto");
-				res.send(200);
-			}else{
-			    console.log("que cojones"),
-				res.send(401);
-			}
-		}
-	});
-});
-////////////////////////////////
-app.post('/buscar', function(req, res){
-	//User.findOne().where('username', req.body.username).exec(function(err, doc){
-	Products.find({'nombre' : req.body.busqueda }).exec(function(err, doc){
-	    console.log(req.body.busqueda);
-		console.log("Busqueda");
-
-		if(doc == null){
-		    console.log("documento vacio");
-		    //console.log(req.body);
-			res.send(401);
-		}else{
-			if(doc.password == undefined){
-			    console.log("pass indefinido");
-				res.send(401);
-			}else if(doc.password == req.body.pass){
-			    console.log("correcto");
-				res.send(200);
-			}else{
-			    console.log("que cojones"),
-				res.send(401);
-			}
-		}
-	});
-});
-///////////////////////////
-
-app.post('/signup', function(req, res){
-    console.log("SignUp");
-
-	user.findOne({'username' : req.body.username }).exec(function(err, doc){
-		if(doc != null){
-			res.send(401);
-		}else{
-			user.findOne({'email' : req.body.email}).exec(function(err, doc){
-				if(doc != null){
-					res.send(401);
-				}else{
-					if((req.body.pass != undefined) && (req.body.pass == req.body.repass)){
-						var Usuario = new user({
-								username:	  req.body.username,
-								name_:		  req.body.name,
-								apellido:     req.body.surname,
-								info:         req.body.info,
-								email:        req.body.email,
-                                gender:       req.body.gender,
-								password:     req.body.pass
-						});
-						Usuario.save()
-						res.send(200);
-					}else{
-						res.send(400);
-					}
-				}
-			});
-		}
-	});
-});
-
-app.post('/datos', function(req, res){
-	User.findOne().where('username', req.body.username).exec(function(err, doc){
-		if(doc == null){
-			res.sendStatus(401);
-		}else{
-			res.send(doc);
-		}
-	});
-});
-
-app.post('/Products', function(req, res, db){
-	id = req.body.imdbID;
-
-	//Search on DB
-	Product.find().where('imdbID', id).exec(function(err, doc){
-		res.sendStatus(doc);
-	});
-});
-
-
 app.post('/modificarComentario', function(req, res){
 	Product.findOne().where('_id', req.body._id).exec(function(err, doc){
 		if(doc == null){
@@ -172,7 +69,31 @@ app.post('/modificarComentario', function(req, res){
 	});
 
 });
+app.post('/login', function(req, res){
+	//User.findOne().where('username', req.body.username).exec(function(err, doc){
+	User.findOne({'username' : req.body.username }).exec(function(err, doc){
+        console.log(err);
+		console.log("LogIn");
+		console.log(doc);
 
+		if(doc == null){
+		    console.log("documento vacio");
+		    //console.log(req.body);
+			res.sendStatus(401);
+		}else{
+			if(doc.password == undefined){
+			    console.log("pass indefinido");
+				res.sendStatus(401);
+			}else if(doc.password == req.body.pass){
+			    console.log("correcto");
+				res.sendStatus(200);
+			}else{
+			    console.log("que cojones"),
+				res.sendStatus(401);
+			}
+		}
+	});
+});
 
 app.post('/deleteProduct', function(req, res){
 	Product.findOne().where('_id', req.body._id).exec(function(err, doc){
@@ -190,7 +111,36 @@ app.post('/deleteProduct', function(req, res){
 	});
 });
 
-
+app.post('/signup', function(req, res){
+    console.log("SignUp");
+	User.find().where('username', req.body.username).exec(function(err, doc){
+		if(doc.length > 0){
+			res.sendStatus(401);
+		}else{
+			User.find().where('email', req.body.email).exec(function(err, doc){
+				if(doc.length > 0){
+					res.sendStatus(401);
+				}else{
+					if((req.body.pass != undefined) && (req.body.pass == req.body.repass)){
+						var Usuario = new User({
+								username:	  req.body.username,
+								name_:		  req.body.name_,
+								apellido:     req.body.surname,
+								info:         req.body.info,
+								email:        req.body.email,
+                                gender:       req.body.gender.male,
+								password:     req.body.pass
+						});
+						Usuario.save()
+						res.sendStatus(200);
+					}else{
+						res.sendStatus(400);
+					}
+				}
+			});
+		}
+	});
+});
 
 app.post('/addComent', function(req, res, db){
 	console.log(req.body.serie);
@@ -204,7 +154,6 @@ app.post('/addComent', function(req, res, db){
 	});
 	Comentario.save();
 });
-
 app.post('/ProductsUser', function(req, res, db){
 	id = req.body.username;
 
@@ -318,7 +267,31 @@ app.post('/add/cesta', function(usr, prod, res){
 		}
 	});
 });
+app.post('/datos', function(req, res){
+	User.findOne().where('username', req.body.username).exec(function(err, doc){
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			res.send(doc);
+		}
+	});
+});
+app.post('/product', function(req, res){
 
+	//Search on DB
+	Product.findOne().where(
+			{and:[
+				('nombre', req.body.nombre),
+				('categoria', req.body.categoria)
+			]}).exec(function(err, doc){
+
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			res.send(doc);
+		}
+	});
+});
 // ============================================= //
 
 app.use(express.static(__dirname + '/public')); //Si no encuentras algo, estara en Public
