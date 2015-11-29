@@ -21,14 +21,14 @@ var db = mongoose.createConnection(db_lnk, function(err, res) {
 
 // Load models
 var products_schema = mongoose.Schema({
-    id:                 { type: Number, unique: true },
+    id:                 { type: String, unique: true },
 	nombre:     		{ type: String },
 	categoria:			{ type: String },
 	subtitulo:			{ type: String },
 	descripcion:		{ type: String },
-	precio:				{ type: Number },
-	valoracion:			{ type: Number },
-	ventas:				{ type: Number },
+	precio:				{ type: String },
+	valoracion:			{ type: String },
+	ventas:				{ type: String },
 	imag:  		    	{ type: String },
 });
 var users_schema = new mongoose.Schema({
@@ -134,7 +134,7 @@ app.post('/buscar', function(req, res){
 			res.send(401);
 		}else{
             console.log("correcto");
-            res.send(200);
+            res.send(doc);
 		}
 	});
 });
