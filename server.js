@@ -20,7 +20,7 @@ var db = mongoose.createConnection(db_lnk, function(err, res) {
 });
 
 // Load models
-var product_schema = mongoose.Schema(
+var product_schema = mongoose.Schema({
     id:                 { type: Number, unique: true },
 	nombre:     		{ type: String },
 	categoria:			{ type: String },
@@ -173,7 +173,6 @@ app.post('/modificarComentario', function(req, res){
 
 });
 
-
 app.post('/deleteProduct', function(req, res){
 	Product.findOne().where('_id', req.body._id).exec(function(err, doc){
 		if(doc == null){
@@ -189,8 +188,6 @@ app.post('/deleteProduct', function(req, res){
 		}
 	});
 });
-
-
 
 app.post('/addComent', function(req, res, db){
 	console.log(req.body.serie);

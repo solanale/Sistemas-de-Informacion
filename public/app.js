@@ -133,7 +133,6 @@ app.controller("SignUpController", ['$scope','$http','$cookies', '$location', fu
     $scope.status=true;
 
 	$scope.update = function(user){
-
         if (user.pass == user.repass){
             if (user.male != null){
                 user.gender=true;
@@ -143,9 +142,9 @@ app.controller("SignUpController", ['$scope','$http','$cookies', '$location', fu
             $http.post(addr + "/signup", user)
                 .success(function (data){
                     $cookies.username = user.username;
-                    $location.path("/home");
+                    $location.path("/");
                 })
-                .error(function (){
+                .error(function (data){
                     alert("Nombre o email ya registrado.");
                 });
         }else{
