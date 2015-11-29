@@ -92,6 +92,15 @@ app.controller("IndexController", ['$scope', "$cookies", '$cookieStore','$locati
 
 app.controller("HomeController", ['$scope', '$http', function($scope, $http){
 	$scope.products = {};
+	$scope.categorias = {};
+
+    $http.post(addr + '/categorias')
+        .success(function (data) {
+            $scope.categorias = data;
+        })
+        .error(function (){
+            alert("No hay categorias en la base de datos");
+        });
 
 	$http.post(addr + '/products')
 		.success(function (data) {

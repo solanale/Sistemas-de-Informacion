@@ -151,6 +151,16 @@ app.post('/products', function(req, res){
 	});
 });
 
+app.post('/categorias', function(req, res){
+	//Search on DB
+	Product.find().distinct('categoria').exec(function(err, doc){
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			res.send(doc);
+		}
+	});
+});
 
 app.post('/modificarComentario', function(req, res){
 	Product.findOne().where('_id', req.body._id).exec(function(err, doc){
