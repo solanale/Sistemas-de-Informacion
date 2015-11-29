@@ -169,31 +169,12 @@ app.controller("PerfilController",['$scope','$http', '$cookies',function($scope,
 
 app.controller("BuscarController", ['$scope', "$cookies", '$cookieStore','$http', function($scope, $cookies, $cookieStore,$http){
 	$scope.product= {};
+	$scope.result = {};
 	$scope.product.id = Busqueda;
-	//Función para concatenar elementos
-
 
     $http.post(addr+'/buscar', $scope.product).success(function (data) {
-     console.log(data);
-     product = data;
-//		if(data.Response == "False"){
-//			alert("No se encuentran productos con ese nombre");
-//		}else{
-//		    alert("bieeen");
-//			dummySeries = data.Search;
-//			//Obtenemos el primer elemento
-//			$scope.aux = dummySeries[0];
-//			$http.get('http://www.omdbapi.com/?i=' + $scope.aux.imdbID).success(function (dataOne){
-//				$scope.series = (dataOne);
-//			});
-//			//Obtenemos el resto de elementos
-//			for(var i = 1; i<dummySeries.length;i++){
-//				$scope.aux = dummySeries[i];
-//				$http.get('http://www.omdbapi.com/?i=' + $scope.aux.imdbID).success(function (dataOne) {
-//					$scope.series = $.concat($scope.series, dataOne);
-//				});
-//			}
-
+         console.log(data);
+         $scope.result = data;
      });
 }]);
 
