@@ -121,10 +121,10 @@ $location){
 
 }]);
 
-app.controller("SignUpController", ['$scope','$http','$cookies', '$location', function($scope, $http, $cookies, $cookieStore, $location){
+app.controller("SignUpController", ['$scope','$http','$cookies',"$location", function($scope, $http, $cookies, $cookieStore,$location){
 
     $scope.user = {};
-    $scope.status=true;
+//    $scope.status=true;
 
 	$scope.update = function(user){
         if (user.pass == user.repass){

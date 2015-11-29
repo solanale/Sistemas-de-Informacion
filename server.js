@@ -29,7 +29,7 @@ var products_schema = mongoose.Schema({
 	precio:				{ type: Number },
 	valoracion:			{ type: Number },
 	ventas:				{ type: Number },
-	imagen:  			{ type: String },
+	imag:  		    	{ type: String },
 });
 var users_schema = new mongoose.Schema({
 	username:	  { type: String, unique: true },
@@ -123,12 +123,12 @@ app.post('/datos', function(req, res){
 ////////////////////////////////
 app.post('/buscar', function(req, res){
 	//User.findOne().where('username', req.body.username).exec(function(err, doc){
-	console.log(req);
+	console.log(req.body);
 	Product.find({'id' : req.body.id }).exec(function(err, doc){
 		console.log("Busqueda");
 		console.log(doc);
 
-		if(doc == null){
+		if(doc == []){
 		    console.log("documento vacio");
 		    //console.log(req.body);
 			res.send(401);

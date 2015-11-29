@@ -8,7 +8,7 @@ db.products.insert(
 		"precio":		"10",
 		"valoracion":	"3",
 		"ventas":		"8",
-		"imagen":  		"images/profile_placeholder.gif",
+		"imagen":       "images/profile_placeholder.gif",
    }
 )
 
@@ -22,7 +22,7 @@ db.products.insert(
 		"precio":		"20",
 		"valoracion":	"4",
 		"ventas":		"6",
-		"imagen":  		"images/profile_placeholder.gif",
+		"imagen":       "images/profile_placeholder.gif",
    }
 )
 
@@ -36,7 +36,7 @@ db.products.insert(
 		"precio":		"5",
 		"valoracion":	"4",
 		"ventas":		"600",
-		"imagen":  		"images/profile_placeholder.gif",
+		"imagen":       "images/profile_placeholder.gif",
    }
 )
 
@@ -50,7 +50,7 @@ db.products.insert(
 		"precio":		"30",
 		"valoracion":	"5",
 		"ventas":		"5",
-		"imagen":  		"images/profile_placeholder.gif",
+		"imagen":       "images/profile_placeholder.gif",
    }
 )
 
@@ -64,7 +64,7 @@ db.products.insert(
 		"precio":		"40",
 		"valoracion":	"2",
 		"ventas":		"1",
-		"imagen":  		"images/profile_placeholder.gif",
+		"imagen":       "images/profile_placeholder.gif",
    }
 )
 
@@ -78,7 +78,7 @@ db.products.insert(
 		"precio":		"10",
 		"valoracion":	"5",
 		"ventas":		"100",
-		"imagen":  		"images/profile_placeholder.gif",
+		"imagen":       "images/profile_placeholder.gif",
    }
 )
 
@@ -92,7 +92,7 @@ db.products.insert(
 		"precio":		"50",
 		"valoracion":	"4",
 		"ventas":		"8",
-		"imagen":  		"images/profile_placeholder.gif",
+		"imagen":       "images/profile_placeholder.gif",
    }
 )
 
@@ -106,7 +106,7 @@ db.products.insert(
 		"precio":		"60",
 		"valoracion":	"1",
 		"ventas":		"2",
-		"imagen":  		"images/profile_placeholder.gif",
+		"imagen":       "images/profile_placeholder.gif",
    }
 )
 
@@ -120,7 +120,7 @@ db.products.insert(
 		"precio":		"10",
 		"valoracion":	"5",
 		"ventas":		"30",
-		"imagen":  		"images/profile_placeholder.gif",
+		"imagen":       "images/profile_placeholder.gif",
    }
 )
 
