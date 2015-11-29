@@ -7,7 +7,7 @@ db.users.insert(
       	"email":        "admin@amazop.es",
       	"password":     "admin",
       	"info":         "permisos de super de vaca",
-      	"cesta":        [1,2],
+      	"cesta":        ["1","2","4"],
    }
 )
 
@@ -27,6 +27,6 @@ db.users.insert(
 
 db.users.find()
 db.users.remove({})
-db.users.find({cesta: "ej1"})
+db.users.find({cesta: "1"})
 
 
