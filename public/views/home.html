@@ -16,7 +16,8 @@
 						<img src="{{p.imagen}}"/>
 						<h2>{{p.nombre}}</h2>
 						<h3>{{p.subtitulo}}</h3>
-						<p style="text-align:justify">{{p.descripcion}}</p>
+						<p>{{p.descripcion}}</p>
+						<button class="button" ng-controler="CestaController" ng-click="add(p)">Añadir a la cesta</button>
 					</section>
 				</div>
 			</div>

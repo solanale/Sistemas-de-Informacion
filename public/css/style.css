@@ -463,6 +463,7 @@
 		.box > :last-child > :last-child,
 		.box > :last-child > :last-child > :last-child {
 			margin-bottom: 0;
+			float: right;
 		}
 
 		.box.alt {
@@ -480,6 +481,10 @@
 		.box > div > p {
 			padding-bottom: 1em;
 			font-size: 1.2em;
+			text-align: justify;
+		}
+
+		.box > p {
 			text-align: justify;
 		}
 

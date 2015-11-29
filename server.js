@@ -309,18 +309,14 @@ app.post('/cambiar/nombre', function(req, res){
 		}
 	});
 });
-app.post('/add/cesta', function(usr, prod, res){
-	User.findOne().where('username', usr.body.username).exec(function(err, doc){
+app.post('/add/cesta', function(req, res){
+	User.findOne().where('username', req.body.username).exec(function(err, doc){
 		if(doc == null){
 			res.sendStatus(401);
 		}else{
-			if(doc.password == usr.body.pass){
-				doc.cesta.addToSet(prod._id);
-				doc.save();
-				res.sendStatus(200);
-			}else{
-				res.sendStatus(401);
-			}
+			doc.cesta.addToSet(req.body.product);
+			doc.save();
+			res.sendStatus(200);
 		}
 	});
 });

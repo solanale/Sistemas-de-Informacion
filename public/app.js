@@ -195,7 +195,22 @@ app.controller("CompararController", ['$scope', "$cookies", '$cookieStore', func
 
 app.controller("CestaController", ['$scope','$http', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore,$http){
 
-
+    $scope.add = function (p) {
+        if($scope.notLogged){
+            alert("Inicia sesión para disponer de una cesta");
+        } else {
+            var data_send = {};
+            data_send.username = $cookies.username;
+            data_send.product = p._id;
+            $http.post(addr + '/add/cesta', data_send)
+                .success(function (data) {
+                    alert("Producto añadido a su cesta");
+                })
+                .error(function (data){
+                    alert("El producto no pudo añadirse");
+                });
+        }
+    }
 }]);
 
 //app.controller("ControladorOpciones", ['$scope','$http', "$cookies", "$cookieStore", "$location", function($scope, $http, $cookies, $cookieStore,
