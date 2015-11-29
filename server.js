@@ -21,13 +21,14 @@ var db = mongoose.createConnection(db_lnk, function(err, res) {
 
 // Load models
 var products_schema = mongoose.Schema({
-    id:                 { type: Number, unique: true },
+	id:                 { type: Number, unique: true },
 	nombre:     		{ type: String },
 	categoria:			{ type: String },
 	subtitulo:			{ type: String },
 	descripcion:		{ type: String },
 	precio:				{ type: Number },
 	valoracion:			{ type: Number },
+	ventas:				{ type: Number },
 	imagen:  			{ type: String },
 });
 var users_schema = new mongoose.Schema({
@@ -149,10 +150,13 @@ app.post('/buscar', function(req, res){
 
 app.post('/products', function(req, res){
 	//Search on DB
-	Product.find().exec(function(err, doc){
+	Products.find().exec(function(err, doc){
 		if(doc == null){
+			console.log("NO ENCONTRADO");
 			res.sendStatus(401);
 		}else{
+			console.log("ENCONTRADO");
+			console.log(doc);
 			res.send(doc);
 		}
 	});

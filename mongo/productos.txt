@@ -1,5 +1,6 @@
 db.products.insert(
    {
+      	"id":			"1",
       	"nombre":		"Producto1",
 		"categoria":	"Categoria1",
 		"subtitulo":	"Producto 1 de la categoría 1",
@@ -13,7 +14,8 @@ db.products.insert(
 
 db.products.insert(
    {
-      	"nombre":		"Producto2",
+      	"id":			"2",
+        "nombre":		"Producto2",
 		"categoria":	"Categoria1",
 		"subtitulo":	"Producto 2 de la categoría 1",
 		"descripcion":	"Qué bonito es el producto 2 de la categoría 1\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
@@ -26,7 +28,8 @@ db.products.insert(
 
 db.products.insert(
    {
-      	"nombre":		"Producto3",
+      	"id":			"3",
+		"nombre":		"Producto3",
 		"categoria":	"Categoria1",
 		"subtitulo":	"Producto 3 de la categoría 1",
 		"descripcion":	"Qué bonito es el producto 3 de la categoría 1\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
@@ -39,7 +42,8 @@ db.products.insert(
 
 db.products.insert(
    {
-      	"nombre":		"Producto1",
+      	"id":			"4",
+		"nombre":		"Producto1",
 		"categoria":	"Categoria2",
 		"subtitulo":	"Producto 1 de la categoría 2",
 		"descripcion":	"Qué bonito es el producto 1 de la categoría 2\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
@@ -52,7 +56,8 @@ db.products.insert(
 
 db.products.insert(
    {
-      	"nombre":		"Producto2",
+      	"id":			"5",
+		"nombre":		"Producto2",
 		"categoria":	"Categoria2",
 		"subtitulo":	"Producto 2 de la categoría 2",
 		"descripcion":	"Qué bonito es el producto 2 de la categoría 2\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
@@ -65,7 +70,8 @@ db.products.insert(
 
 db.products.insert(
    {
-      	"nombre":		"Producto3",
+      	"id":			"6",
+		"nombre":		"Producto3",
 		"categoria":	"Categoria2",
 		"subtitulo":	"Producto 3 de la categoría 2",
 		"descripcion":	"Qué bonito es el producto 3 de la categoría 2\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
@@ -78,7 +84,8 @@ db.products.insert(
 
 db.products.insert(
    {
-      	"nombre":		"Producto1",
+      	"id":			"7",
+		"nombre":		"Producto1",
 		"categoria":	"Categoria3",
 		"subtitulo":	"Producto 1 de la categoría 3",
 		"descripcion":	"Qué bonito es el producto 1 de la categoría 3\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
@@ -91,7 +98,8 @@ db.products.insert(
 
 db.products.insert(
    {
-      	"nombre":		"Producto2",
+      	"id":			"8",
+		"nombre":		"Producto2",
 		"categoria":	"Categoria3",
 		"subtitulo":	"Producto 2 de la categoría 3",
 		"descripcion":	"Qué bonito es el producto 2 de la categoría 3\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
@@ -104,7 +112,8 @@ db.products.insert(
 
 db.products.insert(
    {
-      	"nombre":		"Producto3",
+      	"id":			"9",
+		"nombre":		"Producto3",
 		"categoria":	"Categoria3",
 		"subtitulo":	"Producto 3 de la categoría 3",
 		"descripcion":	"Qué bonito es el producto 3 de la categoría 3\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",

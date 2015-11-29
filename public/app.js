@@ -9,7 +9,7 @@ app.config(function($routeProvider){
 	$routeProvider
 		.when("/", {
 			templateUrl: views + "home.html",
-//			controller: "HomeController"
+			controller: "HomeController"
 		})
 
         .when("/log", {
@@ -88,12 +88,12 @@ app.controller("IndexController", ['$scope', "$cookies", '$cookieStore', functio
 	};
 }]);
 
-app.controller("HomeController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
+app.controller("HomeController", ['$scope', '$http', function($scope, $http){
 	$scope.products = {};
 
 	$http.post(addr + '/products')
 		.success(function (data) {
-			products = data;
+			$scope.products = data;
 		})
 		.error(function (){
 			alert("No hay productos en la base de datos");
