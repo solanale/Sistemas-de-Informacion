@@ -8,6 +8,8 @@
 
 
                 <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{info.name_}} {{info.apellido}}</h3>
                     <div class="panel-heading" ng-repeat="usuario in info">
                         <h3 class="panel-title">{{ usuario.name_ }} {{usuario.apellido}}</h3>
                     </div>
@@ -23,35 +25,26 @@
                                         <td>{{info.username}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Hire date:</td>
-                                        <td>06/23/2013</td>
+                                        <td>Genero:</td>
+                                        <td>{{info.gender}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Date of Birth</td>
-                                        <td>01/24/1988</td>
-                                    </tr>
-
-                                    <tr>
-                                    <tr>
-                                        <td>Gender</td>
-                                        <td>Male</td>
+                                        <td>Email:</td>
+                                        <td>{{info.email}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Home Address</td>
-                                        <td>Metro Manila,Philippines</td>
+                                        <td>Info:</td>
+                                        <td>{{info.info}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Email</td>
-                                        <td><a href="mailto:info@support.com">info@support.com</a></td>
+                                        <td>Cesta:</td>
+                                        <td>{{info.cesta}}</td>
                                     </tr>
-
-                                    </tr>
-
                                     </tbody>
                                 </table>
 
-                                <a href="#" class="btn btn-primary">My Sales Performance</a>
-                                <a href="#" class="btn btn-primary">Team Sales Performance</a>
+<!--                                <a href="#" class="btn btn-primary">My Sales Performance</a>
+                                <a href="#" class="btn btn-primary">Team Sales Performance</a>-->
                             </div>
                         </div>
                     </div>
