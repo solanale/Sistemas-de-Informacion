@@ -314,7 +314,7 @@ app.post('/add/cesta', function(req, res){
 		if(doc == null){
 			res.sendStatus(401);
 		}else{
-			doc.cesta.addToSet(req.body.product);
+			doc.cesta.addToSet(req.body.product._id);
 			doc.save();
 			res.sendStatus(200);
 		}

@@ -17,7 +17,7 @@
 						<h2>{{p.nombre}}</h2>
 						<h3>{{p.subtitulo}}</h3>
 						<p>{{p.descripcion}}</p>
-						<button class="button" ng-controler="CestaController" ng-click="add(p)">Añadir a la cesta</button>
+						<button class="button" ng-hide="notLogged()" ng-controller="CestaController" ng-click="add(p)">Añadir a la cesta</button>
 					</section>
 				</div>
 			</div>
