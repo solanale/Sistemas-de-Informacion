@@ -2,29 +2,14 @@ var app = angular.module('app-web', ['ngRoute', 'ngCookies', 'ui.bootstrap']);
 
 //Constantes
 var addr = "http://localhost:8080";
-var views = "views/"
+var views = "views/";
+var Busqueda = "";
 
 app.config(function($routeProvider){
 	$routeProvider
 		.when("/", {
 			templateUrl: views + "home.html",
-			controller: "IndexController"
-		})
-		.when("/elements", {
-			templateUrl: views + "elements.html"
-		})
-
-		.when("/cesta", {
-			templateUrl: views + "cesta.html"
-		})
-
-		.when("/producto", {
-			templateUrl: views + "producto.html"
-			controller: "ProductController"
-		})
-
-		.when("/comparar", {
-			templateUrl: views + "comparar.html"
+//			controller: "HomeController"
 		})
 
         .when("/log", {
@@ -34,6 +19,29 @@ app.config(function($routeProvider){
         .when("/sign", {
             templateUrl: views + "signUp.html",
             controller: "SignUpController"
+        })
+
+        .when("/perfil", {
+            templateUrl: views + "perfil.html",
+            controller: "PerfilController"
+        })
+        .when("/buscar", {
+            templateUrl: views + "buscar.html",
+            controller: "BuscarController"
+        })
+
+        .when("/comparar", {
+            templateUrl: views + "comparar.html"
+//            controller: "CompararController"
+        })
+
+        .when("/cesta", {
+            templateUrl: views + "cesta.html",
+            controller: "CestaController",
+        })
+
+        .when("/elements", {
+            templateUrl: views + "elements.html"
         })
 
 		.when("/series/:id", {
@@ -48,10 +56,6 @@ app.config(function($routeProvider){
 			templateUrl: views + "partialopciones.html",
 			controller: "ControladorOpciones"
 		})
-		.when("/datos", {
-			templateUrl: views + "partialdatos.html",
-			controller: "ControladorDatos"
-		})
 		.when("/comentarios", {
 			templateUrl: views + "partialcomentarios.html",
 			controller: "ControladorComentarios"
@@ -60,6 +64,26 @@ app.config(function($routeProvider){
 });
 
 app.controller("IndexController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
+	var user = $cookies.username;
+	$scope.user = {'username': user};
+	Busqueda = $scope.busqueda
+
+	//Función que comprueba si un usuario esta logead
+	$scope.notLogged = function() {
+        return angular.isUndefined($cookies.username);
+    };
+
+    //Deslogeamos al usuario
+    $scope.logOut = function(){
+		delete $cookies["username"];
+	};
+
+	$scope.Buscar= function(){
+	    $location.path("/buscar");
+	};
+}]);
+
+app.controller("HomeController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
 	var user = $cookies.username;
 	$scope.user = {'username': user};
 
@@ -71,6 +95,16 @@ app.controller("IndexController", ['$scope', "$cookies", '$cookieStore', functio
     //Deslogeamos al usuario
     $scope.logOut = function(){
 		delete $cookies["username"];
+	};
+
+	$scope.tieneAcceso = function(){
+	    if (angular.isUndefined($cookies.username)){
+	        alert("Debes estar loggeado para usar la cesta");
+	        $location.path("/");
+	    }
+	    else{
+	        $location.path("/cesta");
+	    }
 	};
 }]);
 
@@ -93,45 +127,85 @@ $location){
 
 }]);
 
-app.controller("SignUpController", ['$scope','$http', '$location', function($scope, $http, $location){
+app.controller("SignUpController", ['$scope','$http','$cookies', '$location', function($scope, $http, $cookies, $cookieStore, $location){
 
     $scope.user = {};
+    $scope.status=true;
 
 	$scope.update = function(user){
-		var reg = "[0-9]+";
-		if(user.tlf.match(reg)){
-			console.log('a');
-			if (user.pass == user.repass){
-				console.log(user.pass);
-				$http.post(addr + "/signup",user)
-					.success(function (user){
-						$location.path("/");
-					})
-					.error(function (){
-						alert("Nombre o email ya registrado.");
-					})
-			}else{
-				alert("Las contraseñas no coinciden");
-			}
+        if (user.pass == user.repass){
+            if (user.male != null){
+                user.gender=true;
+            }else{
+                user.gender=false;
+            }
+            $http.post(addr + "/signup", user)
+                .success(function (data){
+                    $cookies.username = user.username;
+                    $location.path("/");
+                })
+                .error(function (data){
+                    alert("Nombre o email ya registrado.");
+                });
+        }else{
+            alert("Las contraseñas no coinciden");
+        }
+    };
+}]);
+
+app.controller("PerfilController",['$scope','$http', '$cookies',function($scope, $http, $cookies){
+	var send = {username: $cookies.username};
+	console.log(send.username);
+	//Receive data comments
+	$http.post(addr + "/datos", send)
+		.success(function(data){
+			$scope.info = data;
+		})
+}]);
+
+app.controller("BuscarController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
+	var product = '';
+	//Función para concatenar elementos
+
+    $http.post('/buscar', Busqueda).success(function (data) {
+		if(data.Response == "False"){
+			alert("No se encuentran productos con ese nombre");
 		}else{
-			alert("Inserte un número de teléfono valido.");
+//			dummySeries = data.Search;
+//			//Obtenemos el primer elemento
+//			$scope.aux = dummySeries[0];
+//			$http.get('http://www.omdbapi.com/?i=' + $scope.aux.imdbID).success(function (dataOne){
+//				$scope.series = (dataOne);
+//			});
+//			//Obtenemos el resto de elementos
+//			for(var i = 1; i<dummySeries.length;i++){
+//				$scope.aux = dummySeries[i];
+//				$http.get('http://www.omdbapi.com/?i=' + $scope.aux.imdbID).success(function (dataOne) {
+//					$scope.series = $.concat($scope.series, dataOne);
+//				});
+//			}
 		}
+     });
+}]);
+
+app.controller("CompararController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
+	var user = $cookies.username;
+	$scope.user = {'username': user};
+
+	//Función que comprueba si un usuario esta logead
+	$scope.notLogged = function() {
+        return angular.isUndefined($cookies.username);
+    };
+
+    //Deslogeamos al usuario
+    $scope.logOut = function(){
+		delete $cookies["username"];
 	};
 }]);
 
-app.controller("ProductController", ['$scope', '$location', function($scope, $location){
+app.controller("CestaController", ['$scope','$http', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore,$http){
 
-    $scope.producto = {};
 
-	$scope.update = function(producto){
-		$app.post(addr + "/product",producto)
-		.success(function (producto){
-
-		})
-		.error(function (){
-
-		})
-	};
 }]);
 
 //app.controller("ControladorOpciones", ['$scope','$http', "$cookies", "$cookieStore", "$location", function($scope, $http, $cookies, $cookieStore,
@@ -509,15 +583,7 @@ app.controller("ProductController", ['$scope', '$location', function($scope, $lo
 //	};
 //}]);
 //
-//
-//app.controller("ControladorDatos",['$scope','$http', '$cookies',function($scope, $http, $cookies){
-//	var send = {username: $cookies.username};
-//	console.log(send.username);
-//	//Receive data comments
-//	$http.post(addr + "/datos", send)
-//		.success(function(data){
-//			$scope.info = data;
-//		})
-//}]);
+
+
 //
 //
