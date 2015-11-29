@@ -144,17 +144,14 @@ app.post('/buscar', function(req, res){
 });
 ///////////////////////////
 
-
-
-
-
-app.post('/Products', function(req, res){
-
-	id = req.body.imdbID;
-
+app.post('/products', function(req, res){
 	//Search on DB
-	Product.find().where('imdbID', id).exec(function(err, doc){
-		res.sendStatus(doc);
+	Product.find().exec(function(err, doc){
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			res.send(doc);
+		}
 	});
 });
 

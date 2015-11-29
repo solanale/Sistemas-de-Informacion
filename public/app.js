@@ -40,6 +40,11 @@ app.config(function($routeProvider){
             controller: "CestaController",
         })
 
+        .when("/cesta", {
+			templateUrl: views + "cesta.html",
+			controller: "CestaController",
+		})
+
         .when("/elements", {
             templateUrl: views + "elements.html"
         })
@@ -84,28 +89,15 @@ app.controller("IndexController", ['$scope', "$cookies", '$cookieStore', functio
 }]);
 
 app.controller("HomeController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
-	var user = $cookies.username;
-	$scope.user = {'username': user};
+	$scope.products = {};
 
-	//Función que comprueba si un usuario esta logead
-	$scope.notLogged = function() {
-        return angular.isUndefined($cookies.username);
-    };
-
-    //Deslogeamos al usuario
-    $scope.logOut = function(){
-		delete $cookies["username"];
-	};
-
-	$scope.tieneAcceso = function(){
-	    if (angular.isUndefined($cookies.username)){
-	        alert("Debes estar loggeado para usar la cesta");
-	        $location.path("/");
-	    }
-	    else{
-	        $location.path("/cesta");
-	    }
-	};
+	$http.post(addr + '/products')
+		.success(function (data) {
+			products = data;
+		})
+		.error(function (){
+			alert("No hay productos en la base de datos");
+		});
 }]);
 
 app.controller("LogInController", ['$scope','$http', "$cookies", "$cookieStore", "$location", function($scope, $http, $cookies, $cookieStore,
