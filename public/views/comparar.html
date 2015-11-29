@@ -7,17 +7,31 @@
         <div class="row 150%">
 
             <div class="6u 12u$(medium)">
+                <form class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="srch-term1" id="srch-term1" ng-model="busqueda1">
+					<span class="input-group-btn caja-lupa">
+						<button type="submit" class="btn btn-default boton-lupa" ng-click="Buscar1()">
+                            <span class="glyphicon glyphicon-search lupa"></span>
+                        </button>
+					</span>
+                </form>
                 <a href="/prod">
                     <section class="box">
                         <i class="icon big rounded color1 fa-cloud"></i>
                         <h3>Producto 1</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quam consectetur quibusdam magni minus aut modi aliquid.</p>
-                        <h3>{{$scope.prod1.name}}</h3>
-
                     </section>
                 </a>
             </div>
             <div class="6u 12u$(medium)">
+                <form class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="srch-term2" id="srch-term2" ng-model="busqueda2">
+					<span class="input-group-btn caja-lupa">
+						<button type="submit" class="btn btn-default boton-lupa" ng-click="Buscar2()">
+                            <span class="glyphicon glyphicon-search lupa"></span>
+                        </button>
+					</span>
+                </form>
                 <a href="/prod">
                 <section class="box">
                     <i class="icon big rounded color9 fa-desktop"></i>
