@@ -1,0 +1,10 @@
+db.products.insert(
+    {
+	nombre:     		{ type: String },
+	categoria:			{ type: String },
+	subtitulo:			{ type: String },
+	descripcion:		{ type: String },
+	precio:				{ type: Number },
+	valoracion:			{ type: Number },
+	imagen:  			{ type: String },
+});

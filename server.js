@@ -49,31 +49,10 @@ app.use(bodyParser.json());
 
 // POST
 // ==============================================
-app.post('/modificarComentario', function(req, res){
-	Product.findOne().where('_id', req.body._id).exec(function(err, doc){
-		if(doc == null){
-			res.sendStatus(401);
-		}else{
-			if(doc.usuario == undefined){
-				res.sendStatus(401);
-			}else if(doc.usuario == req.body.username){
-				doc.titulo = req.body.titulo;
-				doc.texto = req.body.texto;
-				doc.ultimaModificacion = new Date();
-				doc.save();
-			}else{
-				res.sendStatus(401);
-			}
-		}
-	});
-
-});
 app.post('/login', function(req, res){
 	//User.findOne().where('username', req.body.username).exec(function(err, doc){
 	user.findOne({'username' : req.body.username }).exec(function(err, doc){
-        console.log(err);
 		console.log("LogIn");
-		console.log(doc);
 
 		if(doc == null){
 		    console.log("documento vacio");
@@ -89,22 +68,6 @@ app.post('/login', function(req, res){
 			}else{
 			    console.log("que cojones"),
 				res.send(401);
-			}
-		}
-	});
-});
-
-app.post('/deleteProduct', function(req, res){
-	Product.findOne().where('_id', req.body._id).exec(function(err, doc){
-		if(doc == null){
-			res.sendStatus(401);
-		}else{
-			if(doc.usuario == undefined){
-				res.sendStatus(401);
-			}else if(doc.usuario == req.body.username){
-				doc.remove();
-			}else{
-				res.sendStatus(401);
 			}
 		}
 	});
@@ -141,6 +104,45 @@ app.post('/signup', function(req, res){
 		}
 	});
 });
+
+app.post('/modificarComentario', function(req, res){
+	Product.findOne().where('_id', req.body._id).exec(function(err, doc){
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			if(doc.usuario == undefined){
+				res.sendStatus(401);
+			}else if(doc.usuario == req.body.username){
+				doc.titulo = req.body.titulo;
+				doc.texto = req.body.texto;
+				doc.ultimaModificacion = new Date();
+				doc.save();
+			}else{
+				res.sendStatus(401);
+			}
+		}
+	});
+
+});
+
+
+app.post('/deleteProduct', function(req, res){
+	Product.findOne().where('_id', req.body._id).exec(function(err, doc){
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			if(doc.usuario == undefined){
+				res.sendStatus(401);
+			}else if(doc.usuario == req.body.username){
+				doc.remove();
+			}else{
+				res.sendStatus(401);
+			}
+		}
+	});
+});
+
+
 
 app.post('/addComent', function(req, res, db){
 	console.log(req.body.serie);

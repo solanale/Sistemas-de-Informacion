@@ -147,15 +147,15 @@ app.controller("SignUpController", ['$scope','$http','$cookies', '$location', fu
             $http.post(addr + "/signup", user)
                 .success(function (data){
                     $cookies.username = user.username;
-                    $location.path("/");
+                    $location.path("/home");
                 })
                 .error(function (){
                     alert("Nombre o email ya registrado.");
-                })
+                });
         }else{
             alert("Las contraseñas no coinciden");
         }
-    }
+    };
 }]);
 
 app.controller("BuscarController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
