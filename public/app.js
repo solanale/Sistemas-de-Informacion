@@ -24,7 +24,7 @@ app.config(function($routeProvider){
             templateUrl: views + "perfil.html",
             controller: "PerfilController"
         })
-        .when("/buscar", {
+        .when("/buscar/:id", {
             templateUrl: views + "buscar.html"
 //            controller: "BuscarController"
         })
@@ -168,19 +168,15 @@ app.controller("PerfilController",['$scope','$http', '$cookies',function($scope,
 		})
 }]);
 
-app.controller("BuscarController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
-	var user = $cookies.username;
-	$scope.user = {'username': user};
+app.controller("BuscarController", ['$scope', "$cookies", '$cookieStore', '$routeParams', function($scope, $cookies, $cookieStore, $routeParams){
 
-	//Función que comprueba si un usuario esta logead
-	$scope.notLogged = function() {
-        return angular.isUndefined($cookies.username);
-    };
+	var busqueda = $routeParams.id;
+    $http.post(addr + '/buscar', busqueda).success(function (data) {
+        if(data == null){
+                    alert("No se encuentran series o peliculas con ese nombre");
+                }
+    });
 
-    //Deslogeamos al usuario
-    $scope.logOut = function(){
-		delete $cookies["username"];
-	};
 }]);
 
 app.controller("CompararController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
