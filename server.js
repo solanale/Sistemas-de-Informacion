@@ -20,7 +20,8 @@ var db = mongoose.createConnection(db_lnk, function(err, res) {
 });
 
 // Load models
-var product_schema = mongoose.Schema({
+var product_schema = mongoose.Schema(
+    id:                 { type: Number, unique: true },
 	nombre:     		{ type: String },
 	categoria:			{ type: String },
 	subtitulo:			{ type: String },
@@ -106,6 +107,26 @@ app.post('/signup', function(req, res){
 	});
 });
 
+app.post('/datos', function(req, res){
+	User.findOne().where('username', req.body.username).exec(function(err, doc){
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			res.send(doc);
+		}
+	});
+});
+
+app.post('/Products', function(req, res, db){
+	id = req.body.imdbID;
+
+	//Search on DB
+	Product.find().where('imdbID', id).exec(function(err, doc){
+		res.sendStatus(doc);
+	});
+});
+
+
 app.post('/modificarComentario', function(req, res){
 	Product.findOne().where('_id', req.body._id).exec(function(err, doc){
 		if(doc == null){
@@ -157,14 +178,7 @@ app.post('/addComent', function(req, res, db){
 	});
 	Comentario.save();
 });
-app.post('/Products', function(req, res, db){
-	id = req.body.imdbID;
 
-	//Search on DB
-	Product.find().where('imdbID', id).exec(function(err, doc){
-		res.sendStatus(doc);
-	});
-});
 app.post('/ProductsUser', function(req, res, db){
 	id = req.body.username;
 
@@ -278,15 +292,7 @@ app.post('/add/cesta', function(usr, prod, res){
 		}
 	});
 });
-app.post('/datos', function(req, res){
-	User.findOne().where('username', req.body.username).exec(function(err, doc){
-		if(doc == null){
-			res.sendStatus(401);
-		}else{
-			res.send(doc);
-		}
-	});
-});
+
 // ============================================= //
 
 app.use(express.static(__dirname + '/public')); //Si no encuentras algo, estara en Public

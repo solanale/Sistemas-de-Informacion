@@ -7,7 +7,7 @@ db.users.insert(
       	"email":        "admin@amazop.es",
       	"password":     "admin",
       	"info":         "permisos de super de vaca",
-      	"cesta":        ["ej1","ej2"],
+      	"cesta":        [1,2],
    }
 )
 

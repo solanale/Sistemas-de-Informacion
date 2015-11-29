@@ -2,7 +2,8 @@ var app = angular.module('app-web', ['ngRoute', 'ngCookies', 'ui.bootstrap']);
 
 //Constantes
 var addr = "http://localhost:8080";
-var views = "views/"
+var views = "views/";
+var Busqueda = "";
 
 app.config(function($routeProvider){
 	$routeProvider
@@ -26,7 +27,7 @@ app.config(function($routeProvider){
         })
         .when("/buscar", {
             templateUrl: views + "buscar.html"
-//            controller: "BuscarController"
+            controller: "BuscarController"
         })
 
         .when("/comparar", {
@@ -65,6 +66,7 @@ app.config(function($routeProvider){
 app.controller("IndexController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
 	var user = $cookies.username;
 	$scope.user = {'username': user};
+	Busqueda = $scope.busqueda
 
 	//Función que comprueba si un usuario esta logead
 	$scope.notLogged = function() {
@@ -76,14 +78,8 @@ app.controller("IndexController", ['$scope', "$cookies", '$cookieStore', functio
 		delete $cookies["username"];
 	};
 
-	$scope.tieneAcceso = function(){
-	    if (angular.isUndefined($cookies.username)){
-	        alert("Debes estar loggeado para usar la cesta");
-	        $location.path("/");
-	    }
-	    else{
-	        $location.path("/cesta");
-	    }
+	$scope.Buscar= function(){
+	    $location.path("/buscar");
 	};
 }]);
 
@@ -169,18 +165,28 @@ app.controller("PerfilController",['$scope','$http', '$cookies',function($scope,
 }]);
 
 app.controller("BuscarController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
-	var user = $cookies.username;
-	$scope.user = {'username': user};
+	var product = '';
+	//Función para concatenar elementos
 
-	//Función que comprueba si un usuario esta logead
-	$scope.notLogged = function() {
-        return angular.isUndefined($cookies.username);
-    };
-
-    //Deslogeamos al usuario
-    $scope.logOut = function(){
-		delete $cookies["username"];
-	};
+    $http.post('/buscar', Busqueda).success(function (data) {
+		if(data.Response == "False"){
+			alert("No se encuentran productos con ese nombre");
+		}else{
+//			dummySeries = data.Search;
+//			//Obtenemos el primer elemento
+//			$scope.aux = dummySeries[0];
+//			$http.get('http://www.omdbapi.com/?i=' + $scope.aux.imdbID).success(function (dataOne){
+//				$scope.series = (dataOne);
+//			});
+//			//Obtenemos el resto de elementos
+//			for(var i = 1; i<dummySeries.length;i++){
+//				$scope.aux = dummySeries[i];
+//				$http.get('http://www.omdbapi.com/?i=' + $scope.aux.imdbID).success(function (dataOne) {
+//					$scope.series = $.concat($scope.series, dataOne);
+//				});
+//			}
+		}
+     });
 }]);
 
 app.controller("CompararController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){

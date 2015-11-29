@@ -1,10 +1,16 @@
 db.products.insert(
     {
-	nombre:     		{ type: String },
-	categoria:			{ type: String },
-	subtitulo:			{ type: String },
-	descripcion:		{ type: String },
-	precio:				{ type: Number },
-	valoracion:			{ type: Number },
-	imagen:  			{ type: String },
-});
+    id:                 1,
+	nombre:     		"Nexus 5",
+	categoria:			"electronica",
+	subtitulo:			"Google Nexus 5",
+	descripcion:		"pepino",
+	precio:				100,
+	valoracion:			5,
+	imagen:  			"https://upload.wikimedia.org/wikipedia/commons/a/ac/Nexus_5_Front_View.png",
+    }
+)
+
+
+db.products.find()
+db.products.remove({})
