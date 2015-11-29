@@ -5,82 +5,20 @@
 			<h2>Amazop</h2>
 			<p>Your Amazing Shopping WebSite</p>
 		</header>
-		<div ng-repeat="p in categorias">
-			<p>HOLA QUE TAL: {{p}}</p>
-		</div>
-		<h3 class="migas">Mas Popular</h3>
-		<div class="row 150%">
-			<div class="4u 12u$(medium)">
-				<a href="#/producto">
-				<section class="box">
-					<i class="icon big rounded color1 fa-cloud"></i>
-					<h3>Producto 1</h3>
-					<p>HOLALorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quam consectetur quibusdam magni minus aut modi aliquid.</p>
-				</section>
-				</a>
-			</div>
-			<div class="4u 12u$(medium)">
-				<section class="box">
-					<i class="icon big rounded color9 fa-desktop"></i>
-					<h3>Producto 2</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium ullam consequatur repellat debitis maxime.</p>
-				</section>
-			</div>
-			<div class="4u$ 12u$(medium)">
-				<section class="box">
-					<i class="icon big rounded color6 fa-rocket"></i>
-					<h3>Producto 3</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque eaque eveniet, nesciunt molestias. Ipsam, voluptate vero.</p>
-				</section>
-			</div>
-		</div>
-		<h3 class="migas">Tendencias</h3>
-		<div class="row 150%">
-			<div class="4u 12u$(medium)">
-				<section class="box">
-					<i class="icon big rounded color1 fa-cloud"></i>
-					<h3>Producto 4</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quam consectetur quibusdam magni minus aut modi aliquid.</p>
-				</section>
-			</div>
-			<div class="4u 12u$(medium)">
-				<section class="box">
-					<i class="icon big rounded color9 fa-desktop"></i>
-					<h3>Producto 5</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium ullam consequatur repellat debitis maxime.</p>
-				</section>
-			</div>
-			<div class="4u$ 12u$(medium)">
-				<section class="box">
-					<i class="icon big rounded color6 fa-rocket"></i>
-					<h3>Producto 6</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque eaque eveniet, nesciunt molestias. Ipsam, voluptate vero.</p>
-				</section>
-			</div>
-		</div>
-		<button id="mas" class="button" type="button" onclick="ocultarId('mas'); mostrarInlineId('menos'); mostrarBlockClass('oculto');">Ver mas</button>
-		<h3 class="oculto migas">Tendencias</h3>
-		<div class="oculto row 150%">
-			<div class="4u 12u$(medium)">
-				<section class="box">
-					<i class="icon big rounded color1 fa-cloud"></i>
-					<h3>Producto 7</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quam consectetur quibusdam magni minus aut modi aliquid.</p>
-				</section>
-			</div>
-			<div class="4u 12u$(medium)">
-				<section class="box">
-					<i class="icon big rounded color9 fa-desktop"></i>
-					<h3>Producto 8</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium ullam consequatur repellat debitis maxime.</p>
-				</section>
-			</div>
-			<div class="4u$ 12u$(medium)">
-				<section class="box">
-					<i class="icon big rounded color6 fa-rocket"></i>
-					<h3>Producto 9</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque eaque eveniet, nesciunt molestias. Ipsam, voluptate vero.</p>
-				</section>
+		<div ng-repeat="c in categorias">
+			<button ng-if="$index == 2" id="mas" class="button" type="button" onclick="ocultarId('mas'); mostrarInlineId('menos'); mostrarBlockClass('oculto');">Ver mas</button>
+			<h3 ng-attr-class="{{($index > 1) && 'oculto migas' || 'migas' }}">
+				<a href="/">{{c}}</a>
+			</h3>
+			<div ng-attr-class="{{($index > 1) && 'oculto row 150%' || 'row 150%' }}">
+				<div class="4u 12u$(medium)" ng-repeat="p in products | filter:{ categoria: c }">
+					<section class="box">
+						<img src="{{p.imagen}}"/>
+						<h2>{{p.nombre}}</h2>
+						<h3>{{p.subtitulo}}</h3>
+						<p style="text-align:justify">{{p.descripcion}}</p>
+					</section>
+				</div>
 			</div>
 		</div>
 		<button id="menos" class="button" type="button" onclick="ocultarId('menos'); mostrarInlineId('mas'); ocultarClass('oculto');" style="display:none">Ver menos</button>
