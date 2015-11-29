@@ -63,10 +63,10 @@ app.config(function($routeProvider){
 		.otherwise({ redirectTo: "/" });
 });
 
-app.controller("IndexController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
+app.controller("IndexController", ['$scope', "$cookies", '$cookieStore','$location', function($scope, $cookies, $cookieStore,$location){
 	var user = $cookies.username;
 	$scope.user = {'username': user};
-	Busqueda = $scope.busqueda
+
 
 	//Función que comprueba si un usuario esta logead
 	$scope.notLogged = function() {
@@ -79,7 +79,9 @@ app.controller("IndexController", ['$scope', "$cookies", '$cookieStore', functio
 	};
 
 	$scope.Buscar= function(){
+	    Busqueda = $scope.busqueda;
 	    $location.path("/buscar");
+	    console.log(Busqueda);
 	};
 }]);
 
@@ -160,17 +162,22 @@ app.controller("PerfilController",['$scope','$http', '$cookies',function($scope,
 	$http.post(addr + "/datos", send)
 		.success(function(data){
 			$scope.info = data;
-		})
+		});
 }]);
 
-app.controller("BuscarController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
-	var product = '';
+app.controller("BuscarController", ['$scope', "$cookies", '$cookieStore','$http', function($scope, $cookies, $cookieStore,$http){
+	$scope.product= {};
+	$scope.product.id = Busqueda;
 	//Función para concatenar elementos
 
-    $http.post('/buscar', Busqueda).success(function (data) {
-		if(data.Response == "False"){
-			alert("No se encuentran productos con ese nombre");
-		}else{
+
+    $http.post(addr+'/buscar', $scope.product).success(function (data) {
+     console.log(data);
+     product = data;
+//		if(data.Response == "False"){
+//			alert("No se encuentran productos con ese nombre");
+//		}else{
+//		    alert("bieeen");
 //			dummySeries = data.Search;
 //			//Obtenemos el primer elemento
 //			$scope.aux = dummySeries[0];
@@ -184,7 +191,7 @@ app.controller("BuscarController", ['$scope', "$cookies", '$cookieStore', functi
 //					$scope.series = $.concat($scope.series, dataOne);
 //				});
 //			}
-		}
+
      });
 }]);
 

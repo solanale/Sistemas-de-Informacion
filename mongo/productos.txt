@@ -1,13 +1,13 @@
 db.products.insert(
     {
-    id:                 1,
-	nombre:     		"Nexus 5",
-	categoria:			"electronica",
-	subtitulo:			"Google Nexus 5",
-	descripcion:		"pepino",
-	precio:				100,
-	valoracion:			5,
-	imagen:  			"https://upload.wikimedia.org/wikipedia/commons/a/ac/Nexus_5_Front_View.png",
+        "id":               "1",
+	    "nombre":           "Nexus 5",
+        "categoria":        "electronica",
+        "subtitulo":        "Google Nexus 5",
+    	"descripcion":      "pepino",
+        "precio":           "100",
+        "valoracion":       "5",
+        "imagen":           "https://upload.wikimedia.org/wikipedia/commons/a/ac/Nexus_5_Front_View.png",
     }
 )
 

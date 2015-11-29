@@ -78,7 +78,7 @@ app.post('/login', function(req, res){
 app.post('/signup', function(req, res){
     console.log("SignUp");
 
-	user.findOne({'username' : req.body.username }).exec(function(err, doc){
+	user.findOne({'username' : req.body.username}).exec(function(err, doc){
 		if(doc != null){
 			res.send(401);
 		}else{
@@ -119,34 +119,22 @@ app.post('/datos', function(req, res){
 ////////////////////////////////
 app.post('/buscar', function(req, res){
 	//User.findOne().where('username', req.body.username).exec(function(err, doc){
-	console.log(req.body);
-	Products.find({'id' : req.body }).exec(function(err, doc){
-	    console.log(req.body.busqueda);
+	console.log(req);
+	Product.find({'id' : req.body.id }).exec(function(err, doc){
 		console.log("Busqueda");
+		console.log(doc);
 
 		if(doc == null){
 		    console.log("documento vacio");
 		    //console.log(req.body);
 			res.send(401);
 		}else{
-			if(doc.password == undefined){
-			    console.log("pass indefinido");
-				res.send(401);
-			}else if(doc.password == req.body.pass){
-			    console.log("correcto");
-				res.send(200);
-			}else{
-			    console.log("que cojones"),
-				res.send(401);
-			}
+            console.log("correcto");
+            res.send(200);
 		}
 	});
 });
 ///////////////////////////
-
-
-
-
 
 app.post('/Products', function(req, res){
 
