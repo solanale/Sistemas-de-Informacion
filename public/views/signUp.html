@@ -44,11 +44,11 @@
 
                 <div class="1u"></div>
                 <div class="5u 12u$(small)">
-                    <input  id="male" type="radio" name="sex" value="H" ng-model="user.gender.male" ng-checked="status"/>
+                    <input  id="male" type="radio" name="sex" value="H" ng-model="user.male" ng-checked="status"/>
                     <label for="male" style="color:#ffffff"> Hombre</label>
                 </div>
                 <div class="5u 12u$(small)">
-                    <input id="female" type="radio" name="sex" value="M" ng-model="user.gender.female"/>
+                    <input id="female" type="radio" name="sex" value="M" ng-model="user.female"/>
                     <label for="female" style="color:#ffffff"> Mujer</label>
                 </div>
                 <div class="1u$"></div>
@@ -72,7 +72,7 @@
         </form>
     </div>
 
-    <span ng-show="form.email.$error && form.email.$touched"><h4>Este no es un email valido.</h4></span>
+    <span ng-show="form.email.$error && form.email.$dirty"><h4>Introduce un email con la forma user@adress.</h4></span>
     <span ng-show="form.$invalid || form.$pending"><h4>Los campos marcados con * son obligatorios</h4></span>
     <p>¿Ya tienes una cuenta? <a href="/log"> <u>Inicia sesión</u></a></p>
 

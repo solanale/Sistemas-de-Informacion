@@ -131,28 +131,31 @@ $location){
 
 }]);
 
-app.controller("SignUpController", ['$scope','$http', '$location', function($scope, $http, $location){
+app.controller("SignUpController", ['$scope','$http','$cookies', '$location', function($scope, $http, $cookies, $cookieStore, $location){
 
     $scope.user = {};
     $scope.status=true;
 
 	$scope.update = function(user){
-		//console.log(user);
 
-			console.log('a');
-			if (user.pass == user.repass){
-				console.log(user.pass);
-				$http.post(addr + "/signup", user)
-					.success(function (user){
-						$location.path("/");
-					})
-					.error(function (){
-						alert("Nombre o email ya registrado.");
-					})
-			}else{
-				alert("Las contraseñas no coinciden");
-			}
-		}
+        if (user.pass == user.repass){
+            if (user.male != null){
+                user.gender=true;
+            }else{
+                user.gender=false;
+            }
+            $http.post(addr + "/signup", user)
+                .success(function (data){
+                    $cookies.username = user.username;
+                    $location.path("/");
+                })
+                .error(function (){
+                    alert("Nombre o email ya registrado.");
+                })
+        }else{
+            alert("Las contraseñas no coinciden");
+        }
+    }
 }]);
 
 app.controller("BuscarController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){

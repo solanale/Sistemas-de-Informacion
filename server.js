@@ -114,7 +114,6 @@ app.post('/signup', function(req, res){
     console.log("SignUp");
 
 	user.findOne({'username' : req.body.username }).exec(function(err, doc){
-		 console.log(doc);
 		if(doc != null){
 			res.send(401);
 		}else{
@@ -129,7 +128,7 @@ app.post('/signup', function(req, res){
 								apellido:     req.body.surname,
 								info:         req.body.info,
 								email:        req.body.email,
-                                gender:       req.body.gender.male,
+                                gender:       req.body.gender,
 								password:     req.body.pass
 						});
 						Usuario.save()
