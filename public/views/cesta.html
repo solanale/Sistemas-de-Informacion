@@ -1,7 +1,10 @@
 <!-- One -->
 <section id="one" class="wrapper style1 special">
 
-	<div class="container">
+	<h2 ng-show="notLogged()">Inicia sesión para disponer de una cesta</h2>
+	<p ng-show="notLogged()">¿No tienes una cuenta? <a href="#/sign"> <u>Registrate</u></a></p>
+
+	<div class="container" ng-hide="notLogged()">
 
 		<header class="major">
 			<h2>Tu Cesta Personal</h2>

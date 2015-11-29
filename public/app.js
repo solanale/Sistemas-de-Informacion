@@ -20,9 +20,9 @@ app.config(function($routeProvider){
             controller: "SignUpController"
         })
 
-        .when("/datos", {
-            templateUrl: views + "partialdatos.html",
-            controller: "ControladorDatos"
+        .when("/perfil", {
+            templateUrl: views + "perfil.html",
+            controller: "PerfilController"
         })
         .when("/buscar", {
             templateUrl: views + "buscar.html"
@@ -36,7 +36,7 @@ app.config(function($routeProvider){
 
         .when("/cesta", {
             templateUrl: views + "cesta.html",
-//            controller: "CestaController"
+            controller: "CestaController",
         })
 
         .when("/elements", {
@@ -158,6 +158,16 @@ app.controller("SignUpController", ['$scope','$http','$cookies', '$location', fu
     };
 }]);
 
+app.controller("PerfilController",['$scope','$http', '$cookies',function($scope, $http, $cookies){
+	var send = {username: $cookies.username};
+	console.log(send.username);
+	//Receive data comments
+	$http.post(addr + "/datos", send)
+		.success(function(data){
+			$scope.info = data;
+		})
+}]);
+
 app.controller("BuscarController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
 	var user = $cookies.username;
 	$scope.user = {'username': user};
@@ -188,19 +198,9 @@ app.controller("CompararController", ['$scope', "$cookies", '$cookieStore', func
 	};
 }]);
 
-app.controller("CestaController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
-	var user = $cookies.username;
-	$scope.user = {'username': user};
+app.controller("CestaController", ['$scope','$http', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore,$http){
 
-	//Función que comprueba si un usuario esta logead
-	$scope.notLogged = function() {
-        return angular.isUndefined($cookies.username);
-    };
 
-    //Deslogeamos al usuario
-    $scope.logOut = function(){
-		delete $cookies["username"];
-	};
 }]);
 
 //app.controller("ControladorOpciones", ['$scope','$http', "$cookies", "$cookieStore", "$location", function($scope, $http, $cookies, $cookieStore,
@@ -578,15 +578,7 @@ app.controller("CestaController", ['$scope', "$cookies", '$cookieStore', functio
 //	};
 //}]);
 //
-//
-//app.controller("ControladorDatos",['$scope','$http', '$cookies',function($scope, $http, $cookies){
-//	var send = {username: $cookies.username};
-//	console.log(send.username);
-//	//Receive data comments
-//	$http.post(addr + "/datos", send)
-//		.success(function(data){
-//			$scope.info = data;
-//		})
-//}]);
+
+
 //
 //

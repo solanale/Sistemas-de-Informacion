@@ -52,6 +52,7 @@ app.use(bodyParser.json());
 app.post('/login', function(req, res){
 	//User.findOne().where('username', req.body.username).exec(function(err, doc){
 	user.findOne({'username' : req.body.username }).exec(function(err, doc){
+	    console.log(req.body.username);
 		console.log("LogIn");
 
 		if(doc == null){
