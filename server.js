@@ -78,7 +78,7 @@ app.post('/login', function(req, res){
 app.post('/signup', function(req, res){
     console.log("SignUp");
 
-	user.findOne({'username' : req.body.username}).exec(function(err, doc){
+	user.findOne({'username' : req.body.username }).exec(function(err, doc){
 		if(doc != null){
 			res.send(401);
 		}else{
@@ -108,11 +108,14 @@ app.post('/signup', function(req, res){
 });
 
 app.post('/datos', function(req, res){
-	User.findOne().where('username', req.body.username).exec(function(err, doc){
+	console.log(req.body);
+	user.findOne().where('username', req.body.username).exec(function(err, doc){
+		console.log(doc);
 		if(doc == null){
 			res.sendStatus(401);
 		}else{
-			res.send(doc);
+			res.json(doc);
+			console.log("estoy enviando");
 		}
 	});
 });
