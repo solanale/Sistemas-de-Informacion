@@ -37,13 +37,8 @@ app.config(function($routeProvider){
 
         .when("/cesta", {
             templateUrl: views + "cesta.html",
-            controller: "CestaController",
+            controller: "MuestraCestaController",
         })
-
-        .when("/cesta", {
-			templateUrl: views + "cesta.html",
-			controller: "CestaController",
-		})
 
         .when("/elements", {
             templateUrl: views + "elements.html"
@@ -128,6 +123,20 @@ app.controller("CestaController", ['$scope','$http', "$cookies", '$cookieStore',
                 alert("El producto no pudo añadirse");
             })
     }
+}]);
+
+app.controller("MuestraCestaController", ['$scope','$http', "$cookies", '$cookieStore', function($scope, $http, $cookies, $cookieStore){
+
+    $scope.cesta = {};
+
+    $http.post(addr + '/muestraCesta', $cookies.username)
+        .success(function (data) {
+            $scope.cesta = data;
+            $location.path("/cesta");
+        })
+        .error(function (){
+            alert("Problema al cargar su cesta");
+        })
 }]);
 
 app.controller("LogInController", ['$scope','$http', "$cookies", "$cookieStore", "$location", function($scope, $http, $cookies, $cookieStore,

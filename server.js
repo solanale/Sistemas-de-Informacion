@@ -194,6 +194,24 @@ app.post('/addCesta', function(req, res){
 	});
 });
 
+app.post('/muestraCesta', function(req, res){
+	user.findOne({'username' : req.body.username}).exec(function(err, doc){
+		console.log(req.body);
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			Product.find({cesta : doc.cesta}).exec(function(err2, doc2){
+				console.log(req.body);
+				if(doc2 == null){
+					res.sendStatus(401);
+				}else{
+					res.send(doc2);
+				}
+			});
+		}
+	});
+});
+
 app.post('/modificarComentario', function(req, res){
 	Product.findOne().where('_id', req.body._id).exec(function(err, doc){
 		if(doc == null){
