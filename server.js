@@ -39,7 +39,7 @@ var users_schema = new mongoose.Schema({
 	email:        { type: String, unique: true },
 	password:     { type: String },
     info:         { type: String },
-    cesta:        { type: [Number] },
+    cesta:        { type: [String] },
 });
 
 var user = db.model('user', users_schema);
