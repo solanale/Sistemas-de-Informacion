@@ -26,6 +26,7 @@
                         <h4>{{result1.precio | currency}}</h4>
                         <h4>{{result1.valoracion}}</h4>
                         <p>{{result1.descripcion}}</p>
+                        <button class="button" ng-hide="notLogged()" ng-controller="CestaController" ng-click="add(p)">Añadir a la cesta</button>
                     </section>
                 <!--</a>-->
             </div>
@@ -46,6 +47,7 @@
                     <h4>{{result2.precio | currency}}</h4>
                     <h4>{{result2.valoracion}}</h4>
                     <p>{{result2.descripcion}}</p>
+                    <button class="button" ng-hide="notLogged()" ng-controller="CestaController" ng-click="add(p)">Añadir a la cesta</button>
                 </section>
                 <!--</a>-->
             </div>
