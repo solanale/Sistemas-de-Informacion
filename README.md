@@ -57,6 +57,13 @@ Con esto el sistema queda listo para iniciarse ejecutando en la ruta del reposit
 
 $ node server.js
 
+#### Addons
+
+- Nodemon: Daemon que autorecarga el servidor si se produce algun cambio
+    $ sudo npm install -g nodemon
+    Para lanzar el servidor: $ nodemon server.js
+
+    
 
 
 
