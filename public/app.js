@@ -175,7 +175,7 @@ app.controller("SignUpController", ['$scope','$http','$window','$cookies',"$loca
             }
             $http.post(addr + "/signup", user)
                 .success(function (data){
-                    $cookies.put('username',login.username);
+                    $cookies.put('username',user.username);
                     $window.location.reload();
                     $location.path("/");
                 })
