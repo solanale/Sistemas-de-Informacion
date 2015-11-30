@@ -7,13 +7,11 @@
 		</header>
 		<div ng-repeat="c in categorias">
 			<button ng-if="$index == 2" id="mas" class="button" type="button" onclick="ocultarId('mas'); mostrarInlineId('menos'); mostrarBlockClass('oculto');">Ver mas</button>
-			<h3 ng-attr-class="{{($index > 1) && 'oculto migas' || 'migas' }}">
-				<a href="/">{{c}}</a>
-			</h3>
-			<div ng-attr-class="{{($index > 1) && 'oculto row 150%' || 'row 150%' }}">
-				<div class="4u 12u$(medium)" ng-repeat="p in products | filter:{ categoria: c }">
-					<section class="box">
-						<img src="{{p.imagen}}"/>
+			<h3 ng-attr-class="{{($index > 1) && 'oculto migas' || 'migas' }}">{{c}}</h3>
+			<div style="overflow:hidden" ng-attr-class="{{($index > 1) && 'oculto row 150%' || 'row 150%' }}">
+				<div style="height:inherit" class="4u 12u$(medium)" ng-repeat="p in products | filter:{ categoria: c }">
+					<section style="height:inherit" class="box">
+						<img class="img-rounded center-block" src="{{p.imagen}}"/>
 						<h2>{{p.nombre}}</h2>
 						<h3>{{p.subtitulo}}</h3>
 						<p>{{p.descripcion}}</p>
@@ -22,7 +20,7 @@
 				</div>
 			</div>
 		</div>
-		<button id="menos" class="button" type="button" onclick="ocultarId('menos'); mostrarInlineId('mas'); ocultarClass('oculto');" style="display:none">Ver menos</button>
+		<button id="menos" class="button" type="button" onclick="ocultarId('menos'); mostrarInlineId('mas'); ocultarClass('oculto');">Ver menos</button>
 	</div>
 </section>
 

@@ -28,6 +28,6 @@ db.users.insert(
 
 db.users.find()
 db.users.remove({})
-db.users.find({cesta: "1"})
+db.users.find({cesta: ["1","2"]})
 
 

@@ -191,6 +191,10 @@
 		display: none;
 	}
 
+	#menos {
+		display: none;
+	}
+
 	.migas {
 		text-align:left;
 	}

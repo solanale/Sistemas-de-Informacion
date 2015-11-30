@@ -124,37 +124,41 @@ app.post('/datos', function(req, res){
 app.post('/buscar', function(req, res){
 	//User.findOne().where('username', req.body.username).exec(function(err, doc){
 	console.log(req.body);
-	Product.find({'id' : req.body.id }).exec(function(err, doc){
-		console.log("Busqueda");
-		console.log(doc);
+	var term = new RegExp(req.body.id, 'i');
+	Product.find().or([{'nombre' : {$regex: term}} , {'id' : {$regex: term}}])
+		.exec(function(err, doc){
+			console.log("Busqueda");
+			console.log(doc);
 
-		if(doc == []){
-		    console.log("documento vacio");
-		    //console.log(req.body);
-			res.send(401);
-		}else{
-            console.log("correcto");
-            res.send(doc);
-		}
-	});
+			if(doc == []){
+				console.log("documento vacio");
+				//console.log(req.body);
+				res.send(401);
+			}else{
+				console.log("correcto");
+				res.send(doc);
+			}
+	})	;
 });
 
 app.post('/comparar', function(req, res){
 	//User.findOne().where('username', req.body.username).exec(function(err, doc){
 	console.log(req.body);
-	Product.findOne({'id' : req.body.id }).exec(function(err, doc){
-		console.log("Busqueda");
-		console.log(doc);
+	var term = new RegExp(req.body.id, 'i');
+	Product.findOne().or([{'nombre' : {$regex: term}} , {'id' : {$regex: term}}])
+		.exec(function(err, doc){
+			console.log("Busqueda");
+			console.log(doc);
 
-		if(doc == null){
-		    console.log("documento vacio");
-		    //console.log(req.body);
-			res.send(401);
-		}else{
-            console.log("correcto");
-            res.send(doc);
-		}
-	});
+			if(doc == null){
+				console.log("documento vacio");
+				//console.log(req.body);
+				res.send(401);
+			}else{
+				console.log("correcto");
+				res.send(doc);
+			}
+		});
 });
 
 ///////////////////////////
@@ -190,6 +194,22 @@ app.post('/addCesta', function(req, res){
 			doc.cesta.addToSet(req.body.product);
 			doc.save();
 			res.sendStatus(200);
+		}
+	});
+});
+
+app.post('/muestraCesta', function(req, res){
+	user.findOne({'username' : req.body.username}).exec(function(err, doc){
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			Product.find({'id' : {$in : doc.cesta}}).exec(function(err2, doc2){
+				if(doc2 == null){
+					res.sendStatus(401);
+				}else{
+					res.send(doc2);
+				}
+			});
 		}
 	});
 });

@@ -1,128 +1,130 @@
 db.products.insert(
    {
       	"id":			"1",
-      	"nombre":		"Producto1",
+      	"nombre":		"Huawey G Play Mini",
 		"categoria":	"Categoria1",
-		"subtitulo":	"Producto 1 de la categoría 1",
-		"descripcion":	"Qué bonito es el producto 1 de la categoría 1\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
-		"precio":		"10",
+		"subtitulo":	"Color negro",
+		"descripcion":	"El Huawei G Play Mini es un smartphone muy completo con unas prestaciones que marcan la diferencia en cada ámbito. Comenzando por el hardware, este teléfono móvil incorpora un procesador de ocho núcleos y memoria RAM de 2 GB, dos aspectos que proporcionan fluidez y velocidad en los procesos. La pantalla, de 5 pulgadas, cuenta con resolución HD, lo que garantiza gráficos definidos para que disfrutes al máximo de juegos, vídeos, fotos…",
+		"precio":		"169",
 		"valoracion":	"3",
 		"ventas":		"8",
-		"imagen":       "images/profile_placeholder.gif",
+		"imagen":       "http://www.redcoon.es/res/shop/cataloge/product_200/B609384.jpg",
    }
 )
 
 db.products.insert(
    {
       	"id":			"2",
-        "nombre":		"Producto2",
+        "nombre":		"Sony Experia M4",
 		"categoria":	"Categoria1",
-		"subtitulo":	"Producto 2 de la categoría 1",
-		"descripcion":	"Qué bonito es el producto 2 de la categoría 1\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
-		"precio":		"20",
+		"subtitulo":	"Smartphone para el dia a dia",
+		"descripcion":	"Con un nombre como éste no podría de ser de otra manera. El Sony Xperia M4 Aqua presenta una asombrosa resistencia al agua para que ningún contratiempo te detenga. Una protección que lo hace también inmune al polvo y que hace de este smartphone el compañero perfecto para exprimir al máximo tu ritmo de vida.",
+		"precio":		"200",
 		"valoracion":	"4",
 		"ventas":		"6",
-		"imagen":       "images/profile_placeholder.gif",
+		"imagen":       "http://www.redcoon.es/res/shop/cataloge/product_200/B607279.jpg",
    }
 )
 
 db.products.insert(
    {
       	"id":			"3",
-		"nombre":		"Producto3",
+		"nombre":		"Samsung Galaxy S",
 		"categoria":	"Categoria1",
-		"subtitulo":	"Producto 3 de la categoría 1",
-		"descripcion":	"Qué bonito es el producto 3 de la categoría 1\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
-		"precio":		"5",
+		"subtitulo":	"",
+		"descripcion":	"El mejor smartphone del mercado bla, bla bla..",
+		"precio":		"120",
 		"valoracion":	"4",
 		"ventas":		"600",
-		"imagen":       "images/profile_placeholder.gif",
+		"imagen":       "http://www.mercadoactual.es/imgproductos/img500000/Small/moviles-smartphones-telef.-movil-samsung-galaxy-s-advance-i-gt-i9070w.jpg",
    }
 )
 
 db.products.insert(
    {
       	"id":			"4",
-		"nombre":		"Producto1",
+		"nombre":		"GM EV1",
 		"categoria":	"Categoria2",
-		"subtitulo":	"Producto 1 de la categoría 2",
-		"descripcion":	"Qué bonito es el producto 1 de la categoría 2\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
+		"subtitulo":	"Coche hibrido",
+		"descripcion":	"Algunos se acordarán que en los años 90, General Motors decidió que iba a conquistar el mundo con el coche eléctrico. De 1996 a 1999, GM fabricó y vendió el EV1, el primer coche eléctrico diseñado como tal y fabricado en serie. Fue una serie muy pequeña, pues se fabricaron unas 1.100 unidades aproximadamente. Ahora puede ser tuyo.",
 		"precio":		"30",
 		"valoracion":	"5",
 		"ventas":		"5",
-		"imagen":       "images/profile_placeholder.gif",
+		"imagen":       "http://i.blogs.es/610531/autowp.ru_gm_ev-1_electric_car_6/200_200.jpg",
    }
 )
 
 db.products.insert(
    {
       	"id":			"5",
-		"nombre":		"Producto2",
+		"nombre":		"Audi A5",
 		"categoria":	"Categoria2",
-		"subtitulo":	"Producto 2 de la categoría 2",
-		"descripcion":	"Qué bonito es el producto 2 de la categoría 2\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
-		"precio":		"40",
+		"subtitulo":	"Audi A5",
+		"descripcion":	"Se venden coches de ocasion Audi  A5 sporback MULTITRONIC S-LINE automático y a diesel con potente motor de 150 cv y 2000 c.c muy bien conservado y con garantia, este coches de ocasion es año 2014",
+		"precio":		"50000",
 		"valoracion":	"2",
 		"ventas":		"1",
-		"imagen":       "images/profile_placeholder.gif",
+		"imagen":       "https://publicamianuncio.es/images/2015/10/19/11126/thumb_coches-de-ocasion-audi-a5-1_4.jpg",
    }
 )
 
 db.products.insert(
    {
       	"id":			"6",
-		"nombre":		"Producto3",
+		"nombre":		"Citroen C3",
 		"categoria":	"Categoria2",
-		"subtitulo":	"Producto 3 de la categoría 2",
-		"descripcion":	"Qué bonito es el producto 3 de la categoría 2\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
+		"subtitulo":	"Citroen C3",
+		"descripcion":	"Con su parabrisas Zénith, el Citroën C3 es único. La gran superficie acristalada aporta luminosidad, visibilidad y una sensación inédita de libertad.",
 		"precio":		"10",
 		"valoracion":	"5",
 		"ventas":		"100",
-		"imagen":       "images/profile_placeholder.gif",
+		"imagen":       "http://www.rentacarpatry.com/images/alquiler_coches_malaga7.jpg",
    }
 )
 
 db.products.insert(
    {
       	"id":			"7",
-		"nombre":		"Producto1",
+		"nombre":		"Zapatillas Nike Amarillas",
 		"categoria":	"Categoria3",
-		"subtitulo":	"Producto 1 de la categoría 3",
-		"descripcion":	"Qué bonito es el producto 1 de la categoría 3\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
-		"precio":		"50",
+		"subtitulo":	"Zapatillas para padel",
+		"descripcion":	"ZAPATILLAS PADEL HOMBRE ASICS GEL-BELA 5 SG FLUOR-GRIS",
+		"precio":		"100",
 		"valoracion":	"4",
 		"ventas":		"8",
-		"imagen":       "images/profile_placeholder.gif",
+		"imagen":       "http://www.sport-click.com/productdefaultimage/eeb93c0e-7754-4973-a8da-ffcbcafaa91f.jpg?w=200&h=200",
    }
 )
 
 db.products.insert(
    {
       	"id":			"8",
-		"nombre":		"Producto2",
+		"nombre":		"Zapatillas Squash Azules",
 		"categoria":	"Categoria3",
-		"subtitulo":	"Producto 2 de la categoría 3",
-		"descripcion":	"Qué bonito es el producto 2 de la categoría 3\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
-		"precio":		"60",
+		"subtitulo":	"Zapatillas para squash",
+		"descripcion":	"ZAPATILLAS DE SQUASH HOMBRE ADIDAS ESSENCE 11 AZUL"
+		"precio":		"80",
 		"valoracion":	"1",
 		"ventas":		"2",
-		"imagen":       "images/profile_placeholder.gif",
+		"imagen":       "http://www.sport-click.com/productdefaultimage/2eacb9cc-bf3a-4769-a2b1-87a8064c01cb.jpg?w=200&h=200",
    }
 )
 
 db.products.insert(
    {
       	"id":			"9",
-		"nombre":		"Producto3",
+		"nombre":		"Zapatillas Deportivas Niña",
 		"categoria":	"Categoria3",
-		"subtitulo":	"Producto 3 de la categoría 3",
-		"descripcion":	"Qué bonito es el producto 3 de la categoría 3\nPero no se hacer\rsaltos de linea<br \>de ningún tipo",
-		"precio":		"10",
+		"subtitulo":	"Calzado deportivo para niña",
+		"descripcion":	"Zapatillas deportivas modelo flex experience, fabricadas con materiales de tejido rejilla, napa sintética y forro interior textil. Con suelas de goma ligeras y flexibles, cordonera central y velcro regulable de la firma NIKE",
+		"precio":		"37",
 		"valoracion":	"5",
 		"ventas":		"30",
-		"imagen":       "images/profile_placeholder.gif",
+		"imagen":       "https://www.marlosonline.es/23085-home_default/zapatillas-deportivas-pink-black-nike.jpg",
    }
 )
+
+
 
 db.products.find()
 db.products.remove({})
