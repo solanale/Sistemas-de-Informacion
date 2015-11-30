@@ -138,6 +138,25 @@ app.post('/buscar', function(req, res){
 		}
 	});
 });
+
+app.post('/comparar', function(req, res){
+	//User.findOne().where('username', req.body.username).exec(function(err, doc){
+	console.log(req.body);
+	Product.findOne({'id' : req.body.id }).exec(function(err, doc){
+		console.log("Busqueda");
+		console.log(doc);
+
+		if(doc == null){
+		    console.log("documento vacio");
+		    //console.log(req.body);
+			res.send(401);
+		}else{
+            console.log("correcto");
+            res.send(doc);
+		}
+	});
+});
+
 ///////////////////////////
 
 app.post('/products', function(req, res){
