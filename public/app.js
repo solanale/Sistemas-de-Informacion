@@ -31,8 +31,8 @@ app.config(function($routeProvider){
         })
 
         .when("/comparar", {
-            templateUrl: views + "comparar.html"
-//            controller: "CompararController"
+            templateUrl: views + "comparar.html",
+            controller: "CompararController"
         })
 
         .when("/cesta", {
@@ -111,6 +111,25 @@ app.controller("HomeController", ['$scope', '$http', function($scope, $http){
 		});
 }]);
 
+app.controller("CestaController", ['$scope','$http', "$cookies", '$cookieStore', function($scope, $http, $cookies, $cookieStore){
+    $scope.envio = {};
+
+    $scope.add = function (p) {
+
+        $scope.envio.username = $cookies.username;
+        $scope.envio.product = p.id;
+
+        alert("NOMBRE: "+$cookies.username+", PRODUCTO: "+p.id);
+        $http.post(addr + '/addCesta', $scope.envio)
+            .success(function () {
+                alert("Producto añadido a su cesta");
+            })
+            .error(function (){
+                alert("El producto no pudo añadirse");
+            })
+    }
+}]);
+
 app.controller("LogInController", ['$scope','$http', "$cookies", "$cookieStore", "$location", function($scope, $http, $cookies, $cookieStore,
 $location){
     $scope.form = {};
@@ -178,36 +197,41 @@ app.controller("BuscarController", ['$scope', "$cookies", '$cookieStore','$http'
      });
 }]);
 
-app.controller("CompararController", ['$scope', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore){
-	var user = $cookies.username;
-	$scope.user = {'username': user};
+app.controller("CompararController", ['$scope', "$cookies", '$cookieStore', '$http', function($scope, $cookies, $cookieStore, $http){
 
-	//Función que comprueba si un usuario esta logead
-	$scope.notLogged = function() {
-        return angular.isUndefined($cookies.username);
-    };
+    $scope.product1 = {};
+    $scope.product2 = {};
+    $scope.noSearch1 = true;
+    $scope.noSearch2 = true;
 
-    //Deslogeamos al usuario
-    $scope.logOut = function(){
-		delete $cookies["username"];
-	};
-}]);
+    $scope.Buscar1 = function() {
+        $scope.product1.id = $scope.busqueda1;
+        console.log($scope.product1);
+        $http.post(addr + '/comparar', $scope.product1)
+        .success(function(data){
+            console.log(data);
+            $scope.noSearch1 = false;
+            $scope.result1 = data;
+        })
+        .error(function(data){
+            alert("El producto no pudo encontrarse");
+        })
+        };
 
-app.controller("CestaController", ['$scope','$http', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore,$http){
-
-    $scope.add = function (p) {
-        data_send = {};
-        data_send.username = $cookies.username;
-        data_send.product = p;
-        alert("LLEGA A LA FUNCION CON" + $cookies.username + " Y " + p.nombre);
-        $http.post(addr + '/add/cesta', data_send)
-            .success(function (data) {
-                alert("Producto añadido a su cesta");
+        $scope.Buscar2 = function() {
+            $scope.product2.id = $scope.busqueda2;
+            console.log($scope.product2);
+            $http.post(addr + '/comparar', $scope.product2)
+            .success(function(data){
+                console.log(data);
+                $scope.noSearch2 = false;
+                $scope.result2 = data;
             })
-            .error(function (data){
-                alert("El producto no pudo añadirse");
+            .error(function(data){
+                alert("El producto no pudo encontrarse");
             })
-    }
+            };
+
 }]);
 
 //app.controller("ControladorOpciones", ['$scope','$http', "$cookies", "$cookieStore", "$location", function($scope, $http, $cookies, $cookieStore,

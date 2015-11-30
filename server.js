@@ -138,6 +138,25 @@ app.post('/buscar', function(req, res){
 		}
 	});
 });
+
+app.post('/comparar', function(req, res){
+	//User.findOne().where('username', req.body.username).exec(function(err, doc){
+	console.log(req.body);
+	Product.findOne({'id' : req.body.id }).exec(function(err, doc){
+		console.log("Busqueda");
+		console.log(doc);
+
+		if(doc == null){
+		    console.log("documento vacio");
+		    //console.log(req.body);
+			res.send(401);
+		}else{
+            console.log("correcto");
+            res.send(doc);
+		}
+	});
+});
+
 ///////////////////////////
 
 app.post('/products', function(req, res){
@@ -158,6 +177,19 @@ app.post('/categorias', function(req, res){
 			res.sendStatus(401);
 		}else{
 			res.send(doc);
+		}
+	});
+});
+
+app.post('/addCesta', function(req, res){
+	user.findOne({'username' : req.body.username}).exec(function(err, doc){
+		console.log(req.body);
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			doc.cesta.addToSet(req.body.product);
+			doc.save();
+			res.sendStatus(200);
 		}
 	});
 });
@@ -309,17 +341,7 @@ app.post('/cambiar/nombre', function(req, res){
 		}
 	});
 });
-app.post('/add/cesta', function(req, res){
-	User.findOne().where('username', req.body.username).exec(function(err, doc){
-		if(doc == null){
-			res.sendStatus(401);
-		}else{
-			doc.cesta.addToSet(req.body.product._id);
-			doc.save();
-			res.sendStatus(200);
-		}
-	});
-});
+
 
 // ============================================= //
 
