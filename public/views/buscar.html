@@ -8,10 +8,7 @@
 			<button ng-if="$index == 2" id="mas" class="button" type="button" onclick="ocultarId('mas'); mostrarInlineId('menos'); mostrarBlockClass('oculto');">Ver mas</button>
 			<h3 ng-attr-class="{{($index > 1) && 'oculto migas' || 'migas' }}">
 				<a href="/">Home</a>
-				<span> > </span>
-				<a href="/">{{c.categoria}}</a>
-				<span> > </span>
-				<a href="#/producto">{{c.nombre}}</a>
+				<span> > {{c.categoria}} > {{c.nombre}}</span>
 			</h3>
 			<section ng-attr-class="{{($index > 1) && 'oculto box' || 'box' }}">
 				<h2>{{c.nombre}}</h2>

@@ -135,7 +135,7 @@ app.controller("MuestraCestaController", ['$scope','$http', '$cookies', '$cookie
             $scope.cesta = data;
         })
         .error(function (){
-            alert("Problema al cargar su cesta");
+            alert("Debe hacer login para cargar su cesta");
         })
 }]);
 
