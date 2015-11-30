@@ -22,7 +22,7 @@
 					<p>Categoria: {{c.categoria}}</p>
 					<p>Precio: {{c.precio}} €</p>
 					<p>Descripcion: {{c.descripcion}}</p>
-					<p></p>
+					<button class="button" ng-hide="notLogged()" ng-controller="CestaController" ng-click="add(p)">Añadir a la cesta</button>
 				</div>
 			</section>
 		</div>

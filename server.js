@@ -125,7 +125,7 @@ app.post('/buscar', function(req, res){
 	//User.findOne().where('username', req.body.username).exec(function(err, doc){
 	console.log(req.body);
 	var term = new RegExp(req.body.id, 'i');
-	Product.find().or([{'nombre' : {$regex: term}} , {'id' : {$regex: term}}])
+	Product.find().or([{'nombre' : {$regex: term}} , {'subtitulo' : {$regex: term}}, {'descripcion' : {$regex: term}}, {'id' : {$regex: term}}])
 		.exec(function(err, doc){
 			console.log("Busqueda");
 			console.log(doc);
