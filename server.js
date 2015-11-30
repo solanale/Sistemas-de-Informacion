@@ -124,19 +124,21 @@ app.post('/datos', function(req, res){
 app.post('/buscar', function(req, res){
 	//User.findOne().where('username', req.body.username).exec(function(err, doc){
 	console.log(req.body);
-	Product.find({'id' : req.body.id }).exec(function(err, doc){
-		console.log("Busqueda");
-		console.log(doc);
+	var term = new RegExp(req.body.id, 'i');
+	Product.find().or([{'nombre' : {$regex: term}} , {'id' : {$regex: term}}])
+		.exec(function(err, doc){
+			console.log("Busqueda");
+			console.log(doc);
 
-		if(doc == []){
-		    console.log("documento vacio");
-		    //console.log(req.body);
-			res.send(401);
-		}else{
-            console.log("correcto");
-            res.send(doc);
-		}
-	});
+			if(doc == []){
+				console.log("documento vacio");
+				//console.log(req.body);
+				res.send(401);
+			}else{
+				console.log("correcto");
+				res.send(doc);
+			}
+	})	;
 });
 
 app.post('/comparar', function(req, res){
