@@ -4,8 +4,31 @@
 			<h2>Amazop</h2>
 			<p>Your Amazing Shopping WebSite</p>
 		</header>
-		<div ng-repeat="p in result">
-			<p>HOLA QUE TAL: {{p.nombre}}</p>
+		<div ng-repeat="c in result">
+			<button ng-if="$index == 2" id="mas" class="button" type="button" onclick="ocultarId('mas'); mostrarInlineId('menos'); mostrarBlockClass('oculto');">Ver mas</button>
+			<h3 ng-attr-class="{{($index > 1) && 'oculto migas' || 'migas' }}">
+				<a href="/">Home</a>
+				<span> > </span>
+				<a href="/">{{c.categoria}}</a>
+				<span> > </span>
+				<a href="#/producto">{{c.nombre}}</a>
+			</h3>
+			<section ng-attr-class="{{($index > 1) && 'oculto box' || 'box' }}">
+				<h2>{{c.nombre}}</h2>
+				<h3>{{c.subtitulo}}</h3>
+				<div class="6u 12u$(medium)">
+					<img class="image fit" src="{{c.imagen}}" />
+				</div>
+				<div class="6u 12u$(medium)">
+					<p>Nombre: {{c.nombre}}</p>
+					<p>Tipo: {{c.subtitulo}}</p>
+					<p>Categoria: {{c.categoria}}</p>
+					<p>Precio: {{c.precio}} €</p>
+					<p>Descripcion: {{c.descripcion}}</p>
+					<p></p>
+				</div>
+			</section>
 		</div>
-		</div>
-	</section>
+		<button id="menos" class="button" type="button" onclick="ocultarId('menos'); mostrarInlineId('mas'); ocultarClass('oculto');">Ver menos</button>
+	</div>
+</section>
