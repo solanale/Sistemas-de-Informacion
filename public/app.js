@@ -114,10 +114,9 @@ app.controller("CestaController", ['$scope','$http', "$cookies", '$cookieStore',
         $scope.envio.username = $cookies.username;
         $scope.envio.product = p.id;
 
-        alert("NOMBRE: "+$cookies.username+", PRODUCTO: "+p.id);
         $http.post(addr + '/addCesta', $scope.envio)
             .success(function () {
-                alert("Producto añadido a su cesta");
+                alert("NOMBRE: "+$cookies.username+", PRODUCTO: "+p.id+"\nProducto añadido a su cesta");
             })
             .error(function (){
                 alert("El producto no pudo añadirse");
