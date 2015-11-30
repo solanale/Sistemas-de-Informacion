@@ -182,7 +182,13 @@ app.controller("PerfilController",['$scope','$http', '$cookies',function($scope,
 	//Receive data comments
 	$http.post(addr + "/datos", send)
 		.success(function(data){
-			$scope.info = data;
+		$scope.info = data;
+		    if(data.gender){
+		        $scope.info.gender="Male";
+		    }else{
+		        $scope.info.gender="Female";
+		    }
+
 		});
 }]);
 
