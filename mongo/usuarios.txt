@@ -20,6 +20,7 @@ db.users.insert(
       	"email":        "adrian@amazop.es",
       	"password":     "adrian",
       	"info":         "sin permisos de super de vaca",
+      	"cesta":        ["1","2","5"],
    }
 )
 

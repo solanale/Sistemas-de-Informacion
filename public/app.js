@@ -63,19 +63,21 @@ app.config(function($routeProvider){
 		.otherwise({ redirectTo: "/" });
 });
 
-app.controller("IndexController", ['$scope', "$cookies", '$cookieStore','$location', function($scope, $cookies, $cookieStore,$location){
-	var user = $cookies.username;
-	$scope.user = {'username': user};
+app.controller("IndexController", ['$scope','$route',"$cookies", '$cookieStore','$location', function($scope,$route, $cookies,$cookieStore,$location){
+	$scope.user = {};
+	$scope.user.username = $cookies.get('username');
+	$route.reload();
 
 
 	//Función que comprueba si un usuario esta logead
 	$scope.notLogged = function() {
-        return angular.isUndefined($cookies.username);
+        return angular.isUndefined($scope.user.username);
     };
 
     //Deslogeamos al usuario
     $scope.logOut = function(){
-		delete $cookies["username"];
+		$cookies.remove("username");
+		$scope.user.username= undefined;
 	};
 
 	$scope.Buscar= function(){
@@ -111,12 +113,12 @@ app.controller("CestaController", ['$scope','$http', "$cookies", '$cookieStore',
 
     $scope.add = function (p) {
 
-        $scope.envio.username = $cookies.username;
+        $scope.envio.username = $cookies.get('username');
         $scope.envio.product = p.id;
 
         $http.post(addr + '/addCesta', $scope.envio)
             .success(function () {
-                alert("NOMBRE: "+$cookies.username+", PRODUCTO: "+p.id+"\nProducto añadido a su cesta");
+                alert("NOMBRE: "+$cookies.get('username')+", PRODUCTO: "+p.id+"\nProducto añadido a su cesta");
             })
             .error(function (){
                 alert("El producto no pudo añadirse");
@@ -128,7 +130,7 @@ app.controller("MuestraCestaController", ['$scope','$http', '$cookies', '$cookie
 
     $scope.cesta = {};
     $scope.user = {};
-    $scope.user.username = $cookies.username;
+    $scope.user.username = $cookies.get("username");
 
     $http.post(addr + '/muestraCesta', $scope.user)
         .success(function (data) {
@@ -139,7 +141,7 @@ app.controller("MuestraCestaController", ['$scope','$http', '$cookies', '$cookie
         })
 }]);
 
-app.controller("LogInController", ['$scope','$http', "$cookies", "$cookieStore", "$location", function($scope, $http, $cookies, $cookieStore,
+app.controller("LogInController", ['$scope','$window','$http', "$cookies", "$cookieStore", "$location", function($scope,$window, $http, $cookies, $cookieStore,
 $location){
     $scope.form = {};
 
@@ -147,7 +149,8 @@ $location){
         if($scope.form.username && $scope.form.pass){
             $http.post(addr + '/login', login)
                 .success(function (data) {
-                    $cookies.username = login.username;
+                    $cookies.put('username',login.username);
+                    $window.location.reload();
                     $location.path("/");
                 })
                 .error(function (data){
@@ -158,7 +161,7 @@ $location){
 
 }]);
 
-app.controller("SignUpController", ['$scope','$http','$cookies',"$location", function($scope, $http, $cookies, $cookieStore,$location){
+app.controller("SignUpController", ['$scope','$http','$window','$cookies',"$location", function($scope, $http, $cookies,$window, $cookieStore,$location){
 
     $scope.user = {};
 //    $scope.status=true;
@@ -172,8 +175,8 @@ app.controller("SignUpController", ['$scope','$http','$cookies',"$location", fun
             }
             $http.post(addr + "/signup", user)
                 .success(function (data){
-                    $cookies.username = user.username;
-                    alert("Usuario " + $cookies.username + " registrado con exito.");
+                    $cookies.put('username',login.username);
+                    $window.location.reload();
                     $location.path("/");
                 })
                 .error(function (data){
@@ -186,13 +189,19 @@ app.controller("SignUpController", ['$scope','$http','$cookies',"$location", fun
 }]);
 
 app.controller("PerfilController",['$scope','$http', '$cookies',function($scope, $http, $cookies){
-	var send = {username: $cookies.username};
+	var send = {username: $cookies.get('username')};
 	$scope.info = {};
 
 	//Receive data comments
 	$http.post(addr + "/datos", send)
 		.success(function(data){
-			$scope.info = data;
+		$scope.info = data;
+		    if(data.gender){
+		        $scope.info.gender="Male";
+		    }else{
+		        $scope.info.gender="Female";
+		    }
+
 		});
 }]);
 
