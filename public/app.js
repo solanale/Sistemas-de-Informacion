@@ -111,6 +111,22 @@ app.controller("HomeController", ['$scope', '$http', function($scope, $http){
 		});
 }]);
 
+app.controller("CestaController", ['$scope','$http', "$cookies", '$cookieStore', function($scope, $http, $cookies, $cookieStore){
+
+    $scope.add = function (p) {
+        var envio = {};
+        envio.username = $cookieStore.username;
+        envio.product = p;
+        $http.post(addr + '/addCesta', envio)
+            .success(function () {
+                alert("Producto añadido a su cesta");
+            })
+            .error(function (){
+                alert("El producto no pudo añadirse");
+            })
+    }
+}]);
+
 app.controller("LogInController", ['$scope','$http', "$cookies", "$cookieStore", "$location", function($scope, $http, $cookies, $cookieStore,
 $location){
     $scope.form = {};
@@ -191,23 +207,6 @@ app.controller("CompararController", ['$scope', "$cookies", '$cookieStore', func
     $scope.logOut = function(){
 		delete $cookies["username"];
 	};
-}]);
-
-app.controller("CestaController", ['$scope','$http', "$cookies", '$cookieStore', function($scope, $cookies, $cookieStore,$http){
-
-    $scope.add = function (p) {
-        data_send = {};
-        data_send.username = $cookies.username;
-        data_send.product = p;
-        alert("LLEGA A LA FUNCION CON" + $cookies.username + " Y " + p.nombre);
-        $http.post(addr + '/add/cesta', data_send)
-            .success(function (data) {
-                alert("Producto añadido a su cesta");
-            })
-            .error(function (data){
-                alert("El producto no pudo añadirse");
-            })
-    }
 }]);
 
 //app.controller("ControladorOpciones", ['$scope','$http', "$cookies", "$cookieStore", "$location", function($scope, $http, $cookies, $cookieStore,
