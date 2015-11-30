@@ -183,10 +183,11 @@ app.post('/categorias', function(req, res){
 
 app.post('/addCesta', function(req, res){
 	user.findOne({'username' : req.body.username}).exec(function(err, doc){
+		console.log(req.body);
 		if(doc == null){
 			res.sendStatus(401);
 		}else{
-			doc.cesta.addToSet(req.body.product._id);
+			doc.cesta.addToSet(req.body.product);
 			doc.save();
 			res.sendStatus(200);
 		}
