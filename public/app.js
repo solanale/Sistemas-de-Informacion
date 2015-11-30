@@ -145,6 +145,7 @@ app.controller("SignUpController", ['$scope','$http','$cookies',"$location", fun
             $http.post(addr + "/signup", user)
                 .success(function (data){
                     $cookies.username = user.username;
+                    alert("Usuario " + $cookies.username + " registrado con exito.");
                     $location.path("/");
                 })
                 .error(function (data){
