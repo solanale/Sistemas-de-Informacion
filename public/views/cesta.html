@@ -11,25 +11,25 @@
 			<p>Aquí podrás comparar las características de tus productos.</p>
 		</header>
 
-		<div ng-repeat="c in $scope.cesta">
+		<div ng-repeat="c in cesta">
 			<button ng-if="$index == 2" id="mas" class="button" type="button" onclick="ocultarId('mas'); mostrarInlineId('menos'); mostrarBlockClass('oculto');">Ver mas</button>
-			<h3 class="migas">
+			<h3 ng-attr-class="{{($index > 1) && 'oculto migas' || 'migas' }}">
 				<a href="/">Home</a>
 				<span> > </span>
 				<a href="/">{{c.categoria}}</a>
 				<span> > </span>
 				<a href="#/producto">{{c.nombre}}</a>
 			</h3>
-			<div ng-attr-class="{{($index > 1) && 'oculto row 150%' || 'row 150%' }}">
-				<div class="4u 12u$(medium)" ng-repeat="p in products | filter:{ categoria: c }">
-					<section class="box">
-						<img src="{{p.imagen}}"/>
-						<h2>{{p.nombre}}</h2>
-						<h3>{{p.subtitulo}}</h3>
-						<p>{{p.descripcion}}</p>
-					</section>
+			<section ng-attr-class="{{($index > 1) && 'oculto box' || 'box' }}">
+				<h2>{{c.nombre}}</h2>
+				<h3>{{c.subtitulo}}</h3>
+				<div class="6u 12u$(medium)">
+					<img class="image fit" src="{{c.imagen}}" />
 				</div>
-			</div>
+				<div class="6u 12u$(medium)">
+					<p>{{c.descripcion}}</p>
+				</div>
+			</section>
 		</div>
 		<button id="menos" class="button" type="button" onclick="ocultarId('menos'); mostrarInlineId('mas'); ocultarClass('oculto');" style="display:none">Ver menos</button>
 	</div>

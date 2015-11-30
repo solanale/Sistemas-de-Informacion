@@ -125,14 +125,15 @@ app.controller("CestaController", ['$scope','$http', "$cookies", '$cookieStore',
     }
 }]);
 
-app.controller("MuestraCestaController", ['$scope','$http', "$cookies", '$cookieStore', function($scope, $http, $cookies, $cookieStore){
+app.controller("MuestraCestaController", ['$scope','$http', '$cookies', '$cookieStore', function($scope, $http, $cookies, $cookieStore){
 
     $scope.cesta = {};
+    $scope.user = {};
+    $scope.user.username = $cookies.username;
 
-    $http.post(addr + '/muestraCesta', $cookies.username)
+    $http.post(addr + '/muestraCesta', $scope.user)
         .success(function (data) {
             $scope.cesta = data;
-            $location.path("/cesta");
         })
         .error(function (){
             alert("Problema al cargar su cesta");
