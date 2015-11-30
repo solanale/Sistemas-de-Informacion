@@ -39,7 +39,7 @@ var users_schema = new mongoose.Schema({
 	email:        { type: String, unique: true },
 	password:     { type: String },
     info:         { type: String },
-    cesta:        { type: [Number] },
+    cesta:        { type: [String] },
 });
 
 var user = db.model('user', users_schema);
@@ -183,12 +183,29 @@ app.post('/categorias', function(req, res){
 
 app.post('/addCesta', function(req, res){
 	user.findOne({'username' : req.body.username}).exec(function(err, doc){
+		console.log(req.body);
 		if(doc == null){
 			res.sendStatus(401);
 		}else{
-			doc.cesta.addToSet(req.body.product._id);
+			doc.cesta.addToSet(req.body.product);
 			doc.save();
 			res.sendStatus(200);
+		}
+	});
+});
+
+app.post('/muestraCesta', function(req, res){
+	user.findOne({'username' : req.body.username}).exec(function(err, doc){
+		if(doc == null){
+			res.sendStatus(401);
+		}else{
+			Product.find({'id' : {$in : doc.cesta}}).exec(function(err2, doc2){
+				if(doc2 == null){
+					res.sendStatus(401);
+				}else{
+					res.send(doc2);
+				}
+			});
 		}
 	});
 });

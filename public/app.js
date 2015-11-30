@@ -37,13 +37,8 @@ app.config(function($routeProvider){
 
         .when("/cesta", {
             templateUrl: views + "cesta.html",
-            controller: "CestaController",
+            controller: "MuestraCestaController",
         })
-
-        .when("/cesta", {
-			templateUrl: views + "cesta.html",
-			controller: "CestaController",
-		})
 
         .when("/elements", {
             templateUrl: views + "elements.html"
@@ -112,12 +107,15 @@ app.controller("HomeController", ['$scope', '$http', function($scope, $http){
 }]);
 
 app.controller("CestaController", ['$scope','$http', "$cookies", '$cookieStore', function($scope, $http, $cookies, $cookieStore){
+    $scope.envio = {};
 
     $scope.add = function (p) {
-        var envio = {};
-        envio.username = $cookieStore.username;
-        envio.product = p;
-        $http.post(addr + '/addCesta', envio)
+
+        $scope.envio.username = $cookies.username;
+        $scope.envio.product = p.id;
+
+        alert("NOMBRE: "+$cookies.username+", PRODUCTO: "+p.id);
+        $http.post(addr + '/addCesta', $scope.envio)
             .success(function () {
                 alert("Producto añadido a su cesta");
             })
@@ -125,6 +123,21 @@ app.controller("CestaController", ['$scope','$http', "$cookies", '$cookieStore',
                 alert("El producto no pudo añadirse");
             })
     }
+}]);
+
+app.controller("MuestraCestaController", ['$scope','$http', '$cookies', '$cookieStore', function($scope, $http, $cookies, $cookieStore){
+
+    $scope.cesta = {};
+    $scope.user = {};
+    $scope.user.username = $cookies.username;
+
+    $http.post(addr + '/muestraCesta', $scope.user)
+        .success(function (data) {
+            $scope.cesta = data;
+        })
+        .error(function (){
+            alert("Problema al cargar su cesta");
+        })
 }]);
 
 app.controller("LogInController", ['$scope','$http', "$cookies", "$cookieStore", "$location", function($scope, $http, $cookies, $cookieStore,
