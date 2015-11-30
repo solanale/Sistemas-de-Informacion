@@ -10,10 +10,10 @@
 			<h3 ng-attr-class="{{($index > 1) && 'oculto migas' || 'migas' }}">
 				<a href="/">{{c}}</a>
 			</h3>
-			<div ng-attr-class="{{($index > 1) && 'oculto row 150%' || 'row 150%' }}">
-				<div class="4u 12u$(medium)" ng-repeat="p in products | filter:{ categoria: c }">
-					<section class="box">
-						<img src="{{p.imagen}}"/>
+			<div style="overflow:hidden" ng-attr-class="{{($index > 1) && 'oculto row 150%' || 'row 150%' }}">
+				<div style="height:inherit" class="4u 12u$(medium)" ng-repeat="p in products | filter:{ categoria: c }">
+					<section style="height:inherit" class="box">
+						<img class="img-rounded center-block" src="{{p.imagen}}"/>
 						<h2>{{p.nombre}}</h2>
 						<h3>{{p.subtitulo}}</h3>
 						<p>{{p.descripcion}}</p>
