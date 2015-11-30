@@ -161,7 +161,7 @@ $location){
 
 }]);
 
-app.controller("SignUpController", ['$scope','$http','$window','$cookies',"$location", function($scope, $http, $cookies,$window, $cookieStore,$location){
+app.controller("SignUpController", ['$scope','$http','$window','$cookies',"$cookieStore", "$location", function($scope, $http, $cookies,$window, $cookieStore,$location){
 
     $scope.user = {};
 //    $scope.status=true;
@@ -175,6 +175,7 @@ app.controller("SignUpController", ['$scope','$http','$window','$cookies',"$loca
             }
             $http.post(addr + "/signup", user)
                 .success(function (data){
+                    console.log("aron puta");
                     $cookies.put('username',user.username);
                     $window.location.reload();
                     $location.path("/");
