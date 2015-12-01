@@ -73,4 +73,7 @@ $ node server.js
 
 
 
+http://stackoverflow.com/questions/21023763/angularjs-difference-between-angular-route-and-angular-ui-router
+
+
 
