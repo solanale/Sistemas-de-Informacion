@@ -1,11 +1,11 @@
-# Sistemas de Información (En Progreso)
+# Sistemas de Información 
 ### Curso 2015-2016
 
 ### Objetivos
-Se ha de desarrollar un Sistema Web completo, Front-End y Back-End cumpliendo los réquisitos de prácticas 
+Se ha de desarrollado un Sistema Web completo, Front-End y Back-End cumpliendo los réquisitos de prácticas 
 
 ### Tecnologías
-Posiblemente se usara [MEAN](http://mean.io/#!/) Full-stack 
+[MEAN](http://mean.io/#!/) Full-stack 
 ####Front-End:
  * HTML5
  * CSS3
